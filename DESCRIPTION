@@ -1,12 +1,12 @@
-Package: nDGDev
-Title: What the Package Does (One Line, Title Case)
+Package: nphys
+Title: R package for interpreting neurphysiology field and whole-cell data
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Scott",
+           family = "Sawchuk",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
+           email = "ssawchuk@uvic.ca")
+Description: Intended to be used for reproducabile analysis and presentation of field and whole cell data collected in neurophysiology experiments
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -17,3 +17,13 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+Imports: 
+    usethis,
+    ggplot2,
+    dplyr,
+    plyr,
+    ggpubr,
+    grid,
+    gridExtra,
+    kableExtra,
+    gginnards

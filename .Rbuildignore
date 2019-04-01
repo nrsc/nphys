@@ -1,3 +1,7 @@
+^data/Slices$
+^exa$
+^R/builds$
+^R/Archive$
 ^LICENSE\.md$
 ^nDGDev\.Rproj$
 ^\.Rproj\.user$

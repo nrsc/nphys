@@ -1,4 +1,7 @@
 .Rhistory
 .RData
 .Rproj.user
-inst/doc
+dir
+R/builds
+R/Archive
+

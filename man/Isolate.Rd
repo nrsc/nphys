@@ -4,14 +4,14 @@
 \alias{Isolate}
 \title{Isolate Bl sweeps from wash in sweeps if relevant}
 \usage{
-Isolate(x, BlR, Wsh)
+Isolate(x, Wsh, BlR)
 }
 \arguments{
 \item{x}{data}
 
-\item{BlR}{Baseline - defaults to 80}
-
 \item{Wsh}{Wash region - defaults to 0}
+
+\item{BlR}{Baseline - defaults to 80}
 }
 \value{
 Sweeps

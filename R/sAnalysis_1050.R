@@ -25,9 +25,9 @@ sAnalysis_1050 <- function(x){
     pt1 <- head(which(Bl0$BlAvg$mV[p1:p2] < pt1)+p1, 1)
     pt2 <- tail(which(Bl0$BlAvg$mV[p1:p2] > pt2)+p1, 1)
 
-
     dt <- as.numeric(lmROI(Bl0$EPSP[,tail(Bl0$Sweeps$BlSweeps, 60)], (pt1-p1), (pt2-p1)))
     dt2 <- as.numeric(lmROI(De0$EPSP, (pt1-p1), (pt2-p1)))
+
     ndt <- c(dt, head(dt2, 240))
     mn <- mean(ndt[41:60])
     mLTD <- mean(ndt[281:300])

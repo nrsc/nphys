@@ -26,4 +26,5 @@ Imports:
     grid,
     gridExtra,
     kableExtra,
-    gginnards
+    gginnards,
+    data.table

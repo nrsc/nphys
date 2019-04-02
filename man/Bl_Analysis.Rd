@@ -4,14 +4,14 @@
 \alias{Bl_Analysis}
 \title{Baseline Analysis for LTD}
 \usage{
-Bl_Analysis(LTD, Wsh, SA = FALSE)
+Bl_Analysis(x, Wsh = FALSE, SA = FALSE)
 }
 \arguments{
+\item{x}{data.frame}
+
 \item{Wsh}{Wash region to ignore when getting BlAvg}
 
 \item{SA}{postition of the SA}
-
-\item{x}{data.frame}
 }
 \value{
 x

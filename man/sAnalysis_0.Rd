@@ -4,7 +4,7 @@
 \alias{sAnalysis_0}
 \title{Baseline analysis of EPSP}
 \usage{
-sAnalysis_0(x, Wsh)
+sAnalysis_0(x)
 }
 \arguments{
 \item{Wsh}{Wash in sweeps}

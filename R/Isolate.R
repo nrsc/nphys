@@ -6,7 +6,7 @@
 #'
 #' @return Sweeps
 #' @export Isolate
-Isolate <- function(x, BlR, Wsh){
+Isolate <- function(x, Wsh, BlR){
 
 if(missing(Wsh)){
     Wsh = 0

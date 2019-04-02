@@ -3,21 +3,23 @@
 #' @param x
 #'
 #' @return dtSw
-#' @export sAnalysis_2060Sw
-#'
-#' @examples
-sAnalysis_2060Sw <- function(x){
+#' @export
+sA_LFS <- function(x, m = 1){
 
-    print("Cursors at 20% and 60% of individual sweeps")
-
-    Bl0 <- sA$LTD$Baseline
-    De0 <- sA$LTD$Decay
+    Bl0 <- x$LTD$Baseline
+    De0 <- x$LTD$Decay
     dfC <- Bl0$dfCross
 
 
-dtS <- as.numeric(lmSweep(Bl0$EPSP[,tail(Bl0$Sweeps$BlSweeps, 60)]))
-dt2S <- as.numeric(lmSweep(De0$EPSP))
-dtSw <- c(dtS, head(dt2S, 240))
+if(m == 1){}
+dt1 <- as.numeric(lmSweep(Bl0$EPSP[,tail(Bl0$Sweeps$BlSweeps, 60)]))
+dt2 <- as.numeric(lmSweep(De0$EPSP))
+if(m == 2){}
+
+
+
+
+dtSw <- c(dt1, head(dt2, 240))
 mnSw <- mean(dtSw[41:60])
 mLTDSw <- mean(dtSw[281:300])
 print(lmSw <- mLTDSw/mnSw*100-100)

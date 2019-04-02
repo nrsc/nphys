@@ -14,9 +14,9 @@ baseline_adjust <- function(x, r) {
     df <- x[,-which(grepl("*Time", names(x)))]
     mV <- lapply(df[r,], mean)
     df <- data.frame(Map("-", df, mV))
-
     rownames(df) = as.numeric(rownames(df))/100
 
-    return(list(data = df, mVdrift = unlist(mV)))
+
+    return(list(data = as.matrix(df), mVdrift = unlist(mV)))
 
 }

@@ -6,7 +6,7 @@
 #'
 #' @return x
 #' @export
-Bl_Analysis <- function(x, Wsh = FALSE, SA = FALSE){
+Bl_Analysis <- function(x, Wsh = FALSE, SA = FALSE, out){
     if(Wsh == FALSE) {
         Wsh = 0
     } else{
@@ -29,11 +29,12 @@ Bl_Analysis <- function(x, Wsh = FALSE, SA = FALSE){
         set_colnames("mV") %>%
         add_column(Time = as.numeric(rownames(.)), .before = 1)
 
+if(missing(out)){
     yMin <- min(BlAvg$mV[150:800])*1.5
-
     plot(mV ~ Time,data = BlAvg, type = "l", ylim = c(yMin,0.2))
     print("Pick identifiers")
     out <- BlAvg[identify(BlAvg$Time, BlAvg$mV, n = 3),]
+}
 
 
     p1 = as.numeric(out[1,1])*100
@@ -42,7 +43,7 @@ Bl_Analysis <- function(x, Wsh = FALSE, SA = FALSE){
 
     x$Sweeps <- Sweeps
 
-    x$dt0 <- out
+    x$dfCross <- out
 
     x$BlAvg <- BlAvg
 

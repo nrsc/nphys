@@ -1,4 +1,4 @@
-#' Analysis with cursors at 10% and 50% of the observable EPSP
+#' Analysis by cursor placement
 #'
 #' @param x
 #'
@@ -35,7 +35,7 @@ sA_LFS <- function(x, m = 1) {
     }
 
 
-if(m == 3){
+    if(m == 3){
     dt1 <- sapply(data.frame(Bl0$blSlope[,tail(1:(ncol(Bl0$blSlope)), 60)]), min)
     dt2 <- sapply(data.frame(De0$deSlope), min)
 }

@@ -4,7 +4,7 @@
 \alias{Bl_Analysis}
 \title{Baseline Analysis for LTD}
 \usage{
-Bl_Analysis(x, Wsh = FALSE, SA = FALSE)
+Bl_Analysis(x, Wsh = FALSE, SA = FALSE, out)
 }
 \arguments{
 \item{x}{data.frame}

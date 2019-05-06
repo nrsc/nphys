@@ -8,7 +8,7 @@
 #'
 #' @examples
 load_sA <- function(x, dDir){
-    if(missing(x)){x = "tst"}
+    if(missing(x)){x = "field"}
     if(missing(dDir)){dDir = "."}
 
 

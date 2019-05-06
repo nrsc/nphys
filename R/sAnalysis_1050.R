@@ -4,8 +4,6 @@
 #'
 #' @return ndt
 #' @export sAnalysis_1050
-#'
-#' @examples
 sAnalysis_1050 <- function(x){
 
     print("Cursors at 10% and 50% of Pre-Conditioning Baseline")

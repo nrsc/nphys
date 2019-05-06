@@ -12,7 +12,7 @@ if(missing(x)){x = sA}
     dfC <- x$LTD$Baseline$dfCross
 
     yMin = dfC$mV[3]*1.2
-    yMax = max(Bl0$mV)
+    yMax = max(BlAvg$mV)
 
 
     gg = ggplot() +

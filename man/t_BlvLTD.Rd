@@ -4,7 +4,7 @@
 \alias{t_BlvLTD}
 \title{trace Baseline vs LTD}
 \usage{
-t_BlvLTD(x, lmInc = TRUE, ptsInc = TRUE, dDir = ".")
+t_BlvLTD(x, ld = FALSE, lmInc = TRUE, ptsInc = TRUE, dDir = ".")
 }
 \arguments{
 \item{x}{}

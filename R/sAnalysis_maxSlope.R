@@ -4,8 +4,6 @@
 #'
 #' @return ndt_2
 #' @export sAnalysis_maxSlope
-#'
-#' @examples
 sAnalysis_maxSlope <- function(x){
 
     print("Maximum Slope")

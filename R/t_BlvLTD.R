@@ -4,8 +4,12 @@
 #'
 #' @return p1
 #' @export t_BlvLTD
-t_BlvLTD <- function(x, lmInc = TRUE, ptsInc = TRUE, dDir = "."){
-md <- load_sA(x, dDir)
+t_BlvLTD <- function(x, ld = FALSE, lmInc = TRUE, ptsInc = TRUE, dDir = "."){
+
+    if(ld == TRUE){
+    md <- load_sA(x, dDir)
+    }
+
 
 Bl0 = sA$LTD$Baseline$BlAvg
 De0 = sA$LTD$Decay$DeAvg

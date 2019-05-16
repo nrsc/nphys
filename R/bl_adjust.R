@@ -10,9 +10,10 @@ bl_adjust <- function(x, r) {
         r = 1:1000
     }
 
-    df = as.data.frame(x)
-    mV <- mean(df[r,])
+    df = x
+    mV <- mean(df[r])
     df0 <- df - mV
+
     return(df0)
 
 }

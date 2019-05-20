@@ -1,7 +1,6 @@
-^data/Slices$
-^exa$
+^data$
+^R/run$
 ^R/build$
 ^R/Archive$
 ^LICENSE\.md$
-^nDGDev\.Rproj$
 ^\.Rproj\.user$

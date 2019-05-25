@@ -15,6 +15,3 @@ wd
 \description{
 Directory that file sits in
 }
-\examples{
-"~/Projects/yourproj/file.xxx"
-}

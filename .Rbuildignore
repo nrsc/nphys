@@ -4,3 +4,4 @@
 ^R/Archive$
 ^LICENSE\.md$
 ^\.Rproj\.user$
+^.*\.Rproj$

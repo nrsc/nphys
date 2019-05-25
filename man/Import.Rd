@@ -4,12 +4,14 @@
 \alias{Import}
 \title{Import atf files into the R environment}
 \usage{
-Import(x, dDir, fmt)
+Import(x, dDir = ".", fmt = "atf")
 }
 \arguments{
 \item{x}{The name of a Slice}
 
-\item{fmt}{Format}
+\item{dDir}{directory to search from}
+
+\item{fmt}{File format to import - must be in its own folder named for the format.}
 }
 \value{
 dfR

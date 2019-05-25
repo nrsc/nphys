@@ -5,20 +5,13 @@
 #' @return x
 #' @export
 IOexp <- function(x){
+IO <- list()
 
-    PreIOdt <- which(grepl("PreC-IO", names(x)) == TRUE)
-    PostIOdt <- which(grepl("PostC-IO", names(x)) == TRUE)
-
-    PreIOdt <- x[PreIOdt]
-    PostIOdt <- x[PostIOdt]
-
-    PreIOdt <- lapply(PreIOdt, baseline_adjust)
-    PostIOdt <- lapply(PostIOdt, baseline_adjust)
-
-    x = list(PreIO = PreIOdt,
-             PostIO = PostIOdt)
+    x <- x[which(grepl("IO", names(x)) == TRUE)]
+    IO$Pre <- x[which(grepl("PreC", names(x)) == TRUE)]
+    IO$Post <- x[which(grepl("PostC", names(x)) == TRUE)]
 
 
-    return(x)
+    return(IO)
 
 }

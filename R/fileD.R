@@ -4,8 +4,6 @@
 #'
 #' @return wd
 #' @export fileD
-#'
-#' @examples "~/Projects/yourproj/file.xxx"
 fileD <- function(x, df = FALSE){
 
     wd <- data.frame(str_split(x, "/", simplify = TRUE))

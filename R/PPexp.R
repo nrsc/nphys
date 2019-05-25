@@ -6,19 +6,14 @@
 #' @export
 PPexp <- function(x){
 
-    PrePPdt <- which(grepl("PreC-PP", names(x)) == TRUE)
-    PostPPdt <- which(grepl("PostC-PP", names(x)) == TRUE)
+    PP <- list()
+    x <- x[which(grepl("PP", names(x)) == TRUE)]
+    PP$Pre <- x[which(grepl("Pre", names(x)) == TRUE)]
+    PP$Post <- x[which(grepl("Post", names(x)) == TRUE)]
 
-    PrePPdt <- x[PrePPdt]
-    PostPPdt <- x[PostPPdt]
+    #PrePPdt <- lapply(PrePPdt, baseline_adjust)
+    #PostPPdt <- lapply(PostPPdt, baseline_adjust)
 
-    PrePPdt <- lapply(PrePPdt, baseline_adjust)
-    PostPPdt <- lapply(PostPPdt, baseline_adjust)
-
-    x = list(PrePP = PrePPdt,
-             PostPP = PostPPdt)
-
-
-    return(x)
+    return(PP)
 
 }

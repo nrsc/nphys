@@ -29,4 +29,5 @@ Imports:
     gginnards,
     data.table,
     stringi,
-    stringr
+    stringr,
+    feather

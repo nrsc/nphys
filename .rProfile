@@ -5,9 +5,13 @@ library(png)
 library(dplyr)
 library(ggplot2)
 library(usethis)
+library(feather)
 # library(knitr)
 # library(gridExtra)
 # library(grid)
 # library(gtable)
 # library(car)
 # library(tidyr)
+
+
+options(max.print = 20)

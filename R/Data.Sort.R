@@ -5,9 +5,8 @@
 #' @return x
 #' @export
 Data.Sort <- function(x){
-md = x$Metadata
-#x = tst0
-    Cf <- md$V2[which(md$V1 == "StimFile")]
+
+    Cf <- x$Metadata$StimFile
     Cf0 <- gsub("abf", "atf", Cf)
     Cf0 <- which(str_detect(names(x$Data), Cf0))
 
@@ -54,9 +53,9 @@ md = x$Metadata
 
     print(dtNames)
 
-
     names(x$Data) <- dtNames
     names(x$files) <- dtNames
+
 
     return(x)
 }

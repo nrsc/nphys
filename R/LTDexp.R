@@ -5,20 +5,14 @@
 #' @return r0
 #' @export
 LTDexp <- function(x){
+
     r0 <- list()
 
-    r0$Baseline <- cbind.data.frame(x[grep("PreC-Bl", names(x))]) %>%
-        slice(1:3000) %>%
-        baseline_adjust()
+    r0$Baseline <- cbind.data.frame(x[grep("PreC.Bl", names(x))])
 
-    r0$Cond <- as.data.frame(x["Cond"]) %>%
-        slice(1:3000) %>%
-        baseline_adjust()
+    r0$Cond <- cbind.data.frame(x[grep("Cond", names(x))])
 
-    r0$Decay <- as.data.frame(x["Decay"]) %>%
-        slice(1:3000) %>%
-        baseline_adjust()
-
+    r0$Decay <- cbind.data.frame(x[grep("Decay", names(x))])
 
     return(r0)
 

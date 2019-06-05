@@ -1,7 +1,7 @@
-#' Adjust Baseline
+#' Get voltage drift from 0 for sweeps
 #'
 #'
-#' @param x Dataframe to be adjusted
+#' @param x Dataframe of sweeps
 #' @param r range of samples to calculate Bl mean from
 #'
 #' @export

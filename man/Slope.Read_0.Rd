@@ -4,7 +4,7 @@
 \alias{Slope.Read_0}
 \title{Read slope along a vector}
 \usage{
-Slope.Read_0(x)
+Slope.Read_0(x, ms)
 }
 \arguments{
 \item{x}{data to be read}

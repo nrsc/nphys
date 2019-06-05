@@ -5,7 +5,7 @@
 #' @return iSlope
 #' @export
 slpRead <- function(x, sq){
-if(missing(sq)){sq = c(-50, 50)}
+if(missing(sq)){sq = c(-10, 10)}
     x <- data.frame(x)
     nr <- data.frame(1:nrow(x))
     Sl <- NULL

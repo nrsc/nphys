@@ -4,7 +4,7 @@
 \alias{LTDexp}
 \title{Collect LTD Data}
 \usage{
-LTDexp(x)
+LTDexp(x, Bl = "PreC.Bl", Cond = "Cond", Decay = "Decay")
 }
 \arguments{
 \item{x}{}

@@ -4,7 +4,7 @@
 #'
 #' @return dtSw
 #' @export
-sA_LFS <- function(x, m = 1){
+slope_Analysis <- function(x, m = 1){
 
     Bl0 <- x$LTD$Baseline
     De0 <- x$LTD$Decay

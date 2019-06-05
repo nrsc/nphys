@@ -3,9 +3,8 @@
 #' @param x data to be read
 #'
 #' @return iSlope
-#' @export Slope.Read_0
-#'
-Slope.Read_0 <- function(x){
+#' @export
+Slope.Read_0 <- function(x, ms){
 
     x <- data.frame(x)
     nr <- data.frame(1:nrow(x))
@@ -35,9 +34,9 @@ Slope.Read_0 <- function(x){
 
     Slmean <- apply(Sl, 1, mean)
     Slmean <- na.fill(Slmean, 0)
-    Time <- as.numeric(row.names(x))/100
-    iSlope <- data.frame(Time, Slmean, x)
-    colnames(iSlope) <- c("Time", "Slope", "Data")
+    ms <- ms
+    iSlope <- data.frame(ms, x, Slmean)
+    colnames(iSlope) <- c("ms", "mV", "mVms")
     return(iSlope)
 
 }

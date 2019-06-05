@@ -1,16 +1,21 @@
-#' Find stim artifact for traces with single
-#'
-#' @param x numerical vector to be examined
-#'
-#' @return fp
-#' @export stim.Artifact
-#'
-stim.Artifact <- function(x){
+stim_Artifact <- function(x){
 
-    #x$Slope <- na.fill(x$Slope, 0)
-    xMax <- which.max(x$Slope)
-    xMin <- which.min(x$Slope[1:xMax])
-    fp <- c(xMax, xMin)
-    return(fp)
+
+SA = head(which(diff(x) == sort(diff(x))[1]),1)-100
+
+x = l[,ncol(l)]
+xc <- paste(as.character(sign(diff(x))), collapse = "")
+xc <- gsub("1", "+", gsub("-1", "-", xc))
+nups = 2
+ndowns = nups
+peakpat <- sprintf("[+]{%d,}[-]{%d,}", nups, ndowns)
+
+
+
+rc <- gregexpr(peakpat, xc)[[1]]
+rc[1]
+
+
+    return()
 }
 

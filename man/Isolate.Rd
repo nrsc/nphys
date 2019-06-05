@@ -4,7 +4,7 @@
 \alias{Isolate}
 \title{Isolate Bl sweeps from wash in sweeps if relevant}
 \usage{
-Isolate(x, Wsh, BlR)
+Isolate(x, Wsh = 0, BlR = 80)
 }
 \arguments{
 \item{x}{data}

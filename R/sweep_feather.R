@@ -5,8 +5,8 @@
 #' @return dfSweeps
 #' @export
 sweep_feather <- function(x, units = "ms"){
-
-    dfSweeps <- NULL
+    #x = sA$Data
+    dfSweeps <- data.frame(row.names = seq(1,1501))
     for(i in 1:length(x)){
 
         l = x[i]
@@ -26,11 +26,14 @@ sweep_feather <- function(x, units = "ms"){
                 df = NULL
                 tst <- bl_adjust(x)
                 df <- cbind(df, tst)
-            })
+            }) %>% as.data.frame(.)
 
 
         SA = head(which(diff(l[1:3000,ncol(l)]) == sort(diff(l[1:3000,ncol(l)]))[1]),1)-100
-
+        if(SA < 0){
+        #l = l[,-c(ncol(l))]
+        SA = head(which(diff(l[1:3000,4]) == sort(diff(l[1:3000,4]))[1]),1)-100
+        }
 
         if(pro == "PP"){
             SA1 = SA

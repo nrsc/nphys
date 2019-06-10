@@ -8,7 +8,8 @@
 LTDpchange <- function(x, b, d, ret = TRUE, ggPrint = TRUE){
 if(missing(b)){b = 41:60}
 if(missing(d)){d = 281:300}
-oDt = x
+
+    oDt = x
 m = mean(x[b])
 ltd = (mean(x[d])/m)*100-100
 

@@ -1,6 +1,6 @@
-files,n,n1,protocol,p0,Bl,SA,TestPulse,TestPulse,Treatment
-17217010.atf,15000,10,IV curve,100:11000,200:600,NA,NA,NA,Control
-17217011.atf,15000,10,IV curve,100:11000,200:600,NA,NA,NA,Control
+files,n,n1,protocol,p0,Bl,EPSC,TestPulse_ON,TestPulse_OFF,Treatment
+17217010.atf,15000,10,IV curve,NA,200:600,NA,734,6734,Control
+17217011.atf,15000,10,IV curve,NA,200:600,NA,734,6734,Control
 17217012.atf,13000,6,IO,100,600,700,10500,12500,Control
 17217013.atf,2600,5,PP,100,500,550,NA,NA,Control
 17217014.atf,17000,5,NMDA,8000,8200,8280,100,1100,Control

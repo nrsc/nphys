@@ -12,7 +12,6 @@ fd <- gsub("-SliceMD.csv", "", fileD(lf[1]))
 wcA <- wc_Import("fd")
 wcA$Metadata
 AmNm <- which(wcA$fdir$protocol == "AMPA" | wcA$fdir$protocol == "NMDA")
-fdir <- wcA$fdir
 
 tst <- unlist(apply(wcA$fdir[AmNm,], 1, function(x){
     s0 <- x["Treatment"]
@@ -38,62 +37,16 @@ df <- data.frame(lapply(names(wcA$Data[AmNm]), function(x){
     dt <- dt[,-c(grep("Time", names(dt)))]
     p0 <- as.numeric(wcA$fdir[f,"p0"])
     Bl <- as.numeric(wcA$fdir[f,"Bl"])
-    SA <- as.numeric(wcA$fdir[f,"SA"])
+    SA <- as.numeric(wcA$fdir[f,"EPSC"])
     dt2 <- apply(dt, 2, bl_adjust, r = p0:Bl)
     dtr <- dt2[(SA-100):(SA+1000),]
 }))
 
 
-
-AMPA <- which(wcA$fdir$protocol == "AMPA")
-x0 = as.data.frame(wcA$Data[AMPA])[8000:10000,]
-ms <- x0[,1]
-x1 = x0[,-c(grep("Time", names(x0)))]
-rownames(x1) <- ms
+plot(df[[1]][100:500])
 
 
-NMDA <- which(wcA$fdir$protocol == "NMDAr")
-NMDAtr <- wcA$fdir[AMPA,"Treatment"]
-
-x <- fdir[NMDAr,]
-
-
-rownames(x1)
-
-x2 <- as.data.frame(apply(x1, 2, bl_adjust, r = 9500:10000))
-x3 <- x2[8000:10000,]
-tst <- sapply(x3, max)
-plot(tst)
-
-
-i = 5
-p <- wcA$Protocol[i,]
-
-p1 <- as.numeric(str_split(tst, ":", simplify = TRUE))[1]
-p2 <- as.numeric(str_split(tst, ":", simplify = TRUE))[2]
-dtROI <- x[p1:p2,]
-plot(dtROI[,4])
-identify_points()
-
-for(i in 1:length(wcA$Data)){
-p
-
-
-
-
-
-TP <- x[tst[1]:tst[2],]
-
-
-
-
-
-}
-
-
-
-
-
+####
 
 
 

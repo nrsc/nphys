@@ -1,7 +1,7 @@
-#' Adjust Baseline
+#' Adjust Baseline of data frame and return a list that includes the mV drift
 #'
 #'
-#' @param x Dataframe to be adjusted
+#' @param x Data to be adjusted
 #' @param r range of samples to calculate Bl mean from
 #'
 #' @export
@@ -17,6 +17,6 @@ baseline_adjust <- function(x, r) {
     rownames(df) = as.numeric(rownames(df))/100
 
 
-    return(list(data = as.matrix(df), mVdrift = unlist(mV)))
+    return(list(data = data.matrix(df), mVdrift = unlist(mV)))
 
 }

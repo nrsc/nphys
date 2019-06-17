@@ -22,16 +22,11 @@ mVd <- data.frame(unlist(sapply(sA$Data, mVdrift)),stringsAsFactors = FALSE) %>%
     rownames_to_column(var = "Sweep")
 
 
-#dfactors <- read.csv("exa/field/field-dfactors.csv", sep = ",", header = TRUE)
+#Load dfeather
+#dfeather <- read_feather("./exa/field/field-d.feather")
 
 dfactors <- data.frame(Sweep = names(dfeather), stringsAsFactors = FALSE) %>%
     full_join(., mVd, by = "Sweep")
-
-
-
-Time <- sapply(dfactors$Sweep, function(x){
-
-})
 
 
 
@@ -39,10 +34,7 @@ plot(dfactors$slopeEPSP)
 
 
 
+#dfactors <- read.csv("exa/field/field-dfactors.csv", sep = ",", header = TRUE)
 
-#Load dfeather
-#dfeather <- read_feather("./exa/field/field-d.feather")
+
 ## Get mVd
-
-
-dfactor

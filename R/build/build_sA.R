@@ -15,6 +15,8 @@
     dfeather <- sweep_feather(x0$Data)
     write_feather(dfeather, file.path(x0$wd, paste0(x0$Metadata$Slice, "-d.feather")))
     dfeather <- read_feather("./exa/field/field-d.feather")
+    dfactors <- read.csv("./exa/field/field-dfactors.csv")
+
     #dfeather <- as.data.frame(dfeather)
     ms <- x0$Data[[1]][1:length(rownames(dfeather)),1]
     rownames(dfeather) <- ms
@@ -27,43 +29,20 @@
         full_join(., mVd, by = "Sweep")
         #which(is.na(dfactors$mVd)==TRUE)
 
-    dfactors$p0 <- sapply(dfeather, function(x){
-        x <- as.numeric(x)
-        p0 <- head(which(diff(x) >= sd(x)/10),1)
-        return(p0)
-    })
-
     LTD <- LTDexp(dfeather)
     Baseline <- Bl_Analysis(LTD$Baseline)
     dfC <- Baseline$dfC
     dfC_rows <- dfC$ms*100
 
-dfactors$EPSPmin <- sapply(dfeather[dfC_rows[2]:dfC_rows[3],], min)
-dfactors$FVmin <- sapply(dfeather[dfC_rows[1]:dfC_rows[2],], min)
-dfactors$stimAmin <- sapply(dfeather[1:dfC_rows[1],], min)
-dfactors$msFVmin <- sapply(dfeather[dfC_rows[1]:dfC_rows[2],], function(x){
-    x0 <- which.min(x)
-    x0 <- x0+dfC_rows[1]
-})
-
-tst0 <- apply(dfactors, 1, function(x){
-    print(x)[[1]]
-})
+dfactors <- read.csv("./exa/field/field-dfactors.csv")
 
 
-
-
-
-    dfactors$EPSPmin <- full_join(dfactors, EPSPmin, by = "Sweep")
-
-    LTD2 <- LTDexp2(dfeather)
-
+    #LTD2 <- LTDexp2(dfeather)
     fit <- stats::loess(mV~ms,data = avg)
-
-    dfC$ms[1]
 
     num <- LTD$Baseline$PreC.Bl_3.Sweep.0...mV.
     num1 <- approx(num, n = length(num)/10)
+
     plot(num1$y)
 
     tst0 <- approdfCx(num, n = 150)

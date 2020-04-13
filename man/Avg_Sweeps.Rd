@@ -4,7 +4,7 @@
 \alias{Avg_Sweeps}
 \title{Baseline Analysis for LTD}
 \usage{
-Avg_Sweeps(x, Wsh = 0, Sw = 20)
+Avg_Sweeps(x, Sw = 20, Wsh = 0)
 }
 \arguments{
 \item{x}{data.frame}

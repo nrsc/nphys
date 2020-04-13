@@ -5,16 +5,18 @@
 #'
 #' @return x
 #' @export
-Avg_Sweeps <- function(x, Wsh = 0, Sw = 20){
+Avg_Sweeps <- function(x, Sw = 20, Wsh = 0){
 
+    if(Wsh != 0){
     Sweeps <- x %>%
-        Isolate(Wsh = Wsh)
+        IsolateWsh(Wsh = Wsh)
 
-    BlAvg <- data.frame(rowMeans(x[,tail(Sweeps$BlSweeps, Sw)])) %>%
-        set_colnames("mV") %>%
-        add_column(ms = as.numeric(rownames(.)), .before = 1)
+    }
 
-    return(BlAvg)
+    Avg <- rowMeans(x[,tail(Sweeps$BlSweeps, Sw)])
+
+
+    return(Avg)
 
 }
 

@@ -2,16 +2,16 @@
 % Please edit documentation in R/fileD.R
 \name{fileD}
 \alias{fileD}
-\title{Directory that file sits in}
+\title{Returns the directory that file sits in}
 \usage{
 fileD(x, df = FALSE)
 }
 \arguments{
-\item{x}{}
+\item{x}{sea2}
 }
 \value{
 wd
 }
 \description{
-Directory that file sits in
+Returns the directory that file sits in
 }

@@ -15,3 +15,6 @@ tst
 \description{
 lm at each sweep
 }
+\examples{
+x field$expLTD
+}

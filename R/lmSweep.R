@@ -5,12 +5,12 @@
 #' @return tst
 #' @export lmSweep
 #'
-#' @examples
+#' @examples x field$expLTD
 lmSweep <- function(x){
 
     Time <- as.numeric(rownames(x))
 
-    tst <- apply(x, 2, function(t){
+    ret <- apply(x, 2, function(t){
         sBl0 <- NULL
         d0 <- min(t)*.1
         if(d0 == 0){
@@ -33,5 +33,5 @@ lmSweep <- function(x){
         return(sBl0)
     })
 
-    return(tst)
+    return(ret)
 }

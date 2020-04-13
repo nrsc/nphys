@@ -1,0 +1,31 @@
+---
+title: "Handling the data import"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Import_ABF}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(nphys)
+```
+
+# Importing Data: Building the rda file. 
+
+For this example we will be building the field data set in the demo directory
+
+
+```{r}
+# Import the abf files. 
+nphys::Import_ABF("field")
+# This function identifies 
+```
+

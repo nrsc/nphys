@@ -2,15 +2,15 @@
 % Please edit documentation in R/bl_adjust.R
 \name{bl_adjust}
 \alias{bl_adjust}
-\title{Get voltage drift from 0 for sweeps}
+\title{Baseline adjust by vector. Useful with apply functions. Does not return mV drift}
 \usage{
 bl_adjust(x, r)
 }
 \arguments{
-\item{x}{Dataframe of sweeps}
+\item{x}{vector}
 
 \item{r}{range of samples to calculate Bl mean from}
 }
 \description{
-Get voltage drift from 0 for sweeps
+Baseline adjust by vector. Useful with apply functions. Does not return mV drift
 }

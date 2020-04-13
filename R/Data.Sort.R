@@ -5,7 +5,7 @@
 #' @return x
 #' @export
 Data.Sort <- function(x){
-
+    #Params <- readODS::read_ods(file.path("exp", "Params.ods"))
     Cf <- x$Metadata$StimFile
     Cf0 <- gsub("abf", "atf", Cf)
     Cf0 <- which(str_detect(names(x$Data), Cf0))

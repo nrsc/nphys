@@ -1,0 +1,62 @@
+---
+title: "nphys functions"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+data(field)
+
+```
+
+
+
+# Select and make an averaged trace from a data frame.
+
+```{r}
+
+Bl_Avg <- avgSweeps(field$ABF, obs = "PreC-Bl")%>% 
+    bl_adjust(.) %>%
+    slice(., stimArtifact(.):length(.))
+Decay_Avg <- avgSweeps(field$ABF, obs = "Decay") %>% bl_adjust(.)
+Cond_Avg <- avgSweeps(field$ABF, obs = "Cond") %>% bl_adjust(.)
+
+
+
+traces = data.frame(Bl_Avg,Decay_Avg,Cond_Avg)
+
+```
+
+
+# Identify the location of the stim artifact. 
+```{r}
+stim <- stimArtifact(Bl_Avg)
+
+
+```
+
+
+```{r}
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+

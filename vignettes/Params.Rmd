@@ -1,0 +1,16 @@
+---
+title: "Experimental Paramaters"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The experimental parameters spreadsheet is a spreadsheet created and maintained by the user to aid in the addition of
+
+
+```{r}
+
+```
+

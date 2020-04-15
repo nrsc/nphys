@@ -1,7 +1,7 @@
 #' Baseline Analysis for LTD
 #'
 #' @param x data.frame
-#' @param Wsh Wash region to ignore when getting BlAvg
+#' @param
 #'
 #' @return x
 #' @export

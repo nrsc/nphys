@@ -1,0 +1,72 @@
+---
+title: "LTD Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(nphys)
+library(plotly)
+
+knitr::opts_chunk$set(
+  echo = FALSE
+)
+
+```
+
+
+```{r global, echo=FALSE}
+data(field)
+
+traces = field$traces
+
+```
+
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+
+df = data.frame(
+    ms = traces$Time,
+    mV = traces$Bl_Avg
+)
+dfc = identify_points(df)
+
+df_slope = lmSweep(df)
+
+
+
+plotly::plot_ly(data = data.frame(traces), x = ~Time, y = ~Bl_Avg, type = "scatter", mode = "markers") %>% 
+  add_trace(x = ~Time, y = ~Decay_Avg) %>% 
+  add_trace(x = ~Time, y = ~Cond_Avg) %>% 
+  layout(
+    xaxis = list(
+      title = "Time (ms)"
+    ),
+    yaxis = list(
+      range = c(-1.2,0.1),
+      title = "mV"
+    )
+  )
+
+
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+

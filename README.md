@@ -14,36 +14,24 @@ towards field long-term depression experiments and whole cell patch
 clamp experiments, but will continue to be updated as more datasets and
 methods of analysis become available.
 
-## Typical project build
+## The project directory
 
 Typical project builds are templates for certain types of projects being
-run. Projects and project directories are labeled `proj` followed by
-letter identifiers that are short and easy to reference. `e.g. projEXA`.
-It is optimal to maintain project directories downstream from where your
-tilde is assigned `e.g. "~/projEXA`. To find out what directory your
-tilde is assigned to type `setwd("~")` in your console, followed by
-`getwd()`. Reassigning your working directory to your project directory
-will then be as simple as
+run, and contents will vary based upon the needs of the project.
+
+Projects and project directories are labeled `proj` followed by letter
+identifiers that are short and easy to reference. `e.g. projEXA`. It is
+optimal to maintain project directories downstream from where your tilde
+is assigned `e.g. "~/projEXA`. To find out what directory your tilde is
+assigned to type `setwd("~")` in your console, followed by `getwd()`.
+Reassigning your working directory to your project directory will then
+be as simple as
 
 > WARNING\! This will change your working directory and if you do not
 > change it back, you may encounter errors when trying to work within
 > the project.
 
 All examples outlined in this work reference the project directory
-
-This package utilizes the `field = data(field)` dataset from
-`projDGDev`, to which the methods and data will be available in the
-future.
-
-## Importing data
-
-> currently supports abf file format import that depends on the readABF
-> package and .dat files that are exported as .mat format from
-> patchmaster.
-
-Import functions focus on building a single .rda file for each piece of
-data added to the project. You can name that rda file whatever you like.
-I generally save the slice or patch code ()
 
 ## the rda file
 
@@ -57,6 +45,22 @@ functions to. \> Patterns allow for pathways for analysis to develop.
 
 This .rda file includes a workding directory that is relative to the dir
 project folder.
+
+This package currently utilizes the `field` dataset.
+
+``` r
+data(field)
+```
+
+## Importing data
+
+> currently supports abf file format import that depends on the readABF
+> package and .dat files that are exported as .mat format from
+> patchmaster.
+
+Import functions focus on building a single .rda file for each piece of
+data added to the project. You can name that rda file whatever you like.
+I generally save the slice or patch code ()
 
 > The dir folder is a symlink crafted to your project directory that
 > points to the source of your raw data files. This can be a local drive

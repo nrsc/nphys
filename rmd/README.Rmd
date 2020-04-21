@@ -25,7 +25,7 @@ library(plotly)
 
 # The nphys package 
 
-The nphys package provides a means to import, manipulate, manage, and analyze neurophysiology data collected during electrophysiology experiments. It is geared towards developing robust and portable data management tools and analysis methods. It also serves as a tool that encourages regularly revisiting data by helping to manage large datasets and present comprehensive summaries that can be rapidly updated and opvserved from many different angles. This project is currently geared towards field long-term depression experiments and whole cell patch clamp experiments, but will continue to be updated as more datasets and methods of analysis become available. 
+The nphys package provides a means to import, manage, and analyze your neurophysiology data collected during electrophysiology experiments. It is geared towards developing robust and portable data management tools and analysis methods. It also serves as a tool that encourages regularly revisiting data by helping to manage large datasets and present comprehensive summaries that can be rapidly updated and opvserved from many different angles. This project is currently geared towards field long-term depression experiments and whole cell patch clamp experiments, but will continue to be updated as more datasets and methods of analysis become available. 
 
 
 ## The project directory
@@ -38,9 +38,15 @@ Projects and project directories are labeled `proj` followed by letter identifie
 
 All examples outlined in this work reference the project directory 
 
-## the rda file
 
-The rda file is the core of each experiement and contains all the necessary information and metadata for running project scripts. You can name your rda whatever you'd like, but you must update your  what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate workable dataset for your projects to easily read and apply functions to. 
+
+# The experiments
+
+Tools and features of the nphys package 
+
+## the .rda file
+
+The rda file contains contains all the metadata, data, and information for running  project. You can name your rda whatever you'd like, but you must update your  what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate workable dataset for your projects to easily read and apply functions to. 
 > Patterns allow for pathways for analysis to develop. 
 
 This .rda file includes a workding directory `r print("field$wd="); print(field$wd)` that is relative to the dir project folder. 

@@ -1,11 +1,1 @@
-shhh <- suppressPackageStartupMessages
-shhh(library(nphys))
-shhh(library(usethis))
-shhh(library(stringr))
-shhh(library(gtools))
-shhh(library(data.table))
-shhh(library(ggplot2))
-shhh(library(reshape2))
-shhh(library(ggpubr))
-rm(shhh)
-options(max.print = 20)
+print("hello")

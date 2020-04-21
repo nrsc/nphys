@@ -2,22 +2,26 @@
 % Please edit documentation in R/avgSweeps.R
 \name{avgSweeps}
 \alias{avgSweeps}
-\title{Baseline Analysis for LTD}
+\title{Average selected sweeps}
 \usage{
 avgSweeps(x, obs = "PreC-Bl", nAvg = 20, Wsh = 0)
 }
 \arguments{
-\item{x}{data.frame}
+\item{x}{Data imported from raw files
+requi}
 
-\item{nAvg}{The number of sweeps to observe before}
+\item{obs}{utilizes nphys::dfs_ABF
+select what data you want to draw from}
 
-\item{Wsh}{Wash region to ignore when getting BlAvg}
+\item{nAvg}{The number of sweeps selected for.}
+
+\item{Wsh}{If wsh is > 0, the function will ignore sweeps starting from the tail}
 }
 \value{
 
 }
 \description{
-Baseline Analysis for LTD
+Average selected sweeps
 }
 \examples{
 x = field$ABF

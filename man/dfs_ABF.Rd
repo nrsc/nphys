@@ -2,19 +2,26 @@
 % Please edit documentation in R/dfs_ABF.R
 \name{dfs_ABF}
 \alias{dfs_ABF}
-\title{Extract data from ABF as a list of dataframes}
+\title{Extract data or other variables from imported ABF format}
 \usage{
-dfs_ABF(x)
+dfs_ABF(x, int = "data", select = FALSE, returnList = TRUE)
 }
 \arguments{
-\item{x}{input is sA$ABF}
+\item{x}{data from import}
+
+\item{int}{character
+Set the option for extract}
+
+\item{sel}{logical
+Determine if you want to choose from a list of options to be returned. Ca}
 }
 \value{
-
+list of extracted elements
 }
 \description{
-Extract data from ABF as a list of dataframes
+Extract data or other variables from imported ABF format
 }
 \examples{
-x = sA$ABF
+x = field$ABF
+dfs <- dfs_ABF(x)
 }

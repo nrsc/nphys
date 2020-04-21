@@ -2,9 +2,11 @@
 % Please edit documentation in R/stimArtifcat.R
 \name{stimArtifact}
 \alias{stimArtifact}
-\title{Identify the point along a trace where the rate of change between points is the greatest to identify the stim artifact.}
+\title{Utilize the point along a trace
+where the rate of change between points
+is the greatest to identify the stim artifact.}
 \usage{
-stimArtifact(x, pre = 100)
+stimArtifact(x, adj = 0, headORtail = "head", n = 1)
 }
 \arguments{
 \item{x}{Vector along with which to examine. Currently only supports one SA per trace}
@@ -13,5 +15,10 @@ stimArtifact(x, pre = 100)
 
 }
 \description{
-Identify the point along a trace where the rate of change between points is the greatest to identify the stim artifact.
+Utilize the point along a trace
+where the rate of change between points
+is the greatest to identify the stim artifact.
+}
+\examples{
+x = field$traces$Bl_avg
 }

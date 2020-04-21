@@ -8,8 +8,6 @@ identify_points(x)
 }
 \arguments{
 \item{x}{data.frame}
-
-\item{Wsh}{Wash region to ignore when getting BlAvg}
 }
 \value{
 x

@@ -1,10 +1,11 @@
 ---
-output: github_document
+title: "nphys package readMe"
+output: html_document
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) {
-  })
   rmarkdown::render(inputFile, encoding = encoding, output_dir = ".")
+  })
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -19,8 +20,8 @@ knitr::opts_chunk$set(
 )
 library(nphys)
 
-data(sA)
-names(sA)
+data(field)
+names(field)
 
 ```
 
@@ -39,7 +40,7 @@ Typical project builds are templates for certain types of projects being run. I 
 
 
 
-This readme utilizes the field `r data(field)` and DGDpatch `r data(DGDpatch)` datasets from the projDGDev project and the RTTpatch `r data(RTTpatch)` data set from the projRTT project. 
+This readme utilizes the field `data(field)` and DGDpatch `data(DGDpatch)` datasets from the projDGDev project and the RTTpatch `data(RTTpatch)` data set from the projRTT project. 
 
 
 
@@ -54,7 +55,7 @@ Import functions focus on building a single .rda file for each piece of data add
 The rda file is what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate workable dataset for your projects to easily read and apply functions to. 
 > Patterns allow for pathways for analysis to develop. 
 
-This .rda file includes a workding directory `r print("sA$wd="); print(sA$wd)` that is relative to the dir project folder. 
+This .rda file includes a workding directory `r print("field$wd="); print(field$wd)` that is relative to the dir project folder. 
 
 >The dir folder is a symlink crafted to your project directory that points to the source of your raw data files. This can be a local drive or a server. I find this useful because I find it easiest to build the package around the data source, therefore wherever you clone your repo, all scripts or loops can source "~/proj/dir" as long as you keep your project directory in your home folder (generally UNIX: /usr/<username>/home == "~" or Win: C:/Users/<username>/Doccuments == "~")  or simply "dir" when working in your project directory. 
 his project folder can be the source of your raw data that are often made up of large files that are incompatible with git, making your .gitignore only need to ignore the dir folder. 
@@ -75,7 +76,7 @@ Field recordings at the medial perforant path in the DG.
 
 ```{r}
 
-#sA$LTD <- nphys::field_LTD(sA)
+#field$LTD <- nphys::field_LTD(field)
 
 
 

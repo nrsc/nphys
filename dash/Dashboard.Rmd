@@ -1,0 +1,88 @@
+---
+title: "LTD Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+#------------------ Packages ------------------
+library(flexdashboard)
+library(nphys)
+library(plotly)
+`%>%` <- magrittr::`%>%`
+
+data(field)
+
+```
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart A
+
+Traces on a plotly for interaction
+
+```{r}
+
+
+
+Cond = FALSE
+Decay = FALSE
+#Decay = TRUE
+
+xA = list(
+  title = "Time (ms)"
+)
+yA = list(
+  range = c(-1.2,0.1),
+  title = "mV"
+)
+
+pl <-
+    plotly::plot_ly(
+        data = data.frame(field$traces),
+        x = ~ Time,
+        y = ~ Bl_Avg,
+        type = "scatter",
+        mode = "markers"
+    ) %>%
+    plotly::layout(xaxis = xA, yaxis = yA)
+
+# If conditions to add or remove traces. 
+if(Cond)
+    pl = plotly::add_trace(x = ~ Time, y = ~ Decay_Avg)
+if (Decay)
+    pl = plotly::add_trace(x = ~ Time, y = ~ Cond_Avg)
+
+
+  
+pl
+
+```
+
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+### Chart B
+
+Scatter plot of pre and post stimulus
+
+```{r}
+
+
+#df = data.frame(
+#    ms = field$traces$Time,
+#    mV = field$traces$Bl_Avg
+#)
+#dfc = identify_points(df)
+#
+#df_slope = lmSweep(df)
+
+
+```
+

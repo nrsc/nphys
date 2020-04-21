@@ -1,28 +1,41 @@
-nphys package readMe
-================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-    ## [1] "wd"     "md"     "files"  "ABF"    "traces"
+# The nphys package
 
-# nphys package build
-
-The purpose of the nphys package is to develop data management tools and
-analysis methods for data generated over the course of a neurophysiology
-experiment. This project is currently geared towards field long-term
-depression experiments and whole cell patch clamp experiments.
+The nphys package provides a means to import, manipulate, manage, and
+analyze neurophysiology data collected during electrophysiology
+experiments. It is geared towards developing robust and portable data
+management tools and analysis methods. It also serves as a tool that
+encourages regularly revisiting data by helping to manage large datasets
+and present comprehensive summaries that can be rapidly updated and
+opvserved from many different angles. This project is currently geared
+towards field long-term depression experiments and whole cell patch
+clamp experiments, but will continue to be updated as more datasets and
+methods of analysis become available.
 
 ## Typical project build
 
 Typical project builds are templates for certain types of projects being
-run. I generally label a project directory by labelling it proj followed
-letter identifiers that are short and easy to reference. `e.g. projRTT`
+run. Projects and project directories are labeled `proj` followed by
+letter identifiers that are short and easy to reference. `e.g. projEXA`.
+It is optimal to maintain project directories downstream from where your
+tilde is assigned `e.g. "~/projEXA`. To find out what directory your
+tilde is assigned to type `setwd("~")` in your console, followed by
+`getwd()`. Reassigning your working directory to your project directory
+will then be as simple as
 
-This readme utilizes the field `data(field)` and DGDpatch
-`data(DGDpatch)` datasets from the projDGDev project and the RTTpatch
-`data(RTTpatch)` data set from the projRTT project.
+> WARNING\! This will change your working directory and if you do not
+> change it back, you may encounter errors when trying to work within
+> the project.
 
-# Importing data
+All examples outlined in this work reference the project directory
+
+This package utilizes the `field = data(field)` dataset from
+`projDGDev`, to which the methods and data will be available in the
+future.
+
+## Importing data
 
 > currently supports abf file format import that depends on the readABF
 > package and .dat files that are exported as .mat format from
@@ -30,15 +43,17 @@ This readme utilizes the field `data(field)` and DGDpatch
 
 Import functions focus on building a single .rda file for each piece of
 data added to the project. You can name that rda file whatever you like.
-I generally save the slice or patch code (),
+I generally save the slice or patch code ()
 
 ## the rda file
 
-The rda file is what allows you to loop over large datasets and be able
-to address multiple factors (i.e Baseline data, stimulus data, various
-channels etc.). It purpose is to generate workable dataset for your
-projects to easily read and apply functions to. \> Patterns allow for
-pathways for analysis to develop.
+The rda file is the core of each experiement and contains all the
+necessary information and metadata for running project scripts. You can
+name your rda whatever you’d like, but you must update your what allows
+you to loop over large datasets and be able to address multiple factors
+(i.e Baseline data, stimulus data, various channels etc.). It purpose is
+to generate workable dataset for your projects to easily read and apply
+functions to. \> Patterns allow for pathways for analysis to develop.
 
 This .rda file includes a workding directory that is relative to the dir
 project folder.
@@ -55,16 +70,19 @@ project folder.
 > up of large files that are incompatible with git, making your
 > .gitignore only need to ignore the dir folder.
 
-### 
+<!---
 
 ## Long-term depression
 
 Field recordings at the medial perforant path in the DG.
 
-``` r
+
+```r
 
 #field$LTD <- nphys::field_LTD(field)
+
 ```
+--->
 
 ## License
 

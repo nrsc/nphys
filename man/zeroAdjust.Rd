@@ -14,3 +14,7 @@ zeroAdjust(x, r = 1:1000)
 \description{
 Zero adjust. Useful with apply functions.
 }
+\examples{
+x = dfs_ABF(field$ABF)[[1]][[1]]
+x = zeroAdjust(x)
+}

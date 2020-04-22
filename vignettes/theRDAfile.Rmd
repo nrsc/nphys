@@ -1,14 +1,15 @@
 ---
 title: "The .rda file and working with the data"
-output: html_document
-editor_options: 
-  chunk_output_type: console
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the Coronavirus Dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 ```{r setup, echo = FALSE}
 knitr::opts_chunk$set(
     echo = TRUE
 )
-
 ```
 
 ---

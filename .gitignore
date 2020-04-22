@@ -2,6 +2,11 @@
 .RData
 .Rproj.user
 dir
-R/Archive
-
+archive
+build
+R/archive
+dash
 inst/doc
+rmd
+run.R
+ref

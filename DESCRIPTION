@@ -17,6 +17,7 @@ Suggests:
     rmarkdown,
 	ggplot2,
     testthat
+BuildVignettes: true
 VignetteBuilder: knitr
 Imports: 
 	dplyr,

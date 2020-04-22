@@ -1,18 +1,23 @@
 ---
-title: "The .rda file and working with the data"
+title: "Introduction to navigating the rda file"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to the Coronavirus Dataset}
+  %\VignetteIndexEntry{rdaFile}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-```{r setup, echo = FALSE}
+
+```{r, include = FALSE}
 knitr::opts_chunk$set(
-    echo = TRUE
+  collapse = TRUE,
+  comment = "#>"
 )
 ```
 
----
+```{r setup}
+library(nphys)
+library(dplyr)
+```
 
 When we access the information that represents a data point, we do this by loading the unique rda file, adding a nested list to the environment that contains all of the information we need to quickly and accurately analyze our data.
 
@@ -23,7 +28,6 @@ Having easy access to our data is one of the primary reasons we are doing this w
 We are going to utilize the `field` dataset,
 
 ```{r}
-library(nphys)
 data(field)
 ```
 

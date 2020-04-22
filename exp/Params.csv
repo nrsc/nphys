@@ -1,0 +1,10 @@
+dataPath,rdaName,mdTag,Set,Groups,Treatment,fmt,Data.ID-LTD
+“exa/field”,field,-SliceMD.csv,,,Control,abf,PreC-PP
+,,,,,Et50mM,,PreC-IO
+,,,,,Et100mM,,PreC-Bl
+,,,,,,,PreC-Wsh
+,,,,,,,Cond
+,,,,,,,Decay
+,,,,,,,PostC-PP
+,,,,,,,PostC-IO
+,,,,,,,PostC-Bl

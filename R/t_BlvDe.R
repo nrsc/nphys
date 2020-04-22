@@ -1,21 +1,19 @@
 #' Print baseline averaged trace
 #'
 #' @param x
-#' @param x2
-#' @param Fq
 #'
 #' @return gg
-#' @export
-#' @examples x = field$traces
-plot_BlvsDe <- function(x){
+#' @export plot.BlvsDecay
+#' @examples x = field$ABF
+plot.BlvsDecay <- function(x){
 
-Bl <- x$Bl_Avg
-De <- x$Decay_Avg
-Time <- x$Time
+Bl <- pullSweeps(x)
+Bl <- pullSweeps("Decay")
+
 
 df <- cbind.data.frame(Time, Bl, De)
 
-    gg <- ggplot(df) +
+    gg <- ggplot2::ggplot(df) +
         geom_line(aes(Time, Bl), size = 1) +
         geom_line(aes(Time, De), colour = "grey", size = 1) +
         #ylim(yMin, yMax) +

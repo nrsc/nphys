@@ -15,20 +15,12 @@ RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown,
+	ggplot2,
     testthat
 VignetteBuilder: knitr
 Imports: 
-    usethis,
-    ggplot2,
-    dplyr,
-    plyr,
-    ggpubr,
-    grid,
-    gridExtra,
-    kableExtra,
-    gginnards,
+	dplyr,
     data.table,
-    stringi,
     stringr,
-    feather,
-    readABF
+    readABF,
+	plotly

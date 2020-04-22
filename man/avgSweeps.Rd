@@ -4,18 +4,18 @@
 \alias{avgSweeps}
 \title{Average selected sweeps}
 \usage{
-avgSweeps(x, obs = "PreC-Bl", nAvg = 20, Wsh = 0)
+avgSweeps(x, nAvg = 20, Wsh = 0)
 }
 \arguments{
 \item{x}{Data imported from raw files
 requi}
 
-\item{obs}{utilizes nphys::dfs_ABF
-select what data you want to draw from}
-
 \item{nAvg}{The number of sweeps selected for.}
 
 \item{Wsh}{If wsh is > 0, the function will ignore sweeps starting from the tail}
+
+\item{obs}{utilizes nphys::dfs_ABF
+select what data you want to draw from}
 }
 \value{
 

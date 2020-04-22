@@ -52,7 +52,7 @@ The universality of the data as a nested list allows for analysis functions to b
 The rda file contains contains all the metadata, data, and information for running  project. You can name your rda whatever you'd like, but you must update your `Params.csv` file to ensure that your scrips are effective. The .rda file is what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate a workable dataset for your projects to easily read and apply functions to. 
 
 
-This .rda file includes a workding directory `r print("field$wd=")` that is relative to the dir project folder. 
+This .rda file includes a workding directory `r print(field$wd)` that is relative to the dir project folder. 
 
 <!---
 # The experiments
@@ -88,4 +88,4 @@ Field recordings at the medial perforant path in the DG.
 
 ## License
 
-This package is free and open source software, licensed under GPL-3.
+This package is free and open source software.

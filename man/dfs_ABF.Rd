@@ -2,24 +2,31 @@
 % Please edit documentation in R/dfs_ABF.R
 \name{dfs_ABF}
 \alias{dfs_ABF}
-\title{Extract data or other variables from imported ABF format}
+\title{Extract data or other variables from the imported ABF data.}
 \usage{
 dfs_ABF(x, int = "data", select = FALSE, returnList = TRUE)
 }
 \arguments{
 \item{x}{data from import}
 
-\item{int}{character
-Set the option for extract}
+\item{int}{Character
+Indicate what your interested in extracting from the contents of the imported ABF format.}
 
-\item{sel}{logical
-Determine if you want to choose from a list of options to be returned. Ca}
+\item{select}{Logical or Numeric
+Indicate if you want to choose from a list of options to be returned.
+Options to choose from are contents of ABF file after import.}
+
+\item{returnList}{Logical.
+If TRUE, will return elements as a nested list.
+Useful when extracting the nested dataframes that make up the majority of the nested data.
+If FALSE, will unlist the elements ard return data as a single vector.
+Useful if wanting to return something like sampling rate or signal channels.}
 }
 \value{
-list of extracted elements
+Extracted elements as determined by the user input at int. Default is "data".
 }
 \description{
-Extract data or other variables from imported ABF format
+Extract data or other variables from the imported ABF data.
 }
 \examples{
 x = field$ABF

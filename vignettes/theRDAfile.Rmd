@@ -1,0 +1,135 @@
+---
+title: "The .rda file and working with the data"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(
+    echo = TRUE
+)
+
+```
+
+---
+
+When we access the information that represents a data point, we do this by loading the unique rda file, adding a nested list to the environment that contains all of the information we need to quickly and accurately analyze our data.
+
+To do this, we need to be able to able to quickly interact with the data and effeciently incorporate the new data into our project.
+
+Having easy access to our data is one of the primary reasons we are doing this work.
+
+We are going to utilize the `field` dataset,
+
+```{r}
+library(nphys)
+data(field)
+```
+
+which loads the nested list titled `field`, 
+
+```{r}
+names(field)
+```
+
+to look at examples of how we can work with the rda file that we've built over the course of our experiment. 
+
+
+# We can
+
+### Extract the sweeps that make up the data.
+
+We can extract all of the data we imported by calling the `dfs_ABF` function on our imported abf data, `i.e. field$ABF`.
+
+```{r}
+dfs <- dfs_ABF(field$ABF)
+# Names of imported data
+head(names(dfs))
+
+# Individual traces are named by their sweep when defaut selections are run
+names(dfs[1])
+```
+
+---
+
+This function can also be used to extract other useful information about the imported data.
+
+```{r}
+head(dfs_ABF(field$ABF, int = "samplingIntervalInSec"),3)
+```
+
+It can be useful to simplify the output by specifying `returnList = FALSE`, which will unlist the data, potentialy making it easier to work with later.
+```{r}
+dfs_ABF(field$ABF, int = "samplingIntervalInSec", returnList = FALSE)
+```
+
+There are numerous parameters kept by the pClamp software that can be very useful in ordering and managing your datasets (See the ABF file format vig for more information). 
+
+Using the select option will enable you to select from a list of elements that make up the identifying and metadata components for each imported file.
+
+```{r eval = FALSE}
+# Select from list
+#dfs_ABF(field$ABF, select = TRUE, returnList = FALSE)
+
+
+# Select from list
+dfs_ABF(field$ABF, select = 4, returnList = FALSE)
+```
+
+---
+
+### Pull specific sweeps or sets of sweeps from the $ABF
+
+```{r}
+tst <- pullSweeps(field$ABF)
+head(names(tst))
+plot(tst[,1])
+```
+
+Options for working with the pullSweeps function allow us to select from list
+
+```{r, eval = FALSE}
+pullSweeps(field$ABF, select = TRUE)
+```
+
+or select based upon numeric input
+```{r eval = FALSE}
+tst = pullSweeps(field$ABF, select = 1)
+names(tst)
+
+head(tst)
+```
+
+We can also return the dataframe without adjusting the baseline
+```{r}
+
+# tst = pullSweeps(field$ABF, select = 1, zero = FALSE)
+# head(tst)
+```
+
+### Adjusting the sweeps to zero
+
+Embedded within the `pullSweeps` function there is a function that adjust the sweeps around zero referred to as `zeroAdjust`
+
+```{r}
+
+x = dfs_ABF(field$ABF)[[1]][[1]]
+round(head(x),digits = 3)
+
+x = zeroAdjust(x)
+round(head(x),digits = 3)
+
+
+```
+
+This function can be modified to change the baseline range over which the sweep will be adjusted against.
+
+```{r}
+x = dfs_ABF(field$ABF)[[1]][[1]]
+round(head(x),digits = 3)
+x = zeroAdjust(x, r = 1200:1500)
+round(head(x),digits = 3)
+
+```
+
+

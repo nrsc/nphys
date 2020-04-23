@@ -1,17 +1,18 @@
-#' Print baseline averaged trace
+#' Basic Baseline vs Decay plot.
+#' Made from the
 #'
-#' @param x
+#' @param x nested list that nphys functions can run off
 #'
 #' @return gg
-#' @export plot.BlvsDecay
+#' @export plot.BlvDecay
 #' @examples x = field$ABF
-plot.BlvsDecay <- function(x){
+plot.BlvDecay <- function(x, Wsh = FALSE){
 
 Bl <- pullSweeps(x)
-Bl <- pullSweeps("Decay")
+Decay <- pullSweeps(x, int = "Decay")
 
 
-df <- cbind.data.frame(Time, Bl, De)
+df <- cbind.data.frame(Time, Bl, Decay)
 
     gg <- ggplot2::ggplot(df) +
         geom_line(aes(Time, Bl), size = 1) +

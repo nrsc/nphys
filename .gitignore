@@ -5,8 +5,9 @@ dir
 archive
 build
 R/archive
+R/build
 dash
 inst/doc
 rmd
-run.R
 ref
+run

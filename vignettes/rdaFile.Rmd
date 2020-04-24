@@ -7,38 +7,63 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+```{r, message = FALSE, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message=FALSE, 
+                      warning=FALSE, 
+                      fig.height=5, 
+                      fig.width=8,
+                      collapse = TRUE,
+                      comment = "#>")
+library(nphys)
 ```
 
 ```{r setup}
 library(nphys)
-library(dplyr)
+field = data(field)
+
 ```
 
-When we access the information that represents a data point, we do this by loading the unique rda file, adding a nested list to the environment that contains all of the information we need to quickly and accurately analyze our data.
 
-To do this, we need to be able to able to quickly interact with the data and effeciently incorporate the new data into our project.
+
+When we want to quickly access any of the data associated with a data point, we load the rda file and apply functions elements of the nested list.
+
+Loading the rda file adds a nested list to the environment containing all of the information we need to quickly and reliably analyze our data.
+
+We also want to be able to able to nteract with the data and effeciently incorporate updated analysis into our ongoing project.
 
 Having easy access to our data is one of the primary reasons we are doing this work.
 
 We are going to utilize the `field` dataset,
 
+
+to look at examples of how we can work with the comprehensive rda file that we've built over the course of our experiment. 
+
+# What is in the file
+
+After we have compiled our metadata, imported our experimental data, and loaded our rda file, we end up with a nested list (in this case `field`) in the REnvironment. 
+
+
+Our nested list is made up of a number of useful components. It contains the working directory of our rda file relative to the project directory, and all of the metadata that we input during our experimental procedure. 
+
+The call contains all of the identifying information needed for analyzing our data and adding it to our project. 
+
 ```{r}
-data(field)
+knitr::kable(field$md[1:8], row.names = FALSE)
+knitr::kable(field$md[9:15], row.names = FALSE)
 ```
 
-which loads the nested list titled `field`, 
+
+The `field$files` component is a list of the raw data files collected during our experiment, which are also relative to the project directory.
+
+Finally, the `field$ABF` component of our nested list contains all of the raw data imported during our experimental protocol, including any metadata that is kept by the software. We will go over importing data in another document, but for the time being it is imporant to note that UI will be required to ensure that your data will properly sort and therefore be identifiable. 
 
 ```{r}
-names(field)
+names(field$ABF)
+names(field$ABF[[1]])
 ```
 
-to look at examples of how we can work with the rda file that we've built over the course of our experiment. 
-
+Accessing this information is very useful when you need to identify your channels, sampling fequency, etc. 
 
 # We can
 
@@ -88,7 +113,7 @@ dfs_ABF(field$ABF, select = 4, returnList = FALSE)
 ```{r}
 tst <- pullSweeps(field$ABF)
 head(names(tst))
-plot(tst[,1])
+#plot(tst[1500:3000,1], type = "line", ylim = c(-1.5,0.25), frame.plot = FALSE)
 ```
 
 Options for working with the pullSweeps function allow us to select from list
@@ -98,6 +123,7 @@ pullSweeps(field$ABF, select = TRUE)
 ```
 
 or select based upon numeric input
+
 ```{r eval = FALSE}
 tst = pullSweeps(field$ABF, select = 1)
 names(tst)

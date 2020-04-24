@@ -2,19 +2,21 @@
 % Please edit documentation in R/wrkD.R
 \name{wrkD}
 \alias{wrkD}
-\title{Directory that file sits in}
+\title{Return directory that file is in}
 \usage{
-wrkD(x, df = FALSE)
+wrkD(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{a path}
 }
 \value{
 wd
 }
 \description{
-Directory that file sits in
+Return directory that file is in
 }
 \examples{
-"~/Projects/yourproj/file.xxx"
+\dontrun{
+wrkD("~/proj/yourproj/fi.le")
+}
 }

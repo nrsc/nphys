@@ -28,6 +28,7 @@ library(plotly)
 The nphys package provides a means to import, manage, and analyze your neurophysiology data collected during electrophysiology experiments. It is geared towards developing robust and portable data management tools and analysis methods. It also serves as a tool that encourages regularly revisiting data by helping to manage large datasets and present comprehensive summaries that can be rapidly updated and opvserved from many different angles. This project is currently geared towards field long-term depression experiments and whole cell patch clamp experiments, but will continue to be updated as more datasets and methods of analysis become available. 
 
 
+
 ## The project directory
 
 Typical project builds are templates for certain types of projects being run, and contents will vary based upon the needs of the project. 

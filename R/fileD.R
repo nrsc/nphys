@@ -1,10 +1,10 @@
 #' Returns the directory that file sits in
 #'
-#' @param x
-#'sea2
+#' @param x a file path
+#'
 #' @return wd
 #' @export fileD
-fileD <- function(x, df = FALSE){
+fileD <- function(x){
 
     wd <- data.frame(stringr::str_split(x, "/", simplify = TRUE))
     wd <- wd[,ncol(wd)]

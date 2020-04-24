@@ -18,11 +18,14 @@ requi}
 select what data you want to draw from}
 }
 \value{
-
+Avg
 }
 \description{
 Average selected sweeps
 }
 \examples{
+\dontrun{
 x = field$ABF
+pullSweeps(x) \%>\% avgSweeps()
+}
 }

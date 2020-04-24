@@ -15,6 +15,8 @@ zeroAdjust(x, r = 1:1000)
 Zero adjust. Useful with apply functions.
 }
 \examples{
-x = dfs_ABF(field$ABF)[[1]][[1]]
-x = zeroAdjust(x)
+\dontrun{
+data(field)
+dfs_ABF(field$ABF)[[1]][[1]] \%>\% zeroAdjust()
+#' }
 }

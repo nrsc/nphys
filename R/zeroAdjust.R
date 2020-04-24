@@ -7,8 +7,10 @@
 #'
 #' @export zeroAdjust
 #' @examples
-#' x = dfs_ABF(field$ABF)[[1]][[1]]
-#' x = zeroAdjust(x)
+#' \dontrun{
+#' data(field)
+#' dfs_ABF(field$ABF)[[1]][[1]] %>% zeroAdjust()
+#' #' }
 zeroAdjust <- function(x, r = 1:1000) {
 
     zA <- mean(x[r])

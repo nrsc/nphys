@@ -4,10 +4,10 @@
 \alias{fileD}
 \title{Returns the directory that file sits in}
 \usage{
-fileD(x, df = FALSE)
+fileD(x)
 }
 \arguments{
-\item{x}{sea2}
+\item{x}{a file path}
 }
 \value{
 wd

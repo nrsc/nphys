@@ -1,8 +1,8 @@
 ---
-title: "the-rdaFile"
+title: "nphys projects"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{the-rdaFile}
+  %\VignetteIndexEntry{nphys projects}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

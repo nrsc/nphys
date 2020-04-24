@@ -11,14 +11,16 @@ IsolateWsh(x, Wsh = 0, BlR = 80)
 
 \item{Wsh}{Wash region - defaults to 0}
 
-\item{BlR}{Baseline - defaults to 80}
+\item{BlR}{Baseline range - defaults to 80}
 }
 \value{
-
+List of sweeps that represent the numeric representations of either the baseline or wash in
 }
 \description{
 Isolate relevant columns from wash in sweeps if relevant
 }
 \examples{
-x =
+\dontrun{
+x = IsolateWsh()
+}
 }

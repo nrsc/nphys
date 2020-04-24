@@ -1,12 +1,12 @@
-#' Directory that file sits in
-#'
-#' @param x
-#'
+#' Return directory that file is in
+#' @param x a path
 #' @return wd
-#' @export wrkD
-#'
-#' @examples "~/Projects/yourproj/file.xxx"
-wrkD <- function(x, df = FALSE){
+#' @examples
+#' \dontrun{
+#' wrkD("~/proj/yourproj/fi.le")
+#' }
+#' @export
+wrkD <- function(x){
 
     wd <- data.frame(stringr::str_split(x, "/", simplify = TRUE))
     wd <- wd[,-ncol(wd)]

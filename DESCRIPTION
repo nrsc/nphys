@@ -6,22 +6,25 @@ Authors@R:
            family = "Sawchuk",
            role = c("aut", "cre"),
            email = "ssawchuk@uvic.ca")
-Description: Intended to be used for reproducabile analysis and presentation of field and whole cell data collected in neurophysiology experiments
+Description: This package is intended to be used for the reproducible analysis and presentation of field and whole cell data collected in neurophysiology experiments.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
-Suggests: 
-    knitr,
-    rmarkdown,
-	ggplot2,
-    testthat
 BuildVignettes: true
 VignetteBuilder: knitr
 Imports: 
-	dplyr,
+    knitr,
+    rmarkdown,
+    ggplot2,
+    dplyr,
     data.table,
     stringr,
     readABF,
-	plotly
+    plotly,
+    magrittr,
+    utils,
+    graphics
+Suggests: 
+    testthat

@@ -1,12 +1,15 @@
 #' Isolate relevant columns from wash in sweeps if relevant
 #'
 #' @param x data in the form of
-#' @param BlR Baseline - defaults to 80
+#' @param BlR Baseline range - defaults to 80
 #' @param Wsh Wash region - defaults to 0
-#'
-#' @return
-#' @export IsolateWsh
-#' @examples x =
+#' @return List of sweeps that represent the numeric representations of either the baseline or wash in
+#' @importFrom utils tail
+#' @examples
+#' \dontrun{
+#' x = IsolateWsh()
+#' }
+#'@export IsolateWsh
 IsolateWsh <- function(x, Wsh = 0, BlR = 80){
 
 if(ncol(x) < BlR){

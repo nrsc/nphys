@@ -4,20 +4,28 @@
 \alias{pullSweeps}
 \title{Pull specific sweeps from imported data}
 \usage{
-pullSweeps(x, pull = "PreC-Bl", select = FALSE, zero = TRUE)
+pullSweeps(x, pull = "PreC-Bl", select = FALSE, zero = TRUE, feather = TRUE)
 }
 \arguments{
-\item{pull}{Sweeps from the part of the experiment you want to pull}
+\item{x}{field$ABF}
+
+\item{pull}{Part of the experiment you want to pull as determined by names(field$ABF)}
 
 \item{select}{logical
 If TRUE, will prompt with options to select.}
+
+\item{zero}{adjust baseline of traces to zero}
+
+\item{feather}{logical to determine if you want to return remove the points in front of the stim artifact}
 }
 \value{
-
+dataframe of sweeps
 }
 \description{
 Pull specific sweeps from imported data
 }
 \examples{
-x = field$ABF
+\dontrun{
+x = field$ABF \%>\% pullSweeps()
+}
 }

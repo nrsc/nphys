@@ -1,8 +1,8 @@
-#' Baseline Analysis for LTD
+#' Click to identify points along a trace.
 #'
 #' @param x data.frame
-#' @param
-#'
+#' @importFrom graphics plot
+#' @importFrom graphics identify
 #' @return x
 #' @export
 identify_points <- function(x){

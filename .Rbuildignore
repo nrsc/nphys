@@ -1,7 +1,15 @@
 ^data$
-^R/run$
-^R/bld$
+^run$
+^R/build$
 ^R/archive$
 ^LICENSE\.md$
 ^\.Rproj\.user$
 ^.*\.Rproj$
+^archive$
+^build$
+^exp$
+^rmd$
+^exa$
+^dash$
+^doc$
+^ref$

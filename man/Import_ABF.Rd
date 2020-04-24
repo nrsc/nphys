@@ -4,17 +4,25 @@
 \alias{Import_ABF}
 \title{Import ABF files from experiment.}
 \usage{
-Import_ABF(x, dir = ".", sv = TRUE)
+Import_ABF(x, dir, format = "abf", sv = TRUE)
 }
 \arguments{
 \item{x}{csv metadata file associated with experiment uniquely tagged with Params$mdTag}
+
+\item{dir}{base directory to start  search in}
+
+\item{format}{what format of file are you importing.}
+
+\item{sv}{Logical. Save or return. Default is TRUE. If FALSE, will return the list as an object. If TRUE, list will be saved as an rda file in the same directory where x-mdTag.csv was identified.}
 }
 \value{
-
+list with all the components to run data analysis
 }
 \description{
 Import ABF files from experiment.
 }
 \examples{
-x = "field"
+\dontrun{
+field = Import_ABF("field", dir = "exa/field")
+}
 }

@@ -29,6 +29,8 @@ Extracted elements as determined by the user input at int. Default is "data".
 Extract data or other variables from the imported ABF data.
 }
 \examples{
+\dontrun{
 x = field$ABF
 dfs <- dfs_ABF(x)
+}
 }

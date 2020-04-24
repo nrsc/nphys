@@ -6,13 +6,16 @@
 where the rate of change between points
 is the greatest to identify the stim artifact.}
 \usage{
-stimArtifact(x, adj = 0, headORtail = "head", n = 1)
+stimArtifact(x, adj = 0)
 }
 \arguments{
-\item{x}{Vector along with which to examine. Currently only supports one SA per trace}
+\item{x}{Vector along with which to examine. Currently only supports one stim artifact per trace}
+
+\item{adj}{Make adjustments to how far up or down the trace from the stim artifact you want returned}
 }
 \value{
-
+index along trace that matches the point where the difference between points is the greatest to identify the on phase of the stim artifact.
+This is necessary when trying to locate the response along the trace, but not having the Stim channel data.
 }
 \description{
 Utilize the point along a trace
@@ -20,5 +23,7 @@ where the rate of change between points
 is the greatest to identify the stim artifact.
 }
 \examples{
-x = field$traces$Bl_avg
+\dontrun{
+stimArtifact(field$traces$Bl_avg)
+}
 }

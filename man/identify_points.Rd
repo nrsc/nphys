@@ -2,7 +2,7 @@
 % Please edit documentation in R/identify_points.R
 \name{identify_points}
 \alias{identify_points}
-\title{Baseline Analysis for LTD}
+\title{Click to identify points along a trace.}
 \usage{
 identify_points(x)
 }
@@ -13,5 +13,5 @@ identify_points(x)
 x
 }
 \description{
-Baseline Analysis for LTD
+Click to identify points along a trace.
 }

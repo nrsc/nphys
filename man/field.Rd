@@ -5,24 +5,22 @@
 \alias{field}
 \title{Field Data Set}
 \format{
-An object of class \code{"cross"}
+a \code{nested.list} with 5 elements:
+\describe{
+\item{wd}{working directory}
+\item{md}{Experimental metadata}
+\item{files}{Imported files}
+\item{ABF}{Imported data from files}
+\item{traces}{example traces}
+}
 }
 \source{
-My own data set outlining a normal field electrophysiology experiment to asses long-term depression in the hippocampus
+Christie Laboratory, Victoria B.C.
 }
 \usage{
 data(field)
 }
 \description{
-Field Data Set
-}
-\examples{
-\dontrun{
-data(field)
-names(field$ABF)
-}
-
-
-
+My own data set outlining a normal field electrophysiology experiment to asses long-term depression in the hippocampus
 }
 \keyword{datasets}

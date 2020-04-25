@@ -15,7 +15,7 @@
 #' @export
 pullSweeps <- function(x, pull = "PreC-Bl", select = FALSE, zero = TRUE, feather = TRUE){
 
-    if(select){
+    if(select & !is.numeric(select)){
         pull = select.list(names(x))
         df <- dfs_ABF(x[grep(pull, names(x))]) %>% as.data.frame()
     }

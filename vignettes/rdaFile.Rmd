@@ -70,8 +70,8 @@ data(field)
 
 Calling the function `newField()` will enable us to add a new field experiment to our dataset, by prompting the user through a number of questions determined by the user to generate a metadata component to our dataset. It will also generate folders and paths for us to place raw data and other  so that the raw data can easily be imported.
 
-```{r}
-newField()
+```{r, eval = FALSE, echo=FALSE}
+#newField()
 ```
 
 

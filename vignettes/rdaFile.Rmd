@@ -1,8 +1,8 @@
 ---
-title: "Introduction to the rda file"
+title: "Introduction to a field experiment dataset with nphys"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{rdaFile}
+  %\VignetteIndexEntry{fieldExperiment}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,32 +18,80 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```
 
-```{r setup}
+```{r setup, echo = FALSE}
 library(nphys)
+```
+Running an experiment with the help of R enables us to ensure that consistency is maintained across all avenues of the experimental procedure.
+Performing neurophysiology experiments generally   constantly observing the response, while also retaining relevant information for later analysis. In part because of the and hands on nature of these experiments, it is easy to allow potentially important details to be missed, forgotten, or inaccurate. 
 
+After we've collected our data, we want to quickly access any of the information associated with that experiment, and be able to retain our relationship with that data.
+Too often I see students set their cursors, measure the slope, copy the output into excel, then never look at that data again. 
+
+This package is geared towards creating and maintaining a relationship with your data, kinda like being able to access and present it on a moments notice during a discussion, similar to how you may show off pictures of your kids.  
+
+We also want to be able to able to interact with the data, and effeciently incorporate updated analysis into our ongoing project. The goal is to have easily reproducible access to our data. firs
+
+This vignette is going to first outline building a typical dataset generated during a field electrophysiology experiment, and follow up by examining each the dataset, and look at examples of how we can work with built in functions to navigate the environment
+
+generated over the course of an experiment. 
+
+we load the rda file asssociated with that experiment and apply functions to elements of that file.
+
+Loading the rda file imports a nested list into the REnvironment that contains all of the information and variables needed to quickly and reliably analyze our data.
+
+
+## Generating a dataset
+
+All examples outlined in this work reference the project directory and utilizes the `field` dataset.
+
+```{r}
+data(field)
 ```
 
-When we want to quickly access any of the data associated with any individual data point or experiment, we load the rda file asssociated with that experiment and apply functions to elements of the nested list.
+The `field` dataset is an example of what shape your appended data will look like after adding it to your project.
 
-Loading the rda file imports a nested list to the environment containing all of the information and variables we need to quickly and reliably analyze our data.
+The universality of the data as a nested list allows for analysis functions to be easily run over top of the data set.   
 
-We also want to be able to able to nteract with the data and effeciently incorporate updated analysis into our ongoing project.
+The rda file contains contains all the metadata, data, and information for running  project. You can name your rda whatever you'd like, but you must update your `Params.csv` file to ensure that your scrips are effective. The .rda file is what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate a workable dataset for your projects to easily read and apply functions to. 
 
-Having easy access to our data is one of the primary reasons we are doing this work.
 
-We are going to utilize the `field` dataset to look at examples of how we can work with the comprehensive rda file that we've built over the course of our experiment and examine how we can take advantage of this methodology.
+This .rda file includes a workding directory `r print(field$wd)` that is relative to the dir project folder. 
 
-# What is in the file
 
-Running an experiment with the help of R enables us to ensure that consistency is maintained across all avenues of the experimental procedure. Running neurophysiology experiments requires constant remaning focused on the responses being generated, while also retaining relevant information for later analysis. 
-Running the function `newField()` will enable us to add a new field experiment to our dataset, by prompting us through a number of important questions that will fill in the metadata component to our dataset. It will also generate folders and paths for us to place our experimental data so that the raw data can easily imported  
 
-After we have run our experiment, compiled our metadata, imported our raw data, and loaded our rda file into the REnvironment, we end up with a nested list (in this case `field`) that represents our experiment. 
 
-The nested list is made up of a number of useful components. It contains the working directory of our rda file relative to the project directory (`field$wd`), all of the identifying metadata needed for analyzing our data and adding it to our project (`field$md`), the path to the files we imported (`field$files`), and the imported data itself. Since we imported files of the ABF format, we keep `field$ABF` as the principle call format for accessing the data. 
+# Building a field dataset
 
-### The metadata contains identifying information unique to the experiment we've run
-You can decide what information you deem important for your md by updating the params file. 
+```{r, eval = FALSE}
+data(field)
+```
+
+
+
+Calling the function `newField()` will enable us to add a new field experiment to our dataset, by prompting the user through a number of questions determined by the user to generate a metadata component to our dataset. It will also generate folders and paths for us to place raw data and other  so that the raw data can easily be imported.
+
+```{r}
+newField()
+```
+
+
+
+## What is in the data file
+
+### The working directory 
+
+We want to keep a working directory variable that we can always refer to when we need, that links us to where we are going to store copies of our raw data. This file path is 
+
+```{r}
+print(field$wd)
+```
+
+
+
+### The metadata
+You can decide what information is important to retain in md by updating the params file then updating your. 
+Contains identifying information unique to the experiment we've run
+
 
 ```{r}
 knitr::kable(field$md[1:9], row.names = FALSE)
@@ -63,7 +111,23 @@ names(field$ABF)
 names(field$ABF[[1]])
 ```
 
+
+
+
+
+
+
+
+
+
+
+
 # Using functions over the rda data. 
+
+
+After we have run our experiment, compiled our metadata, imported our raw data, and loaded our rda file into the REnvironment, we end up with a nested list (in this case `field`) that represents our experiment. 
+
+The nested list is made up of a number of useful components. It contains the working directory of our rda file relative to the project directory (`field$wd`), all of the identifying metadata needed for analyzing our data and adding it to our project (`field$md`), the path to the files we imported (`field$files`), and the imported data itself. Since we imported files of the ABF format, we keep `field$ABF` as the principle call format for accessing the data. 
 
 `i.e. function(field$ABF)`.
 

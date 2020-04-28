@@ -1,4 +1,7 @@
-#' Zero adjust. Useful with apply functions.
+#' Zero adjust.
+#'
+#' Used with apply functions accross columns.
+#' Calculation done on each sweep as a vector.
 #'
 #'
 #'
@@ -8,9 +11,10 @@
 #' @export zeroAdjust
 #' @examples
 #' \dontrun{
-#' data(field)
+#' Using the example dataset 'field'
 #' dfs_ABF(field$ABF)[[1]][[1]] %>% zeroAdjust()
-#' #' }
+#'
+#' }
 zeroAdjust <- function(x, r = 1:1000) {
 
     zA <- mean(x[r])

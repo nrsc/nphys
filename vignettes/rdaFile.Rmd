@@ -20,35 +20,31 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```{r setup, echo = FALSE}
 library(nphys)
+#RAssist
 ```
-Running an experiment with the help of R enables us to ensure that consistency is maintained across all avenues of the experimental procedure.
-Performing neurophysiology experiments generally   constantly observing the response, while also retaining relevant information for later analysis. In part because of the and hands on nature of these experiments, it is easy to allow potentially important details to be missed, forgotten, or inaccurate. 
-
-After we've collected our data, we want to quickly access any of the information associated with that experiment, and be able to retain our relationship with that data.
-Too often I see students set their cursors, measure the slope, copy the output into excel, then never look at that data again. 
-
-This package is geared towards creating and maintaining a relationship with your data, kinda like being able to access and present it on a moments notice during a discussion, similar to how you may show off pictures of your kids.  
-
-We also want to be able to able to interact with the data, and effeciently incorporate updated analysis into our ongoing project. The goal is to have easily reproducible access to our data. firs
-
-This vignette is going to first outline building a typical dataset generated during a field electrophysiology experiment, and follow up by examining each the dataset, and look at examples of how we can work with built in functions to navigate the environment
-
-generated over the course of an experiment. 
-
-we load the rda file asssociated with that experiment and apply functions to elements of that file.
-
-Loading the rda file imports a nested list into the REnvironment that contains all of the information and variables needed to quickly and reliably analyze our data.
-
-
-## Generating a dataset
-
-All examples outlined in this work reference the project directory and utilizes the `field` dataset.
 
 ```{r}
+
+```
+
+
+This vignette is going to first outline building a typical dataset generated during a field electrophysiology experiment, followed up by examining the dataset and looking at examples of how we can work with built in functions to navigate the environment
+
+All examples outlined in this work reference the project directory and utilizes the built in `field` dataset.
+
+```{r, eval = FALSE}
+library(nphys)
 data(field)
 ```
 
-The `field` dataset is an example of what shape your appended data will look like after adding it to your project.
+
+Loading the dataset imports a nested list into the REnvironment that contains all of the information and variables needed to quickly analyze our data and keep track of it in a reliable way. 
+
+The `field` dataset is an example of what shape a data will look like after you have collected your raw data, added it to your project folderadding it to your project.
+
+## Generating a dataset
+
+
 
 The universality of the data as a nested list allows for analysis functions to be easily run over top of the data set.   
 
@@ -62,7 +58,7 @@ This .rda file includes a workding directory `r print(field$wd)` that is relativ
 
 # Building a field dataset
 
-```{r, eval = FALSE}
+```{r}
 data(field)
 ```
 

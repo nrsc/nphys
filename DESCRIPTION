@@ -25,6 +25,7 @@ Imports:
     plotly,
     magrittr,
     utils,
-    graphics
+    graphics,
+    devtools
 Suggests: 
     testthat

@@ -14,10 +14,9 @@ library(plotly)
 #library(quantmod)
 ```
 
-
 ### Select and make averaged traces from the imported data.
 
-This markdown describes how we can use the traces component of the `field` data set to observe and analyze the traces.
+This markdown describes how we can use the traces component of the `field` data set to observe and analyze the inter
 
 ```{r}
 data(field)

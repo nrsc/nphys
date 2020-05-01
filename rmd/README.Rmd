@@ -19,19 +19,19 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+
+
 # The nphys package 
 
-The nphys package provides a means to easily manage, analyze, and observe data collected during electrophysiology experiments, while also keeping a well organized overall project.
+The nphys package provides a means to easily analyze and view electrophysiology data, while also and a tools for managing your project.
 
-It is geared towards developing robust and portable data management tools that can easily incoprate various methods of analysis . It also serves as a tool to encourages regularly revisiting data, by helping to manage large data sets in a way that organizes and presents comprehensive summaries that can be rapidly updated and observed from many different angles.
-
-
-
+It is geared towards developing robust and portable data management tools that can easily call on various methods of analysis.
 Detailed examples of how to utilize this package will be outlined in vignettes as they are updated. 
 
-This package is currently geared towards field long-term depression (LTD) experiments and whole-cell patch-clamp experiments, but will continue to be updated as more example datasets and methodologies become available.
-
+<!---
 If you are interested in adding a dataset or other contributions to the project contact me at \href{scott@nrsccollective.com}
+
 
 ## Usage
 Neurophysiology experiments generally require collectiing many individual data files and keeping track of a large number of methodology variables. Infact, often times methodology variables will go over look during analysis, simply because  and and it can be difficult to  
@@ -59,8 +59,12 @@ Projects and project directories are labeled `proj` followed by (generally 3) le
 
 
 
+%helping to manage large data sets in a way that presents comprehensive summaries that can be rapidly updated and observed from many different angles.
 
-<!---
+
+This package is currently geared towards field long-term depression (LTD) experiments and whole-cell patch-clamp experiments, but will continue to be updated as more example datasets and methodologies become available.
+
+
 
 Using the nphys packages while running an experiment is simple   
 

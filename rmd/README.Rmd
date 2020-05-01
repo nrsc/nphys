@@ -29,6 +29,12 @@ The nphys package provides a means to easily analyze and view electrophysiology 
 It is geared towards developing robust and portable data management tools that can easily call on various methods of analysis.
 Detailed examples of how to utilize this package will be outlined in vignettes as they are updated. 
 
+## License
+
+This package is free and open source software.
+
+`r knitr::knit_exit()`
+
 <!---
 If you are interested in adding a dataset or other contributions to the project contact me at \href{scott@nrsccollective.com}
 
@@ -71,6 +77,3 @@ Using the nphys packages while running an experiment is simple
 --->
 
 
-## License
-
-This package is free and open source software.

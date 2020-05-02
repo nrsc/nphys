@@ -19,15 +19,25 @@ knitr::opts_chunk$set(
 )
 ```
 
+![Language](https://img.shields.io/badge/Language-R-blue&?style=plastic&logo=R)
+![Usage](https://img.shields.io/badge/Usage-neurophysiology-green&?style=plastic&logo=R)
+![nphys_version](https://img.shields.io/badge/nphys-v01-yellow&?style=plastic&logo=R)
+[![Donate](https://img.shields.io/badge/Donate-yellow&?style=plastic&?logo=paypal)](https://paypal.me/sdsawchuk)
 
 
 
 # The nphys package 
 
-The nphys package provides a means to easily analyze and view electrophysiology data, while also and a tools for managing your project.
 
-It is geared towards developing robust and portable data management tools that can easily call on various methods of analysis.
+
+The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data. The package provides a means to easily analyze and view experimental data while also integrating tools for managing your overall project.
+
 Detailed examples of how to utilize this package will be outlined in vignettes as they are updated. 
+
+
+
+
+
 
 ## License
 

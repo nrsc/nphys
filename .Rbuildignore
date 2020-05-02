@@ -1,7 +1,6 @@
 ^data$
 ^run$
-^R/build$
-^R/archive$
+^R/RTT$
 ^LICENSE\.md$
 ^\.Rproj\.user$
 ^.*\.Rproj$

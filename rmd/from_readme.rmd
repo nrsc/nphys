@@ -1,0 +1,46 @@
+---
+output: html_document
+---
+
+<!---
+# The experiments
+
+Tools and features of the nphys package rely on user input to optimize the value of the package, and optimize data analysis methods. 
+
+
+## Importing data
+
+
+Import functions focus on building a single .rda file for each piece of data added to the project. You can name that rda file whatever you like. I generally save the slice or patch code (`r print(field$md$Slice)`)  
+
+
+his project folder can be the source of your raw data that are often made up of large files that are incompatible with git, making your .gitignore only need to ignore the dir folder. 
+
+> currently supports abf file format import that depends on the readABF package and .dat files that are exported as .mat format from patchmaster.  
+>The dir folder is a symlink crafted to your project directory that points to the source of your raw data files. This can be a local drive or a server. I find this useful because I find it easiest to build the package around the data source, therefore wherever you clone your repo, all scripts or loops can source "~/proj/dir" as long as you keep your project directory in your home folder (generally UNIX: /usr/<username>/home == "~" or Win: C:/Users/<username>/Doccuments == "~")  or simply "dir" when working in your project directory. 
+
+> Patterns allow for pathways for analysis to develop. 
+## Long-term depression
+
+Field recordings at the medial perforant path in the DG.
+
+```{r}
+
+#field$LTD <- nphys::field_LTD(field)
+
+
+
+
+```
+
+## The project directory
+
+Typical project builds are templates for certain types of projects being run, and contents will vary based upon the needs of the project. 
+
+Projects and project directories are labeled `proj` followed by letter identifiers that are short and easy to reference. `e.g. projEXA`. It is optimal to maintain project directories downstream from where your tilde is assigned `e.g. "~/projEXA`. To find out what directory your tilde is assigned to type `setwd("~")` in your console, followed by `getwd()`. Reassigning your working directory to your project directory will then be as simple as executing `setwd("~/projEXA")`
+
+> Heads up! This will change your working directory and if you do not change it back, you may encounter errors when trying to work within the project. 
+
+
+
+--->

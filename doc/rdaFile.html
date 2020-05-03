@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Introduction to the rda file</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to the rda file</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(nphys)</a></code></pre></div>
+<p>When we want to quickly access any of the data associated with any individual data point or experiment, we load the rda file asssociated with that experiment and apply functions to elements of the nested list.</p>
+<p>Loading the rda file imports a nested list to the environment containing all of the information and variables we need to quickly and reliably analyze our data.</p>
+<p>We also want to be able to able to nteract with the data and effeciently incorporate updated analysis into our ongoing project.</p>
+<p>Having easy access to our data is one of the primary reasons we are doing this work.</p>
+<p>We are going to utilize the <code>field</code> dataset to look at examples of how we can work with the comprehensive rda file that we’ve built over the course of our experiment and examine how we can take advantage of this methodology.</p>
+<div id="what-is-in-the-file" class="section level1">
+<h1>What is in the file</h1>
+<p>Running an experiment with the help of R enables us to ensure that consistency is maintained across all avenues of the experimental procedure. Running neurophysiology experiments requires constant remaning focused on the responses being generated, while also retaining relevant information for later analysis. Running the function <code>newField()</code> will enable us to add a new field experiment to our dataset, by prompting us through a number of important questions that will fill in the metadata component to our dataset. It will also generate folders and paths for us to place our experimental data so that the raw data can easily imported</p>
+<p>After we have run our experiment, compiled our metadata, imported our raw data, and loaded our rda file into the REnvironment, we end up with a nested list (in this case <code>field</code>) that represents our experiment.</p>
+<p>The nested list is made up of a number of useful components. It contains the working directory of our rda file relative to the project directory (<code>field$wd</code>), all of the identifying metadata needed for analyzing our data and adding it to our project (<code>field$md</code>), the path to the files we imported (<code>field$files</code>), and the imported data itself. Since we imported files of the ABF format, we keep <code>field$ABF</code> as the principle call format for accessing the data.</p>
+<div id="the-metadata-contains-identifying-information-unique-to-the-experiment-weve-run" class="section level3">
+<h3>The metadata contains identifying information unique to the experiment we’ve run</h3>
+<p>You can decide what information you deem important for your md by updating the params file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(field<span class="op">$</span>md[<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Slice</th>
+<th align="left">Group</th>
+<th align="left">Date</th>
+<th align="left">Age</th>
+<th align="left">Sex</th>
+<th align="left">Weight</th>
+<th align="left">rSoln</th>
+<th align="left">xSoln</th>
+<th align="left">CutTime</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">P21f-CS_25</td>
+<td align="left">P21f-Control</td>
+<td align="left">2018_12_06</td>
+<td align="left">20</td>
+<td align="left">M</td>
+<td align="left">45</td>
+<td align="left">rACSF</td>
+<td align="left">rACSF</td>
+<td align="left">8:45</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(field<span class="op">$</span>md[<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>], <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Rig</th>
+<th align="left">HP</th>
+<th align="left">FirstIO</th>
+<th align="left">StimFile</th>
+<th align="left">StimMag</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Scott</td>
+<td align="left">R4</td>
+<td align="left">2018_12_06_0028.atf</td>
+<td align="left">2018_12_06_0035.abf</td>
+<td align="left">0.02</td>
+<td align="left">First IO done at 0.035mA</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>field$files</code> component is a list of the raw data files collected during our experiment, which are also relative to the project directory.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">print</span>(field<span class="op">$</span>files)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt;                                                           PreC-IO_1 </span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0028.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;                                                           PreC-PP_2 </span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0029.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt;                                                           PreC-Bl_3 </span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0030.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;                                                           PreC-IO_4 </span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0031.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt;                                                           PreC-PP_5 </span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0032.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;                                                           PreC-Bl_6 </span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0033.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt;                                                           PreC-Bl_7 </span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0034.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt;                                                                Cond </span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0035.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt;                                                               Decay </span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0036.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt;                                                         PostC-IO_10 </span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0037.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt;                                                         PostC-PP_11 </span></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0038.abf&quot; </span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt;                                                         PostC-Bl_12 </span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt; &quot;dir/f_slices/P21f/P21f-Control/P21f-CS_25/abf/2018_12_06_0039.abf&quot;</span></a></code></pre></div>
+<p>Finally, the <code>field$ABF</code> component of our nested list contains all of the raw data imported during our experimental protocol, including any metadata that is kept by the software. We will go over importing data in another document, but for the time being it is imporant to note that interaction with the console will be required to ensure that your data is properly labeled, and therefore be identifiable.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">names</span>(field<span class="op">$</span>ABF)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt;  [1] &quot;PreC-IO_1&quot;   &quot;PreC-PP_2&quot;   &quot;PreC-Bl_3&quot;   &quot;PreC-IO_4&quot;   &quot;PreC-PP_5&quot;  </span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt;  [6] &quot;PreC-Bl_6&quot;   &quot;PreC-Bl_7&quot;   &quot;Cond&quot;        &quot;Decay&quot;       &quot;PostC-IO_10&quot;</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; [11] &quot;PostC-PP_11&quot; &quot;PostC-Bl_12&quot;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">names</span>(field<span class="op">$</span>ABF[[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; [1] &quot;path&quot;                  &quot;formatVersion&quot;         &quot;channelNames&quot;         </span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; [4] &quot;channelUnits&quot;          &quot;samplingIntervalInSec&quot; &quot;data&quot;                 </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt; [7] &quot;tags&quot;                  &quot;header&quot;                &quot;sections&quot;</span></a></code></pre></div>
+</div>
+</div>
+<div id="using-functions-over-the-rda-data." class="section level1">
+<h1>Using functions over the rda data.</h1>
+<p><code>i.e. function(field$ABF)</code>.</p>
+<div id="the-dfs_abf-function" class="section level2">
+<h2>The dfs_ABF() function</h2>
+<p>We can extract the data or other useful information nested in the <code>field$ABF</code> compnent of our list, by calling the <code>dfs_ABF</code> function on our imported data.</p>
+<p>The default selection is the <code>&quot;data&quot;</code> component of the ABF file, which will return a list of dataframes that make up the sweeps from what we imported.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">dfs &lt;-<span class="st"> </span><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co"># Names of imported data</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">print</span>(<span class="kw">head</span>(<span class="kw">names</span>(dfs)))</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; [1] &quot;PreC-IO_1&quot; &quot;PreC-PP_2&quot; &quot;PreC-Bl_3&quot; &quot;PreC-IO_4&quot; &quot;PreC-PP_5&quot; &quot;PreC-Bl_6&quot;</span></a>
+<a class="sourceLine" id="cb6-5" title="5"></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co"># Individual traces are named by their sweep when defaut selections are run</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="kw">print</span>(<span class="kw">names</span>(dfs[<span class="dv">1</span>]))</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; [1] &quot;PreC-IO_1&quot;</span></a></code></pre></div>
+<div id="other-data-stored-in-the-abf-file." class="section level3">
+<h3>Other data stored in the ABF file.</h3>
+<p>This function can also be used to extract other important information about the imported data. Accessing this information is very useful when you need to identify the names of your channels, sampling fequency, or other things.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">head</span>(<span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF, <span class="dt">int =</span> <span class="st">&quot;samplingIntervalInSec&quot;</span>),<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co">#&gt; $`PreC-IO_1`</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt;   samplingIntervalInSec</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt; 1                 1e-05</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; $`PreC-PP_2`</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt;   samplingIntervalInSec</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&gt; 1                 1e-05</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="co">#&gt; $`PreC-Bl_3`</span></a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="co">#&gt;   samplingIntervalInSec</span></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="co">#&gt; 1                 1e-05</span></a></code></pre></div>
+<p><strong>The select option</strong> is helpful when you’re uncertain what you’re looking for.<br />
+There are numerous parameters kept by the pClamp software that can be very used for ordering and managing your datasets (See the ABF file format vignette for more information). Using the select option will enable you to select from a list of elements that make up the identifying and metadata components for each imported file.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Select from list by selecting from options</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF, <span class="dt">select =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="co"># Provide numeric input to identify the numer representing the list element. </span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF, <span class="dt">select =</span> <span class="dv">4</span>)</a></code></pre></div>
+<p>It can be useful to simplify the output by specifying <code>returnList = FALSE</code>, which will unlist the data, potentialy making it easier to work with later. The default is <code>TRUE</code>, and this option should only be used when returning something with a small footprint like sampling interval. Using this on <code>data</code> will result in end up with a flurry of numbers that you can’t keep up with.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF, <span class="dt">int =</span> <span class="st">&quot;samplingIntervalInSec&quot;</span>, <span class="dt">returnList =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">#&gt;   PreC-IO_1.samplingIntervalInSec   PreC-PP_2.samplingIntervalInSec </span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt;                             1e-05                             1e-05 </span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;   PreC-Bl_3.samplingIntervalInSec   PreC-IO_4.samplingIntervalInSec </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;                             1e-05                             1e-05 </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;   PreC-PP_5.samplingIntervalInSec   PreC-Bl_6.samplingIntervalInSec </span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;                             1e-05                             1e-05 </span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;   PreC-Bl_7.samplingIntervalInSec        Cond.samplingIntervalInSec </span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;                             1e-05                             1e-05 </span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;       Decay.samplingIntervalInSec PostC-IO_10.samplingIntervalInSec </span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;                             1e-05                             1e-05 </span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt; PostC-PP_11.samplingIntervalInSec PostC-Bl_12.samplingIntervalInSec </span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;                             1e-05                             1e-05</span></a></code></pre></div>
+</div>
+</div>
+<div id="the-pullsweeps-function" class="section level2">
+<h2>The pullSweeps function</h2>
+<p>Pulling sweeps goes one step further than <code>dfs_ABF</code>, and enables you to conviently select a range of sweeps from your data. Again, we feed the dataset into a function (<code>pullSweeps(field$ABF)</code>), and the function returns a dataframe of sweeps from the protocol we are interested in.</p>
+</div>
+<div id="specific-sweeps-or-sets-of-sweeps-from-the-abf" class="section level2">
+<h2>specific sweeps or sets of sweeps from the $ABF</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">Sweeps &lt;-<span class="st"> </span><span class="kw">pullSweeps</span>(field<span class="op">$</span>ABF)</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">head</span>(<span class="kw">names</span>(Sweeps))</a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="co">#&gt; [1] &quot;PreC.Bl_3.Sweep.1&quot; &quot;PreC.Bl_3.Sweep.2&quot; &quot;PreC.Bl_3.Sweep.3&quot;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co">#&gt; [4] &quot;PreC.Bl_3.Sweep.4&quot; &quot;PreC.Bl_3.Sweep.5&quot; &quot;PreC.Bl_3.Sweep.6&quot;</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="kw">tail</span>(<span class="kw">names</span>(Sweeps))</a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="co">#&gt; [1] &quot;PreC.Bl_7.Sweep.1&quot; &quot;PreC.Bl_7.Sweep.2&quot; &quot;PreC.Bl_7.Sweep.3&quot;</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co">#&gt; [4] &quot;PreC.Bl_7.Sweep.4&quot; &quot;PreC.Bl_7.Sweep.5&quot; &quot;PreC.Bl_7.Sweep.6&quot;</span></a></code></pre></div>
+<p>We can identify which protocol we want our sweeps pulled from by using the <code>pull =</code> argument. Default is set to <code>pull = PreC-Bl</code>, which is the “pre-conditioning baseline”. There is also the option to select from a list of the protocol identifiers, to easily develop analysis of other components to the experiment.</p>
+<p>To select from a list of protocol names:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">Sweeps =<span class="st"> </span><span class="kw">pullSweeps</span>(field<span class="op">$</span>ABF, <span class="dt">select =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>To select based upon numeric input:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">Sweeps =<span class="st"> </span><span class="kw">pullSweeps</span>(field<span class="op">$</span>ABF, <span class="dt">select =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw">names</span>(Sweeps)</a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="kw">head</span>(Sweeps)</a></code></pre></div>
+<div id="adjusting-the-sweeps-to-zero" class="section level3">
+<h3>Adjusting the sweeps to zero</h3>
+<p>This function has a built in option to adjust the baseline as well, which calls the <code>nphys</code> function <code>zeroAdjust</code>. The default is to zero the baseline, but we can return the dataframe without adjusting the baseline by setting the option to zero to false.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">Sweeps =<span class="st"> </span><span class="kw">pullSweeps</span>(field<span class="op">$</span>ABF, <span class="dt">select =</span> <span class="dv">1</span>, <span class="dt">zero =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">head</span>(Sweeps)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&gt;      PreC.IO_1.Sweep.1 PreC.IO_1.Sweep.2 PreC.IO_1.Sweep.3 PreC.IO_1.Sweep.4</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&gt; 1059          6.335449          6.036377          5.957031          5.920410</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&gt; 1060          6.237793          5.822754          5.688476          5.645752</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="co">#&gt; 1061          6.146240          5.584717          5.352783          5.310058</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">#&gt; 1062          6.054687          5.334472          4.974365          4.907226</span></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="co">#&gt; 1063          5.975342          5.102539          4.571533          4.449463</span></a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="co">#&gt; 1064          5.895996          4.888916          4.162597          3.948974</span></a>
+<a class="sourceLine" id="cb13-10" title="10"><span class="co">#&gt;      PreC.IO_1.Sweep.5 PreC.IO_1.Sweep.6 PreC.IO_1.Sweep.7 PreC.IO_1.Sweep.8</span></a>
+<a class="sourceLine" id="cb13-11" title="11"><span class="co">#&gt; 1059          5.987549          5.963134          5.847168          5.603027</span></a>
+<a class="sourceLine" id="cb13-12" title="12"><span class="co">#&gt; 1060          5.712890          5.694580          5.572510          5.328369</span></a>
+<a class="sourceLine" id="cb13-13" title="13"><span class="co">#&gt; 1061          5.377197          5.358886          5.236816          4.992676</span></a>
+<a class="sourceLine" id="cb13-14" title="14"><span class="co">#&gt; 1062          4.980469          4.956054          4.840088          4.589844</span></a>
+<a class="sourceLine" id="cb13-15" title="15"><span class="co">#&gt; 1063          4.522705          4.498291          4.382324          4.125976</span></a>
+<a class="sourceLine" id="cb13-16" title="16"><span class="co">#&gt; 1064          4.016113          3.985596          3.869629          3.613281</span></a>
+<a class="sourceLine" id="cb13-17" title="17"><span class="co">#&gt;      PreC.IO_1.Sweep.9 PreC.IO_1.Sweep.10</span></a>
+<a class="sourceLine" id="cb13-18" title="18"><span class="co">#&gt; 1059          5.676269           5.529785</span></a>
+<a class="sourceLine" id="cb13-19" title="19"><span class="co">#&gt; 1060          5.401611           5.255127</span></a>
+<a class="sourceLine" id="cb13-20" title="20"><span class="co">#&gt; 1061          5.059814           4.913330</span></a>
+<a class="sourceLine" id="cb13-21" title="21"><span class="co">#&gt; 1062          4.650879           4.504394</span></a>
+<a class="sourceLine" id="cb13-22" title="22"><span class="co">#&gt; 1063          4.180908           4.040527</span></a>
+<a class="sourceLine" id="cb13-23" title="23"><span class="co">#&gt; 1064          3.662109           3.515625</span></a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"></a>
+<a class="sourceLine" id="cb14-2" title="2">x =<span class="st"> </span><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF)[[<span class="dv">1</span>]][[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="kw">round</span>(<span class="kw">head</span>(x),<span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="co">#&gt; [1] 6.641 6.641 6.641 6.641 6.641 6.635</span></a>
+<a class="sourceLine" id="cb14-5" title="5"></a>
+<a class="sourceLine" id="cb14-6" title="6">x =<span class="st"> </span><span class="kw">zeroAdjust</span>(x)</a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">round</span>(<span class="kw">head</span>(x),<span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="co">#&gt; [1] -0.002 -0.002 -0.002 -0.002 -0.002 -0.008</span></a></code></pre></div>
+<p>Options for this function can be modified to change the baseline range over which the sweep will be adjusted against.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">x =<span class="st"> </span><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF)[[<span class="dv">1</span>]][[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">round</span>(<span class="kw">head</span>(x),<span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="co">#&gt; [1] 6.641 6.641 6.641 6.641 6.641 6.635</span></a>
+<a class="sourceLine" id="cb15-4" title="4">x =<span class="st"> </span><span class="kw">zeroAdjust</span>(x, <span class="dt">r =</span> <span class="dv">1200</span><span class="op">:</span><span class="dv">1500</span>)</a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="kw">round</span>(<span class="kw">head</span>(x),<span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="co">#&gt; [1] 0.114 0.114 0.114 0.114 0.114 0.108</span></a></code></pre></div>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

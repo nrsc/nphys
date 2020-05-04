@@ -15,6 +15,12 @@ integrating tools for managing your data and overall project.
 Detailed examples of how to utilize this package will be outlined in
 vignettes as they are updated.
 
+## Status
+
+This project is early in development and does not yet have a stable API.
+Issues and pull requests are accepted, but may not be reviewed or
+accepted on any fixed schedule.
+
 ## License
 
 This package is free and open source software.

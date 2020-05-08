@@ -2,7 +2,7 @@
 % Please edit documentation in R/zeroAdjust.R
 \name{zeroAdjust}
 \alias{zeroAdjust}
-\title{Zero adjust. Useful with apply functions.}
+\title{Zero adjust.}
 \usage{
 zeroAdjust(x, r = 1:1000)
 }
@@ -12,11 +12,13 @@ zeroAdjust(x, r = 1:1000)
 \item{r}{range of samples to calculate mean from}
 }
 \description{
-Zero adjust. Useful with apply functions.
+Used with apply functions accross columns.
+Calculation done on each sweep as a vector.
 }
 \examples{
 \dontrun{
-data(field)
+Using the example dataset 'field'
 dfs_ABF(field$ABF)[[1]][[1]] \%>\% zeroAdjust()
-#' }
+
+}
 }

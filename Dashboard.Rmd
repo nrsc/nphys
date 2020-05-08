@@ -14,10 +14,10 @@ load("~/nphys/data/field.rda")
 ```
 
 ```{r}
-lf <- list.files("data", pattern = "rda", recursive = FALSE, full.names = TRUE)
+lf <- list.files("data", pattern = "rda", recursive = TRUE, full.names = TRUE)
 tst <- fileD(lf)
-tst <- gsub(".rda", "", fileD(lf))
-
+tst <- gsub("-sA.rda", "", fileD(lf))
+names(tst) <- NULL
 #INPUT = tst[1] 
 
 #lf[grep(INPUT, lf)]
@@ -27,7 +27,7 @@ tst <- gsub(".rda", "", fileD(lf))
 # 
 # 
 selectInput("fieldSlice", label = "Select slice:",
-              choices = tst, selected = tst[1])
+              choices = tst, selected = "field")
 
 # sliderInput("bw_adjust", label = "Bandwidth adjustment:",
 #               min = 0.2, max = 2, value = 1, step = 0.2)
@@ -47,7 +47,7 @@ Traces on a plotly for interaction
 
 
 
-output$plot <- renderPlotly({
+renderPlotly({
 
 rda = lf[grep(input$fieldSlice, lf)]
 load(rda)  

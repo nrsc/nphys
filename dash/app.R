@@ -12,7 +12,7 @@ library(nphys)
 library(shinydashboard)
 library(dplyr)
 
-data(field)
+#data(field)
 
 
 # Define UI for LTD
@@ -57,6 +57,8 @@ server <- function(input, output) {
         range = c(-1.2,0.1),
         title = "mV"
     )
+
+
 
 
     output$tracePlot <- renderPlotly({

@@ -10,11 +10,9 @@
 #' x = IsolateWsh()
 #' }
 #'@export IsolateWsh
-IsolateWsh <- function(x, Wsh = 0, BlR = 80){
+IsolateWsh <- function(x, Wsh = 0){
 
-if(ncol(x) < BlR){
-    x <- CreateColumns(x, BlR)
-}
+    BlR = ncol(x)
 
     WshR <- tail(1:ncol(x), Wsh)
     BlnR <- tail(1:ncol(x), (BlR+Wsh))

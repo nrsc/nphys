@@ -4,7 +4,15 @@
 \alias{pullSweeps}
 \title{Pull specific sweeps from imported data}
 \usage{
-pullSweeps(x, pull = "PreC-Bl", select = FALSE, zero = TRUE, feather = TRUE)
+pullSweeps(
+  x,
+  pull = "PreC-Bl",
+  select = FALSE,
+  zero = TRUE,
+  feather = TRUE,
+  adjNeg = -100,
+  adjPos = 1400
+)
 }
 \arguments{
 \item{x}{field$ABF}
@@ -14,12 +22,16 @@ pullSweeps(x, pull = "PreC-Bl", select = FALSE, zero = TRUE, feather = TRUE)
 \item{select}{logical
 If TRUE, will prompt with options to select.}
 
-\item{zero}{adjust baseline of traces to zero}
+\item{zero}{adjust baseline of traces to zero. Is ignored if feather is set to FALSE}
 
-\item{feather}{logical to determine if you want to return remove the points in front of the stim artifact}
+\item{feather}{logical to determine if you want to return remove the points in front of the stim artifact. If FALSE, a list will be returned}
+
+\item{adjNeg}{how much to add to the stim artifact for the start point when observing the sweep. Default is -100 samples}
+
+\item{adjPos}{how much to add to the stim artifact for the end point when observing the sweep. Default is 1400 samples}
 }
 \value{
-dataframe of sweeps
+dataframe of sweeps unless feather is FALSE
 }
 \description{
 Pull specific sweeps from imported data

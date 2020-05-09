@@ -1,96 +1,107 @@
 ---
 title: "LTD Dashboard"
 runtime: shiny
-output: html_document
+output: flexdashboard::flex_dashboard
 ---
 
 ```{r setup, include=FALSE}
 #------------------ Packages ------------------
-library(flexdashboard)
+library(shiny)
+library(shinydashboard)
 library(nphys)
 library(plotly)
 `%>%` <- magrittr::`%>%`
-load("~/nphys/data/field.rda")
+
+
+
+
+
+lf <- list.files("~/nphys/dir/DGDev", pattern = "DGDev.rda", recursive = TRUE, full.names = TRUE)
+tst <- unlist(fileD(lf))
+
+tst <- gsub("-DGDev.rda", "", tst)
+names(tst) = NULL
+
 ```
+
+
+Column {.sidebar data-width=200}
+-----------------------------------------------------------------------
 
 ```{r}
-lf <- list.files("data", pattern = "rda", recursive = FALSE, full.names = TRUE)
-tst <- fileD(lf)
-tst <- gsub(".rda", "", fileD(lf))
 
-#INPUT = tst[1] 
+selectInput("fieldSlice", label = "Select slice:", choices = tst)
+#plotOutput("plot1", click = "plot_click")
 
-#lf[grep(INPUT, lf)]
+ui <- fluidPage(
+  plotlyOutput("p"),
+  verbatimTextOutput("event")
+)
 
- 
-# selectInput("fieldSlice", label = "Choose Slice", choices = tst, selected = "field")
-# 
-# 
-selectInput("fieldSlice", label = "Select slice:",
-              choices = tst, selected = tst[1])
-
-# sliderInput("bw_adjust", label = "Bandwidth adjustment:",
-#               min = 0.2, max = 2, value = 1, step = 0.2)
 
 ```
 
 
-Column {data-width=1000}
------------------------------------------------------------------------
 
 ### Chart A
 
-Traces on a plotly for interaction
+
+Column {data-width=500}
+-----------------------------------------------------------------------
 
 ```{r}
 
 
+renderPlotly({
+ 
+load(lf[grep(input$fieldSlice, lf)])
+traces = as.data.frame(DGDev$traces)
+
+ 
+ plotly::plot_ly(
+         data = traces,
+         x = ~ ms,
+         y = ~ blTrace,
+         type = "scatter",
+         mode = "markers"
+     )
+ })
 
 
-output$plot <- renderPlotly({
-
-rda = lf[grep(input$fieldSlice, lf)]
-load(rda)  
+server <- function(input, output, session) {
   
-plotly::plot_ly(
-        data = data.frame(field$traces),
-        x = ~ ms,
-        y = ~ Bl_Avg,
-        type = "scatter",
-        mode = "markers"
-    )
-})
+  output$p <- renderPlotly({
+    
+    d <- event_data("plotly_relayout", source = "trajectory")
+    
+    selected_point <- if (!is.null(d[["shapes[0].x0"]])) {
+      xint <- d[["shapes[0].x0"]]
+      xpt <- x[which.min(abs(x - xint))]
+      list(x = xpt, y = y[which(x == xpt)])
+    } else {
+      list(x = 1, y = y[which(x == 1)])
+    }
+    
+    plot_ly(color = I("red"), source = "trajectory") %>%
+      add_lines(x = x, y = y) %>%
+      add_markers(x = selected_point$x, y = selected_point$y) %>%
+      layout(
+        shapes = list(
+          type = "line", 
+          line = list(color = "gray", dash = "dot"),
+          x0 = selected_point$x, 
+          x1 = selected_point$x,
+          y0 = 0,
+          y1 = 1,
+          yref = "paper"
+        )
+      ) %>%
+      config(editable = TRUE)
+  })
+  
+}
 
 
-# ouput$plot <- renderPlot(
-#   
-# xA = list(
-#   title = "Time (ms)"
-# ),
-# yA = list(
-#   range = c(-1.2,0.1),
-#   title = "mV"
-# ),
-# 
-# plotly::plot_ly(
-#         data = data.frame(field$traces),
-#         x = ~ ms,
-#         y = ~ Bl_Avg,
-#         type = "scatter",
-#         mode = "markers"
-#     ) %>%
-#     plotly::layout(xaxis = xA, yaxis = yA)
-# )
-# 
-# # If conditions to add or remove traces. 
-# # if(Cond)
-# #     pl = plotly::add_trace(x = ~ ms, y = ~ Decay_Avg)
-# # if (Decay)
-# #     pl = plotly::add_trace(x = ~ ms, y = ~ Cond_Avg)
-# 
-# 
-#   
-# #pl
 
 ```
 

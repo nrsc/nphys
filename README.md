@@ -1,16 +1,29 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
+![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic)
+[![Donate](https://img.shields.io/badge/Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
+
 # The nphys package
 
-The nphys package provides a means to easily analyze and view
-electrophysiology data, while also and a tools for managing your
-project.
+The nphys package is geared towares developing robust and portable data
+management and analysis tools for electrophysiology data. The package
+provides a means to analyze and view experimental data, while also
+integrating tools for managing your data and overall project.
 
-It is geared towards developing robust and portable data management
-tools that can easily call on various methods of analysis. Detailed
-examples of how to utilize this package will be outlined in vignettes as
-they are updated.
+Detailed examples of how to utilize this package will be outlined in
+vignettes as they are updated.
+
+## Status
+
+This project is early in development and does not yet have a stable API.
+Issues and pull requests are accepted, but may not be reviewed or
+accepted on any fixed schedule.
+
+## License
+
+This package is free and open source software.
 
 <!---
 If you are interested in adding a dataset or other contributions to the project contact me at \href{scott@nrsccollective.com}
@@ -52,7 +65,3 @@ This package is currently geared towards field long-term depression (LTD) experi
 Using the nphys packages while running an experiment is simple   
 
 --->
-
-## License
-
-This package is free and open source software.

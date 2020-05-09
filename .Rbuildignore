@@ -1,15 +1,10 @@
-^data$
-^run$
-^R/RTT$
 ^LICENSE\.md$
 ^\.Rproj\.user$
 ^.*\.Rproj$
 ^archive$
-^build$
-^exp$
+^dev$
 ^rmd$
-^exa$
-^dash$
 ^doc$
 ^ref$
 ^Meta$
+

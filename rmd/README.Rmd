@@ -3,7 +3,7 @@ output: github_document
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = ".")
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "~/nphys")
   })
 ---
 
@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE
 )
+#![nphys_version](https://img.shields.io/badge/nphys-v01-yellow&?style=plastic&logo=R)
 ```
 
 ![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
@@ -25,19 +26,17 @@ knitr::opts_chunk$set(
 [![Donate](https://img.shields.io/badge/Donate-yellow?style=plastic&?logo=paypal)](https://paypal.me/sdsawchuk)
 
 
-
 # The nphys package 
 
-
-
-The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data. The package provides a means to easily analyze and view experimental data while also integrating tools for managing your overall project.
+The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data. The package provides a means to analyze and view experimental data, while also integrating tools for managing your data and overall project.
 
 Detailed examples of how to utilize this package will be outlined in vignettes as they are updated. 
 
 
 
+## Status
 
-
+This project is early in development and does not yet have a stable API. Issues and pull requests are accepted, but may not be reviewed or accepted on any fixed schedule.
 
 ## License
 

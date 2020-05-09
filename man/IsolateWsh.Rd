@@ -4,7 +4,7 @@
 \alias{IsolateWsh}
 \title{Isolate relevant columns from wash in sweeps if relevant}
 \usage{
-IsolateWsh(x, Wsh = 0, BlR = 80)
+IsolateWsh(x, Wsh = 0)
 }
 \arguments{
 \item{x}{data in the form of}

@@ -2,9 +2,13 @@
 
 export("%>%")
 export(CreateColumns)
+export(ExpDay)
 export(Import_ABF)
 export(IsolateWsh)
+export(abf_feather)
 export(avgSweeps)
+export(build_proj)
+export(ccInj_ON)
 export(dfs_ABF)
 export(fileD)
 export(identify_points)

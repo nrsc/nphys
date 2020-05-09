@@ -1,10 +1,7 @@
 ---
 title: "LTD Dashboard"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
 runtime: shiny
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -13,13 +10,32 @@ library(flexdashboard)
 library(nphys)
 library(plotly)
 `%>%` <- magrittr::`%>%`
+load("~/nphys/data/field.rda")
+```
 
-data(field)
+```{r}
+lf <- list.files("data", pattern = "rda", recursive = FALSE, full.names = TRUE)
+tst <- fileD(lf)
+tst <- gsub(".rda", "", fileD(lf))
+
+#INPUT = tst[1] 
+
+#lf[grep(INPUT, lf)]
+
+ 
+# selectInput("fieldSlice", label = "Choose Slice", choices = tst, selected = "field")
+# 
+# 
+selectInput("fieldSlice", label = "Select slice:",
+              choices = tst, selected = tst[1])
+
+# sliderInput("bw_adjust", label = "Bandwidth adjustment:",
+#               min = 0.2, max = 2, value = 1, step = 0.2)
 
 ```
 
 
-Column {data-width=500}
+Column {data-width=1000}
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -30,59 +46,52 @@ Traces on a plotly for interaction
 
 
 
-Cond = FALSE
-Decay = FALSE
-#Decay = TRUE
 
-xA = list(
-  title = "Time (ms)"
-)
-yA = list(
-  range = c(-1.2,0.1),
-  title = "mV"
-)
+output$plot <- renderPlotly({
 
-pl <-
-    plotly::plot_ly(
+rda = lf[grep(input$fieldSlice, lf)]
+load(rda)  
+  
+plotly::plot_ly(
         data = data.frame(field$traces),
-        x = ~ Time,
+        x = ~ ms,
         y = ~ Bl_Avg,
         type = "scatter",
         mode = "markers"
-    ) %>%
-    plotly::layout(xaxis = xA, yaxis = yA)
-
-# If conditions to add or remove traces. 
-if(Cond)
-    pl = plotly::add_trace(x = ~ Time, y = ~ Decay_Avg)
-if (Decay)
-    pl = plotly::add_trace(x = ~ Time, y = ~ Cond_Avg)
+    )
+})
 
 
-  
-pl
+# ouput$plot <- renderPlot(
+#   
+# xA = list(
+#   title = "Time (ms)"
+# ),
+# yA = list(
+#   range = c(-1.2,0.1),
+#   title = "mV"
+# ),
+# 
+# plotly::plot_ly(
+#         data = data.frame(field$traces),
+#         x = ~ ms,
+#         y = ~ Bl_Avg,
+#         type = "scatter",
+#         mode = "markers"
+#     ) %>%
+#     plotly::layout(xaxis = xA, yaxis = yA)
+# )
+# 
+# # If conditions to add or remove traces. 
+# # if(Cond)
+# #     pl = plotly::add_trace(x = ~ ms, y = ~ Decay_Avg)
+# # if (Decay)
+# #     pl = plotly::add_trace(x = ~ ms, y = ~ Cond_Avg)
+# 
+# 
+#   
+# #pl
 
 ```
 
-
-
-Column {data-width=500}
------------------------------------------------------------------------
-### Chart B
-
-Scatter plot of pre and post stimulus
-
-```{r}
-
-
-#df = data.frame(
-#    ms = field$traces$Time,
-#    mV = field$traces$Bl_Avg
-#)
-#dfc = identify_points(df)
-#
-#df_slope = lmSweep(df)
-
-
-```
 

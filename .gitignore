@@ -2,5 +2,9 @@
 .RData
 .Rproj.user
 dir
+<<<<<<< HEAD
 build
 
+=======
+dev
+>>>>>>> 084876954e58d9486a6113d27078deb1decf47c7

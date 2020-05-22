@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-df_to_trace <- function(x, sig = "pA", msInt = 0.1, p0 = 250, p1 = 750, avg = TRUE, multAx = 1.05, multIn = 1.05, scaleBar = 50){
+df_to_trace <- function(x, sig = "pA", msInt = 0.1, p0 = 250, p1 = 750, avg = TRUE, multiMax = 1.05, multiMin = 1.05, scaleBar = 50){
 
     #x = AMPA
 

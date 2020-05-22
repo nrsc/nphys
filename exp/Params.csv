@@ -1,5 +1,5 @@
 dataPath,rdaName,mdTag,Set,Groups,Treatment,fmt,PreID_exp,ID,PostID_exp,exp1_LTD,exp2_PP,exp3_IO
-“exa/field”,field,-SliceMD.csv,,,Control,abf,PreC-PP,Cond,Decay,PreC-Bl,,
-,,,,,Et50mM,,PreC-IO,,PostC-PP,PreC-Wsh,,
-,,,,,Et100mM,,PreC-Bl,,PostC-IO,Cond,,
+“exa/field”,field,-SliceMD.csv,,PND14,Control,abf,PreC-PP,Cond,Decay,PreC-Bl,,
+,,,,PND21,EtOH[50mM],,PreC-IO,,PostC-PP,PreC-Wsh,,
+,,,,PND28,EtOH[100mM],,PreC-Bl,,PostC-IO,Cond,,
 ,,,,,,,PreC-Wsh,,PostC-Bl,Decay,,

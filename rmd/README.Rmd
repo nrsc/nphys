@@ -28,14 +28,14 @@ knitr::opts_chunk$set(
 
 
 The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data.
-The package provides a means to analyze and view experimental data, while also integrating frameworkds for managing your data and overall project.
+The package provides a means to analyze and view experimental data, while also integrating frameworks for managing your data and overall project.
 
 # Index
 
 * [Neurophysiology](#Neurophysiology)
-* [Description](#description)
+* [Description](#Description)
 * [Status](#Status)
-* [Features](#features)
+* [Features](#Features)
 * [TODO](#todo) 
 * [License](#license)
 
@@ -47,14 +47,13 @@ The package provides a means to analyze and view experimental data, while also i
 # Description
 
 
-
-
 # Status
 
 This project is early in development. Issues and pull requests are accepted and encouraged
 If you are interested in adding a dataset or other contributions to the project contact [Scott Sawchuk](mailto:scott@nrsccollective.com) 
 
 # Features
+
 Detailed examples of how to utilize this package will be outlined as they are updated. 
 
 

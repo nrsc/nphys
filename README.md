@@ -10,14 +10,14 @@
 The nphys package is geared towares developing robust and portable data
 management and analysis tools for electrophysiology data. The package
 provides a means to analyze and view experimental data, while also
-integrating frameworkds for managing your data and overall project.
+integrating frameworks for managing your data and overall project.
 
 # Index
 
   - [Neurophysiology](#Neurophysiology)
-  - [Description](#description)
+  - [Description](#Description)
   - [Status](#Status)
-  - [Features](#features)
+  - [Features](#Features)
   - [TODO](#todo)
   - [License](#license)
 
@@ -39,13 +39,13 @@ they are updated.
 
 # TODO
 
-  - [ ] Fill out TODO list
-  - [ ] Basics of Neurophysiology
-  - [ ] Documentation
-  - [ ] Description
-  - [ ] Features
-  - [ ] Dashboard
-  - [x] Example field Data
+  - \[ \] Fill out TODO list
+  - \[ \] Basics of Neurophysiology
+  - \[ \] Documentation
+  - \[ \] Description
+  - \[ \] Features
+  - \[ \] Dashboard
+  - \[x\] Example field Data
 
 # License
 

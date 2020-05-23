@@ -1,13 +1,13 @@
 #' Plot traces from a dataframe of sweeps.
 #'
-#' @param x
-#' @param sig
-#' @param p0
+#' @param x A dataframe of sweeps.
+#' @param sig what signal you are isolating for. Searches colnames
+#' @param p0 Zero point for determining the start of the response.
 #' @param p1
 #' @param avg
-#' @param multAx
+#' @param multiMax Multiplier for the ymax position. Identifies the max of the data
 #' @param multIn
-#' @param scaleBar
+#' @param scaleBar A numeric. Scale bar will change based upon signal input
 #' @param msInt the number of samples per ms
 #'
 #' @return
@@ -16,15 +16,13 @@
 #' @examples
 df_to_trace <- function(x, sig = "pA", msInt = 0.1, p0 = 250, p1 = 750, avg = TRUE, multiMax = 1.05, multiMin = 1.05, scaleBar = 50){
 
-    #x = AMPA
-
     x = x[,grep(sig, colnames(x))]
 
-traces = as.data.frame(lapply(x, function(x){
-    x = as.data.frame(x)[1:1450,]
-})) %>%
-    mutate(avg = rowMeans(.)) %>%
-    mutate(ms = seq(msInt, length.out = nrow(.), by = msInt))
+    traces = as.data.frame(lapply(x, function(x){
+        x = as.data.frame(x)[1:1450,]
+        })) %>%
+        mutate(avg = rowMeans(.)) %>%
+        mutate(ms = seq(msInt, length.out = nrow(.), by = msInt))
 
 
 p0xy = data.frame(x = traces[p0, grep("ms", colnames(traces))], y = traces[p0, grep("avg", colnames(traces))])
@@ -43,7 +41,7 @@ gg = reshape2::melt(traces, id.vars = c("ms", "avg")) %>%
             ylim(ymin, ymax)+
             theme_void()
 if(is.numeric(p0)){
-gg = gg + geom_point(data = p0xy, aes(x = x, y = y), shape = 5, inherit.aes = FALSE)
+    gg = gg + geom_point(data = p0xy, aes(x = x, y = y), shape = 5, inherit.aes = FALSE)
 }
 if(is.numeric(p1)){
     gg = gg + geom_point(data = p1xy, aes(x = x, y = y), shape = 5, inherit.aes = FALSE)

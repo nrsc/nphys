@@ -1,0 +1,2 @@
+Slice,Group,Date,Age,Sex,Weight,rSoln,xSoln,CutTime,Rig,HP,FirstIO,StimFile,StimMag,Comment,,,,
+2018-12-06_S1,Control,2018_12_06,20,M,45,rACSF,rACSF,8:45,Scott,R4,2018_12_06_0028.atf,2018_12_06_0035.abf,0.02,First,IO,done,at,0.035mA

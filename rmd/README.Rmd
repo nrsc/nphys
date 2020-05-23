@@ -20,32 +20,64 @@ knitr::opts_chunk$set(
 #![nphys_version](https://img.shields.io/badge/nphys-v01-yellow&?style=plastic&logo=R)
 ```
 
-![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
-![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
-![nphys_version](https://img.shields.io/badge/nphys-v0-1-red?style=plastic&logo=R)
-[![Donate](https://img.shields.io/badge/Donate-yellow?style=plastic&?logo=paypal)](https://paypal.me/sdsawchuk)
-
-
 # The nphys package 
 
-The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data. The package provides a means to analyze and view experimental data, while also integrating tools for managing your data and overall project.
+![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
+![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
+[![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
-Detailed examples of how to utilize this package will be outlined in vignettes as they are updated. 
+
+The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data.
+The package provides a means to analyze and view experimental data, while also integrating frameworkds for managing your data and overall project.
+
+# Index
+
+* [Neurophysiology](#Neurophysiology)
+* [Description](#description)
+* [Status](#Status)
+* [Features](#features)
+* [TODO](#todo) 
+* [License](#license)
+
+
+# Neurophysiology
 
 
 
-## Status
+# Description
 
-This project is early in development and does not yet have a stable API. Issues and pull requests are accepted, but may not be reviewed or accepted on any fixed schedule.
 
-## License
+
+
+# Status
+
+This project is early in development. Issues and pull requests are accepted and encouraged
+If you are interested in adding a dataset or other contributions to the project contact [Scott Sawchuk](mailto:scott@nrsccollective.com) 
+
+# Features
+Detailed examples of how to utilize this package will be outlined as they are updated. 
+
+
+
+# TODO
+
+- [ ] Fill out TODO list
+- [ ] Basics of Neurophysiology
+- [ ] Documentation
+- [ ] Description
+- [ ] Features
+- [ ] Dashboard
+- [x] Example field Data
+
+ 
+
+# License
 
 This package is free and open source software.
 
 `r knitr::knit_exit()`
 
 <!---
-If you are interested in adding a dataset or other contributions to the project contact me at \href{scott@nrsccollective.com}
 
 
 ## Usage

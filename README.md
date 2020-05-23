@@ -1,32 +1,57 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
-![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic)
-[![Donate](https://img.shields.io/badge/Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
-
 # The nphys package
+
+![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
+![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
+[![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
 The nphys package is geared towares developing robust and portable data
 management and analysis tools for electrophysiology data. The package
 provides a means to analyze and view experimental data, while also
-integrating tools for managing your data and overall project.
+integrating frameworkds for managing your data and overall project.
 
-Detailed examples of how to utilize this package will be outlined in
-vignettes as they are updated.
+# Index
 
-## Status
+  - [Neurophysiology](#Neurophysiology)
+  - [Description](#description)
+  - [Status](#Status)
+  - [Features](#features)
+  - [TODO](#todo)
+  - [License](#license)
 
-This project is early in development and does not yet have a stable API.
-Issues and pull requests are accepted, but may not be reviewed or
-accepted on any fixed schedule.
+# Neurophysiology
 
-## License
+# Description
+
+# Status
+
+This project is early in development. Issues and pull requests are
+accepted and encouraged If you are interested in adding a dataset or
+other contributions to the project contact [Scott
+Sawchuk](mailto:scott@nrsccollective.com)
+
+# Features
+
+Detailed examples of how to utilize this package will be outlined as
+they are updated.
+
+# TODO
+
+  - [ ] Fill out TODO list
+  - [ ] Basics of Neurophysiology
+  - [ ] Documentation
+  - [ ] Description
+  - [ ] Features
+  - [ ] Dashboard
+  - [x] Example field Data
+
+# License
 
 This package is free and open source software.
 
 <!---
-If you are interested in adding a dataset or other contributions to the project contact me at \href{scott@nrsccollective.com}
 
 
 ## Usage

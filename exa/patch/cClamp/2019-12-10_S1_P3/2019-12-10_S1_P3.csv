@@ -1,3 +1,0 @@
-Date,Strain,ID,Treatment,DOB,Age,Sex,rSoln,xSoln,Cut.Time,Comment,Bregma,Patch,ICsoln,Dye,DAT,Amp,Region,Target
-2019-12-10,ChR+/-ChAT+/-GFP+/-,NA,NA,2019-11-01,39,FALSE,rACSF,NMDG,8:30,NA,1.6,2019-12-10_S1_P3a,190705-KMeSO4,a594+Biocytin,projRTT_2019-12-10_003.dat,Paired,prlPFC,L6
-2019-12-10,ChR+/-ChAT+/-GFP+/-,NA,NA,2019-11-01,39,FALSE,rACSF,NMDG,8:30,NA,1.6,2019-12-10_S1_P3b,190705-KMeSO4,a594+Biocytin,projRTT_2019-12-10_003.dat,Paired,prlPFC,L6

@@ -198,7 +198,7 @@ head(Sweeps)
 ```
 
 
-### Adjusting the sweeps to zero
+### Option to zero the sweeps when pulling.  
 This function has a built in option to adjust the baseline as well, which calls the `nphys` function `zeroAdjust`. The default is to zero the baseline, but we can return the dataframe without adjusting the baseline by setting the option to zero to false. 
 
 ```{r}

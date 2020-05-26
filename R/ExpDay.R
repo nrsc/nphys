@@ -1,11 +1,16 @@
 #' Experimental day
 #'
+#' @param x
+#'
 #' @return
 #' @export ExpDay
 #'
 #' @examples
-ExpDay <- function(){
-Params <- readODS::read_ods("exp/Params.ods", col_types = cols())
+ExpDay <- function(x){
+
+Params <- readODS::read_ods("exp/DGDev.ods", col_types = cols())
+
+
 
 md <- MetaData()
 print(md)

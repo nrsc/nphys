@@ -42,9 +42,43 @@ The package provides a means to analyze and view experimental data, while also i
 
 # Neurophysiology
 
+Much like the principles of electrical current, the fundamentals of neuronal communication are governed by Ohms law (V = IR).
+Despite obvious difficulties in investigating biophysical systems at the neuronal level, the fundamental principles of neuronal communication are characterized in much the same way as the electrical currents in the electronics we are familiar with.
+
+
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+Voltages dictate currents moving from point A to point B, but in this case instead of electrons through copper wire, currents are carried by ions in solution, and receptors that are responding to any number of potential biophysical signals can alter the affect of that current, much like transisters, resistors, and capacitors. 
+
+
+## So what do we mean by biophysical?
+
+Simply put, combing principles of the biological and the physical sciences to understand . The biology of cell membrane that is comprised of fatty acids is an exceptionally effective insulator. A neuron expending energy can take advantage of this by manipulating the ratio of positive to negative ions on the inside of its cellular environment to generate a volage potential that it can then utilize as a means for communication. 
+When working to understand 
+
+
+
+significant advancements in the study of neurophysiology and synaptic plasticity have been
+
+made since Hodgkin and Huxley were first able to measure ionic flux across the mem-
+brane of the squid giant axon (Hodgkin and Huxley 1945).
 
 
 # Description
+
 
 
 # Status
@@ -55,8 +89,6 @@ If you are interested in adding a dataset or other contributions to the project 
 # Features
 
 Detailed examples of how to utilize this package will be outlined as they are updated. 
-
-
 
 # TODO
 
@@ -77,7 +109,7 @@ This package is free and open source software.
 `r knitr::knit_exit()`
 
 <!---
-
+either through wire or solution. The signal this current carries can be modulated by passing it accross certain type resistance
 
 ## Usage
 Neurophysiology experiments generally require collectiing many individual data files and keeping track of a large number of methodology variables. Infact, often times methodology variables will go over look during analysis, simply because  and and it can be difficult to  

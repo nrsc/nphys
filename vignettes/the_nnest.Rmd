@@ -1,0 +1,254 @@
+---
+title: "Introduction to the nnest"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fieldExperiment}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, message = FALSE, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message=FALSE, 
+                      warning=FALSE, 
+                      fig.height=5, 
+                      fig.width=8,
+                      collapse = TRUE,
+                      comment = "#>")
+
+```
+
+```{r setup, echo = FALSE}
+library(nphys)
+#RAssist
+```
+
+
+This vignette is going to first look at the structure and assembly of a `nnest`, then examine how we can work with the nnest and utilize built in functions to navigate the environment.
+
+A `nnest` is what is generated during an experiment. Each potential data point you wanting to add to your dataset gets its own `nnest`, and each `nnest` is built throughout an experiment. The `nnest` is comprised of everything relevant to the specific piece of data in a dataset, assembled into a well organized nested list that is easy to access and apply analytical funtions to. 
+
+> Why?
+This processes encourages students and researchers to return to their data. Too often I've seen students click a few buttons, copy to excel and never return to their data for a second look. This breaks my heart. 
+
+## The field dataset
+
+The first `nnest` we will look at is the built in `field` dataset from experiments performed in the dentate gyrus of the rat hippocampus to asses a type of synaptic plasticity called long-term depression (LTD). The working directory (`field$wd`) gives us an idea of how this project was structured.
+
+```{r}
+
+print(field$wd)
+
+```
+
+
+Built in `nphys::proj_fun` functions can be used to update data paths, drawing on the UI spreadsheet params. The function `nphys::proj_dir()` will assemble an data directory based upon input from the params spreadsheet, into `dir/Protocol/ExperimentID/Group/Treatment/Date_ID1` 
+
+
+
+
+
+The field dataset 
+
+
+
+
+```{r}
+knitr::knit_exit()
+```
+
+
+
+Loading the dataset imports a nested list into the REnvironment that contains all of the information and variables needed to quickly analyze our data and keep track of it in a reliable way. 
+
+The `field` dataset is an example of what shape a data will look like after you have collected your raw data, added it to your project folderadding it to your project.
+
+## Generating a dataset
+
+
+
+The universality of the data as a nested list allows for analysis functions to be easily run over top of the data set.   
+
+The rda file contains contains all the metadata, data, and information for running  project. You can name your rda whatever you'd like, but you must update your `Params.csv` file to ensure that your scrips are effective. The .rda file is what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate a workable dataset for your projects to easily read and apply functions to. 
+
+
+This .rda file includes a workding directory `r print(field$wd)` that is relative to the dir project folder. 
+
+
+
+
+# Building a field dataset
+
+```{r}
+data(field)
+```
+
+
+
+Calling the function `newField()` will enable us to add a new field experiment to our dataset, by prompting the user through a number of questions determined by the user to generate a metadata component to our dataset. It will also generate folders and paths for us to place raw data and other  so that the raw data can easily be imported.
+
+```{r, eval = FALSE, echo=FALSE}
+#newField()
+```
+
+
+
+## What is in the data file
+
+### The working directory 
+
+We want to keep a working directory variable that we can always refer to when we need, that links us to where we are going to store copies of our raw data. This file path is 
+
+```{r}
+print(field$wd)
+```
+
+
+
+### The metadata
+You can decide what information is important to retain in md by updating the params file then updating your. 
+Contains identifying information unique to the experiment we've run
+
+
+```{r}
+knitr::kable(field$md[1:9], row.names = FALSE)
+knitr::kable(field$md[10:15], row.names = FALSE)
+```
+
+The `field$files` component is a list of the raw data files collected during our experiment, which are also relative to the project directory.
+
+```{r}
+print(field$files)
+```
+
+Finally, the `field$ABF` component of our nested list contains all of the raw data imported during our experimental protocol, including any metadata that is kept by the software. We will go over importing data in another document, but for the time being it is imporant to note that interaction with the console will be required to ensure that your data is properly labeled, and therefore be identifiable. 
+
+```{r}
+names(field$ABF)
+names(field$ABF[[1]])
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Using functions over the rda data. 
+
+
+After we have run our experiment, compiled our metadata, imported our raw data, and loaded our rda file into the REnvironment, we end up with a nested list (in this case `field`) that represents our experiment. 
+
+The nested list is made up of a number of useful components. It contains the working directory of our rda file relative to the project directory (`field$wd`), all of the identifying metadata needed for analyzing our data and adding it to our project (`field$md`), the path to the files we imported (`field$files`), and the imported data itself. Since we imported files of the ABF format, we keep `field$ABF` as the principle call format for accessing the data. 
+
+`i.e. function(field$ABF)`.
+
+## The dfs_ABF() function
+
+We can extract the data or other useful information nested in the `field$ABF` compnent of our list, by calling the `dfs_ABF` function on our imported data.
+
+The default selection is the `"data"` component of the ABF file, which will return a list of dataframes that make up the sweeps from what we imported.
+
+```{r}
+dfs <- dfs_ABF(field$ABF)
+# Names of imported data
+print(head(names(dfs)))
+
+# Individual traces are named by their sweep when defaut selections are run
+print(names(dfs[1]))
+```
+
+### Other data stored in the ABF file. 
+
+This function can also be used to extract other important information about the imported data. Accessing this information is very useful when you need to identify the names of your channels, sampling fequency, or other things. 
+
+```{r}
+head(dfs_ABF(field$ABF, int = "samplingIntervalInSec"),3)
+```
+
+**The select option** is helpful when you're uncertain what you're looking for.  
+There are numerous parameters kept by the pClamp software that can be very used for ordering and managing your datasets (See the ABF file format vignette for more information). Using the select option will enable you to select from a list of elements that make up the identifying and metadata components for each imported file.
+
+
+```{r eval = FALSE}
+# Select from list by selecting from options
+dfs_ABF(field$ABF, select = TRUE)
+
+# Provide numeric input to identify the numer representing the list element. 
+dfs_ABF(field$ABF, select = 4)
+```
+
+It can be useful to simplify the output by specifying `returnList = FALSE`, which will unlist the data, potentialy making it easier to work with later. The default is `TRUE`, and this option should only be used when returning something with a small footprint like sampling interval. Using this on `data` will result in end up with a flurry of numbers that you can't keep up with. 
+
+
+```{r}
+dfs_ABF(field$ABF, int = "samplingIntervalInSec", returnList = FALSE)
+```
+
+
+## The pullSweeps function
+
+Pulling sweeps goes one step further than `dfs_ABF`, and enables you to conviently select a range of sweeps from your data. Again, we feed the dataset into a function (`pullSweeps(field$ABF)`), and the function returns a dataframe of sweeps from the protocol we are interested in. 
+
+## specific sweeps or sets of sweeps from the $ABF
+
+```{r}
+Sweeps <- pullSweeps(field$ABF)
+head(names(Sweeps))
+tail(names(Sweeps))
+```
+
+We can identify which protocol we want our sweeps pulled from by using the `pull =` argument. Default is set to `pull = PreC-Bl`, which is the "pre-conditioning baseline". There is also the option to select from a list of the protocol identifiers, to easily develop analysis of other components to the experiment.   
+
+To select from a list of protocol names:
+```{r, eval = FALSE}
+Sweeps = pullSweeps(field$ABF, select = TRUE)
+```
+
+To select based upon numeric input:
+
+```{r, eval = FALSE}
+Sweeps = pullSweeps(field$ABF, select = 1)
+names(Sweeps)
+head(Sweeps)
+```
+
+
+### Option to zero the sweeps when pulling.  
+This function has a built in option to adjust the baseline as well, which calls the `nphys` function `zeroAdjust`. The default is to zero the baseline, but we can return the dataframe without adjusting the baseline by setting the option to zero to false. 
+
+```{r}
+Sweeps = pullSweeps(field$ABF, select = 1, zero = FALSE)
+head(Sweeps)
+```
+
+
+```{r}
+
+x = dfs_ABF(field$ABF)[[1]][[1]]
+round(head(x),digits = 3)
+
+x = zeroAdjust(x)
+round(head(x),digits = 3)
+
+
+```
+
+Options for this function can be modified to change the baseline range over which the sweep will be adjusted against.
+
+```{r}
+x = dfs_ABF(field$ABF)[[1]][[1]]
+round(head(x),digits = 3)
+
+# default is 1:1000
+x = zeroAdjust(x, r = 1200:1500)
+round(head(x),digits = 3)
+
+```
+
+

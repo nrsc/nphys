@@ -22,73 +22,59 @@ names(tst) = NULL
 # Define UI for LTD
 ui <- fluidPage(
 
+    #titlePanel("Examining a field excitatory post synaptic potential"),
 
-    titlePanel("Examining a field excitatory post synaptic potential"),
+    dashboardPage(
+        dashboardHeader(disable = TRUE),#Title = "Examining a field excitatory post synaptic potential"),
 
-    navbarPage("My Application",
-               tabPanel("Component 1"),
-               tabPanel("Component 2"),
-               tabPanel("Component 3")
+        dashboardSidebar(
+            selectInput("fieldSlice", label = "Select slice:", choices = tst)#,
+            # sliderInput("ymin",
+            #              label = "ymin",
+            #              min = -10, max = 1, value = c(-10, 1))
+            #sliderInput("ymax", label = "ymax", min = 0, max = 1, value = 1)
+        ),
+
+        dashboardBody(
+             plotlyOutput("p", width = "100%")
+        )
     ),
 
-
-
-    sidebarPanel(
-
-        selectInput("fieldSlice", label = "Select slice:", choices = tst)
-
-
-    ),
-
-    dashboardBody(
-         plotlyOutput("p", width = "100%")
-    ),
+    uiOutput("data")
 
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output, session) {
 
+    #ranges <- reactiveValues(x = NULL, y = NULL)
+
+    output$data <- renderUI(
+    load(lf[grep(input$fieldSlice, lf)], envir = parent.frame()),
+    )
+
+    traces = as.data.frame(DGDev$traces)
+
+
+    # observeEvent(input$ymin, {
+    #      min = min(traces$blTrace)
+    #      max = max(traces$blTrace)
+    #      updateSliderInput(session, "ymin", min = min, max = max)
+    # })
+
 
     output$p <- renderPlotly({
 
+    # ymin = min(traces$blTrace)
+    # ymax = max(traces$blTrace)
 
-        load(lf[grep(input$fieldSlice, lf)],envir = .GlobalEnv)
-        traces = data.frame(DGDev$traces)
-        x = traces$ms
-        y = traces$blTrace
-
-        d <- event_data("plotly_relayout", source = "trajectory")
-
-        selected_point <- if (!is.null(d[["shapes[0].x0"]])) {
-             xint <- d[["shapes[0].x0"]]
-             xpt <- x[which.min(abs(x - xint))]
-             list(x = xpt, y = y[which(x == xpt)])
-         } else {
-             list(x = 1, y = y[which(x == 1)])
-         }
-
-
-
-
-    plot_ly(color = I("red"), source = "trajectory") %>%
-        add_lines(x = x, y = y) %>%
-        add_markers(x = selected_point$x, y = selected_point$y) %>%
-         layout(
-             shapes = list(
-                 type = "line",
-                 line = list(color = "gray", dash = "dot"),
-                 x0 = selected_point$x,
-                 x1 = selected_point$x,
-                 y0 = 0,
-                 y1 = 1,
-                 yref = "paper"
-             )
-         ) %>%
-        config(editable = TRUE)
-
-    event_register(p, 'plotly_relayout')
+    ggplot(traces, aes(ms, blTrace))+
+        geom_line()+
+        #coord_cartesian(xlim = ranges$x, ylim = ranges$y)+
+        theme_void()
 })
+
+
 
 
 }

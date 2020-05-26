@@ -1,7 +1,10 @@
 ---
 title: "LTD Dashboard"
 runtime: shiny
-output: flexdashboard::flex_dashboard
+output:
+    flexdashboard::flex_dashboard:
+        vertical_layout: fill
+    
 ---
 
 ```{r setup, include=FALSE}
@@ -27,10 +30,16 @@ names(tst) = NULL
 Column {.sidebar data-width=200}
 -----------------------------------------------------------------------
 
+### Select inpuut
+
 ```{r}
 
 selectInput("fieldSlice", label = "Select slice:", choices = tst)
 #plotOutput("plot1", click = "plot_click")
+
+
+
+
 
 # ui <- fluidPage(
 #   plotlyOutput("p"),
@@ -42,11 +51,12 @@ selectInput("fieldSlice", label = "Select slice:", choices = tst)
 
 
 
-### Chart A
-
 
 Column {data-width=500}
 -----------------------------------------------------------------------
+
+### field EPSP
+
 
 ```{r}
 

@@ -4,6 +4,7 @@
 ^archive$
 ^dev$
 ^lp$
+^dir$
 ^rmd$
 ^doc$
 ^ref$

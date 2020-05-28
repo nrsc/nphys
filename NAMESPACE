@@ -2,7 +2,6 @@
 
 export("%>%")
 export(CreateColumns)
-export(ExpDay)
 export(Import_ABF)
 export(IsolateWsh)
 export(avgSweeps)

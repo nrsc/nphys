@@ -7,6 +7,8 @@
 ![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
+<img src="/home/nrsc/nphys/README_files/figure-gfm/unnamed-chunk-2-1.png" width="\textwidth" style="display: block; margin: auto;" />
+
 The nphys package is geared towares developing robust and portable data
 management and analysis tools for electrophysiology data. The package
 provides a means to analyze and view experimental data, while also
@@ -22,6 +24,38 @@ integrating frameworks for managing your data and overall project.
   - [License](#license)
 
 # Neurophysiology
+
+Much like the principles of electrical current, the fundamentals of
+neuronal communication are governed by Ohms law (V = IR). Despite
+difficulties in investigating biophysical systems at the neuronal level,
+the fundamental principles of neuronal communication are characterized
+in much the same way as the electrical currents in the electronics we
+are familiar with. The major difference though, is that neuronal
+circutry is alive.
+
+## So what do we mean by biophysical?
+
+Simply put, combing principles of the biological and the physical
+sciences to characterize biological systems at any level.
+
+For example:
+
+> The biology of a cell membrane that is comprised of long chain fatty
+> acids and a polar head is an exceptionally effective insulator against
+> charged particles passing between the intracellular and extracellular
+> space. A neuron expending energy can take advantage of this and
+> manipulate the ratio of positive to negative ions inside of its
+> cellular environment, generating a volage potential that it can then
+> utilize as a means for communication.
+
+Voltages dictate currents moving from point A to point B, but in this
+case instead of electrons through copper wire, currents are carried by
+ions in solution. Electrical signals are converted to chemical ones
+through release of neurotransmitter, and receptors respond to pass along
+the electrochemical signals that can alter the activity and fate of a
+neuron. Throughout all this, the cell employs a number of biophysical
+attributes that can act like resistors, capacitors, and transisters,
+giving the neuron its own unique characteristics.
 
 # Description
 
@@ -52,7 +86,7 @@ they are updated.
 This package is free and open source software.
 
 <!---
-
+either through wire or solution. The signal this current carries can be modulated by passing it accross certain type resistance
 
 ## Usage
 Neurophysiology experiments generally require collectiing many individual data files and keeping track of a large number of methodology variables. Infact, often times methodology variables will go over look during analysis, simply because  and and it can be difficult to  

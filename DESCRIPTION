@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Scott",
            family = "Sawchuk",
            role = c("aut", "cre"),
-           email = "scott@nrsccollective.com)
+           email = "scott@nrsccollective.com")
 Description: This package is intended to be used for the reproducible analysis and presentation of field and whole cell data collected in neurophysiology experiments.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -26,7 +26,8 @@ Imports:
     magrittr,
     utils,
     graphics,
-    devtools
+    devtools,
+    ggpubr
 Suggests: 
     testthat
 Depends: 

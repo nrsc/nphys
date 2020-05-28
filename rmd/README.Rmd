@@ -3,30 +3,45 @@ output: github_document
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = "~/nphys")
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "..")
   })
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "figs/",
+  #fig.path = "figs/",
   message = FALSE,
   warning = FALSE
 )
+library(ggpubr)
+library(ggplot2)
+library(nphys)
+
 #![nphys_version](https://img.shields.io/badge/nphys-v01-yellow&?style=plastic&logo=R)
 
 
 ```
 
+
 # The nphys package 
+
 
 ![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
 ![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
+
+
+```{r, out.width = "\\textwidth" ,fig.height=2, echo = FALSE, fig.align='center', dpi = 300}
+
+ggplot(ccExa$ap, aes(x = ms, mV))+
+  geom_line()+
+  theme_void()
+
+```
 
 
 The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data.
@@ -43,41 +58,22 @@ The package provides a means to analyze and view experimental data, while also i
 
 
 
-
-
 # Neurophysiology
 
-Much like the principles of electrical current, the fundamentals of neuronal communication are governed by Ohms law (V = IR).
-Despite obvious difficulties in investigating biophysical systems at the neuronal level, the fundamental principles of neuronal communication are characterized in much the same way as the electrical currents in the electronics we are familiar with, the major difference being, the circutry is alive. 
-
-
-
-```{r}
-
-
-
-```
-
-
-
-Voltages dictate currents moving from point A to point B, but in this case instead of electrons through copper wire, currents are carried by ions in solution, and receptors that are responding to any number of potential biophysical signals can alter the affect of that current, much like transisters, resistors, and capacitors. 
+Much like the principles of electrical current, the fundamentals of neuronal communication are governed by Ohms law (V = IR). Despite  difficulties in investigating biophysical systems at the neuronal level, the fundamental principles of neuronal communication are characterized in much the same way as the electrical currents in the electronics we are familiar with. The major difference though, is that neuronal circutry is alive. 
 
 
 ## So what do we mean by biophysical?
 
-Simply put, combing principles of the biological and the physical sciences to understand . The biology of cell membrane that is comprised of fatty acids is an exceptionally effective insulator. A neuron expending energy can take advantage of this by manipulating the ratio of positive to negative ions on the inside of its cellular environment to generate a volage potential that it can then utilize as a means for communication. 
-When working to understand 
+Simply put, combing principles of the biological and the physical sciences to characterize biological systems at any level. 
 
+For example:
 
+> The biology of a cell membrane that is comprised of long chain fatty acids and a polar head is an exceptionally effective insulator against charged particles passing between the intracellular and extracellular space. A neuron expending energy can take advantage of this and manipulate the ratio of positive to negative ions inside of its cellular environment, generating a volage potential that it can then utilize as a means for communication. 
 
-significant advancements in the study of neurophysiology and synaptic plasticity have been
-
-made since Hodgkin and Huxley were first able to measure ionic flux across the mem-
-brane of the squid giant axon (Hodgkin and Huxley 1945).
-
+Voltages dictate currents moving from point A to point B, but in this case instead of electrons through copper wire, currents are carried by ions in solution. Electrical signals are converted to chemical ones through release of neurotransmitter, and receptors respond to pass along the electrochemical signals that can alter the activity and fate of a neuron. Throughout all this, the cell employs a number of biophysical attributes that can act like resistors, capacitors, and transisters, giving the neuron its own unique characteristics.
 
 # Description
-
 
 
 # Status

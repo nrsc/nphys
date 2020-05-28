@@ -43,8 +43,7 @@ The package provides a means to analyze and view experimental data, while also i
 # Neurophysiology
 
 Much like the principles of electrical current, the fundamentals of neuronal communication are governed by Ohms law (V = IR).
-Despite obvious difficulties in investigating biophysical systems at the neuronal level, the fundamental principles of neuronal communication are characterized in much the same way as the electrical currents in the electronics we are familiar with.
-
+Despite obvious difficulties in investigating biophysical systems at the neuronal level, the fundamental principles of neuronal communication are characterized in much the same way as the electrical currents in the electronics we are familiar with, the major difference being, the circutry is alive. 
 
 
 

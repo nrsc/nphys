@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
   warning = FALSE
 )
 #![nphys_version](https://img.shields.io/badge/nphys-v01-yellow&?style=plastic&logo=R)
+
+
 ```
 
 # The nphys package 
@@ -49,14 +51,9 @@ Despite obvious difficulties in investigating biophysical systems at the neurona
 
 ```{r}
 
+
+
 ```
-
-
-
-
-
-
-
 
 
 

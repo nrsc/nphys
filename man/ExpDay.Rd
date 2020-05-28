@@ -4,7 +4,10 @@
 \alias{ExpDay}
 \title{Experimental day}
 \usage{
-ExpDay()
+ExpDay(x)
+}
+\arguments{
+\item{x}{}
 }
 \value{
 

@@ -17,7 +17,17 @@ df_to_trace(
 )
 }
 \arguments{
+\item{x}{A dataframe of sweeps.}
+
+\item{sig}{what signal you are isolating for. Searches colnames}
+
 \item{msInt}{the number of samples per ms}
+
+\item{p0}{Zero point for determining the start of the response.}
+
+\item{multiMax}{Multiplier for the ymax position. Identifies the max of the data}
+
+\item{scaleBar}{A numeric. Scale bar will change based upon signal input}
 }
 \value{
 

@@ -3,6 +3,7 @@
 ^.*\.Rproj$
 ^archive$
 ^dev$
+^lp$
 ^rmd$
 ^doc$
 ^ref$

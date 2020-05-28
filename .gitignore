@@ -1,7 +1,5 @@
 .Rhistory
 .RData
 .Rproj.user
-dir
-build
 *.dat
 *.mat

@@ -3,7 +3,7 @@ output: github_document
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = ".")
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "~/nphys")
   })
 ---
 
@@ -35,7 +35,7 @@ library(nphys)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
 
-![](ap.png)
+![](figs/ap.png)
 
 
 

@@ -7,7 +7,7 @@
 ![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
-![](ap.png)
+![](figs/ap.png)
 
 The nphys package is geared towares developing robust and portable data
 management and analysis tools for electrophysiology data. The package

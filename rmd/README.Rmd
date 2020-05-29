@@ -3,7 +3,7 @@ output: github_document
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = "..")
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = ".")
   })
 ---
 
@@ -35,13 +35,8 @@ library(nphys)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
 
-```{r, out.width = "\\textwidth" ,fig.height=2, echo = FALSE, fig.align='center', dpi = 300}
+![](ap.png)
 
-ggplot(ccExa$ap, aes(x = ms, mV))+
-  geom_line()+
-  theme_void()
-
-```
 
 
 The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data.

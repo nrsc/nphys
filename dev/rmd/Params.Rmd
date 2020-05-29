@@ -1,0 +1,21 @@
+---
+title: "Experimental Paramaters"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The experimental parameters spreadsheet is a spreadsheet created and maintained by the user to aid in the addition of
+
+
+```{r}
+
+```
+
+In your experimental parameters file `data/Params.csv` there is a column titled `rdaName`.
+
+In this case, `field`, is how any data points generated with the aid of the pRoj package are named when loaded into the REnvironment.

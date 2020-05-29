@@ -1,0 +1,35 @@
+---
+title: "nphys projects"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{nphys projects}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(nphys)
+
+#data(field, package = "nphys")
+```
+
+```{r}
+load("~/nphys/data/field.rda")
+#data(field)
+
+print(field$wd)
+```
+
+
+```{r}
+#data(field)
+print(names(field))
+```
+

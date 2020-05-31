@@ -70,8 +70,11 @@ Voltages dictate currents moving from point A to point B across resistance, but 
 
 ## Ways of investigating biophysical properties of neurons and neuronal systems.
 
+Observing human neurophysiology used to be as simple as a doctor hitting the patellar tendon of the knee to observe basic reflexes in the leg.
+
 Ultimately, the goal is to understand how neurons and neuronal systems work in humans, but obvious difficulties can limit the ability to investigate neurons at the single cell level or within biological neural networks in humans. Therefore, model systems are employed to undersand the basic principles of neuronal communication, neurons in disease states, and the brain in general.
-Observing human neurophysiology can be as simple as a doctor hitting the patellar tendon of the knee to observe basic reflexes in the leg.
+
+
 
 First we need to imagine all the different ways that we would want to look at neuronal systems.
 

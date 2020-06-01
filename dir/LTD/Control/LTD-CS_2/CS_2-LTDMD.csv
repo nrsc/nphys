@@ -1,0 +1,2 @@
+Date,ID,Treatment,Group,Age,Sex,Weight,rSoln,xSoln,CutTime,Rig,HP,firstFile,condFile,lastFile,condMag,Comment
+2018-12-06,CS1,Control,Group,20,M,45,rACSF,rACSF,8:45,Scott,R4,2018_12_06_0028.atf,2018_12_06_0035.abf,2018_12_06_0039.abf,0.02,

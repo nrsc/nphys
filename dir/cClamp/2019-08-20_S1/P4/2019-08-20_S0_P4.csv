@@ -1,0 +1,2 @@
+Date,Strain,ID,Treatment,DOB,Age,Sex,rSoln,xSoln,Cut.Time,Comment,Patch,Amp,ICsoln,Dye,DAT,paired
+2019-08-20,BRC,M1,Thal_Cre-McB,2019-06-06,76,M,rACSF,NMDG,11:30,Horizontal cut,2019-08-20_S0_P4,A1,Cs-MeSO4,Alexa6xx,projRTT_2019-08-20_005.dat,No

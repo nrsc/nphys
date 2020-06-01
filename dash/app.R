@@ -14,21 +14,21 @@ library(dplyr)
 
 #data(field)
 
-lf <- list.files("~/nphys/dir/DGDev", pattern = "DGDev.rda", recursive = TRUE, full.names = TRUE)
+lf <- list.files("~/nphys/dir", pattern = "LTD.rda", recursive = TRUE, full.names = TRUE)
 tst <- unlist(fileD(lf))
-tst <- gsub("-DGDev.rda", "", tst)
+tst <- gsub("-LTD.rda", "", tst)
 names(tst) = NULL
 
 # Define UI for LTD
 ui <- fluidPage(
 
-    #titlePanel("Examining a field excitatory post synaptic potential"),
+    titlePanel("Examining a field excitatory post synaptic potential"),
 
     dashboardPage(
         dashboardHeader(disable = TRUE),#Title = "Examining a field excitatory post synaptic potential"),
 
         dashboardSidebar(
-            selectInput("fieldSlice", label = "Select slice:", choices = tst)#,
+            selectInput("dataSet", label = "Select data set:", choices = tst)#,
             # sliderInput("ymin",
             #              label = "ymin",
             #              min = -10, max = 1, value = c(-10, 1))
@@ -49,11 +49,10 @@ server <- function(input, output, session) {
 
     #ranges <- reactiveValues(x = NULL, y = NULL)
 
-    output$data <- renderUI(
-    load(lf[grep(input$fieldSlice, lf)], envir = parent.frame()),
-    )
+     output$data <- renderUI(
+        load(lf[grep(input$dataSet, lf)], envir = parent.frame())
+     )
 
-    traces = as.data.frame(DGDev$traces)
 
 
     # observeEvent(input$ymin, {
@@ -62,8 +61,10 @@ server <- function(input, output, session) {
     #      updateSliderInput(session, "ymin", min = min, max = max)
     # })
 
+    traces = as.data.frame(DGDev$traces)
 
     output$p <- renderPlotly({
+
 
     # ymin = min(traces$blTrace)
     # ymax = max(traces$blTrace)

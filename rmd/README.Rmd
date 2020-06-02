@@ -51,8 +51,6 @@ The package provides a means to analyze and view experimental data, while also i
 * [TODO](#todo) 
 * [License](#license)
 
-
-
 # Neurophysiology
 
 Much like the principles of electrical current, the fundamentals of neuronal communication are governed by Ohms law (V = IR). Despite  difficulties in investigating biophysical systems at the neuronal level, the fundamental principles of neuronal communication are characterized in much the same way as the electrical currents in the electronics we are familiar with. The major difference though, is that neuronal circutry is alive. 
@@ -81,7 +79,6 @@ First we need to imagine all the different ways that we would want to look at ne
 
 
 
-
 # Status
 
 This project is early in development. Issues and pull requests are accepted and encouraged
@@ -93,13 +90,20 @@ Detailed examples of how to utilize this package will be outlined as they are up
 
 # TODO
 
-- [ ] Fill out TODO list
-- [ ] Basics of Neurophysiology
-- [ ] Documentation
-- [ ] Description
+- [.] Fill out TODO list
+- [/] Basics of Neurophysiology
+- [X] R CMD Check:Documentation
+- [.] Description
 - [ ] Features
 - [ ] Dashboard
-- [x] Example field Data
+- [/] importABF
+- [ ] Build jQuery:Params.projBuild.metaData
+- [ ] SQL database integrate. 
+- [.] projBuild() 
+- [/] projDGDev() 
+- [ ] LTD Vignette  
+- [/] nnest Vignette  
+- [x] Example field dataSet
 
  
 

@@ -9,6 +9,8 @@
 
 ![](figs/ap.png)
 
+# Description
+
 The nphys package is geared towares developing robust and portable data
 management and analysis tools for electrophysiology data. The package
 provides a means to analyze and view experimental data, while also
@@ -16,8 +18,8 @@ integrating frameworks for managing your data and overall project.
 
 # Index
 
-  - [Neurophysiology](#Neurophysiology)
   - [Description](#Description)
+  - [Neurophysiology](#Neurophysiology)
   - [Status](#Status)
   - [Features](#Features)
   - [TODO](#todo)
@@ -46,23 +48,37 @@ For example:
 > space. A neuron expending energy can take advantage of this and
 > manipulate the ratio of positive to negative ions inside of its
 > cellular environment, generating a volage potential that it can then
-> utilize as a means for communication.
+> utilize.
 
-Voltages dictate currents moving from point A to point B, but in this
-case instead of electrons through copper wire, currents are carried by
-ions in solution. Electrical signals are converted to chemical ones
-through release of neurotransmitter, and receptors respond to pass along
-the electrochemical signals that can alter the activity and fate of a
-neuron. Throughout all this, the cell employs a number of biophysical
-attributes that can act like resistors, capacitors, and transisters,
-giving the neuron its own unique characteristics.
+Voltages dictate currents moving from point A to point B across
+resistance, but in this case instead of electrons through copper wire,
+currents are carried by ions in solution. Electrical signals are
+converted to chemical ones through release of neurotransmitter, and
+receptors respond to pass along signals that can alter the activity and
+fate of a neuron. Throughout all this, the cell employs a number of
+biophysical attributes that can act like resistors, capacitors, and
+transistors, giving the neuron its own unique
+characteristics.
 
-# Description
+## Ways of investigating biophysical properties of neurons and neuronal systems.
+
+Observing human neurophysiology used to be as simple as a doctor hitting
+the patellar tendon of the knee to observe basic reflexes in the leg.
+
+Ultimately, the goal is to understand how neurons and neuronal systems
+work in humans, but obvious difficulties can limit the ability to
+investigate neurons at the single cell level or within biological neural
+networks in humans. Therefore, model systems are employed to undersand
+the basic principles of neuronal communication, neurons in disease
+states, and the brain in general.
+
+First we need to imagine all the different ways that we would want to
+look at neuronal systems.
 
 # Status
 
 This project is early in development. Issues and pull requests are
-accepted and encouraged If you are interested in adding a dataset or
+accepted and encouraged If you are interested in adding a data set or
 other contributions to the project contact [Scott
 Sawchuk](mailto:scott@nrsccollective.com)
 
@@ -73,23 +89,30 @@ they are updated.
 
 # TODO
 
-  - \[ \] Fill out TODO list
-  - \[ \] Basics of Neurophysiology
-  - \[ \] Documentation
-  - \[ \] Description
+  - \[.\] Fill out TODO list
+  - \[/\] Basics of Neurophysiology
+  - \[X\] R CMD Check:Documentation
+  - \[.\] Description
   - \[ \] Features
   - \[ \] Dashboard
-  - \[x\] Example field Data
+  - \[/\] importABF
+  - \[ \] Build jQuery:Params.projBuild.metaData
+  - \[ \] SQL database integrate.
+  - \[.\] projBuild()
+  - \[/\] projDGDev()
+  - \[ \] LTD Vignette  
+  - \[/\] nnest Vignette  
+  - \[x\] Example field dataSet
 
 # License
 
 This package is free and open source software.
 
 <!---
-either through wire or solution. The signal this current carries can be modulated by passing it accross certain type resistance
+either through wire or solution. The signal this current carries can be modulated by passing it across certain type resistance
 
 ## Usage
-Neurophysiology experiments generally require collectiing many individual data files and keeping track of a large number of methodology variables. Infact, often times methodology variables will go over look during analysis, simply because  and and it can be difficult to  
+Neurophysiology experiments generally require collecting many individual data files and keeping track of a large number of methodology variables. In fact, often times methodology variables will go over look during analysis, simply because  and and it can be difficult to  
 
 Performing neurophysiology experiments almost always requires paying close attention to the response while also retaining relevant information for later analysis. Knowing what is relevant comes through practice, and the hands on nature of neurophysiology makes it is easy to potentially loose track of or misrepresent important information.
 

@@ -1,11 +1,14 @@
-#' Sort js dataset from sA after import using readABF.
+#' Sort field dataset when importing data using importABF
 #'
 #' @param x
 #'
-#' @return
-#' @export
+#' @return list of names dfs
+#' @export abf_Data.sort
 #'
 #' @examples
+#' \dontrun
+#' abf_Data.sort(field
+#'
 abf_Data.sort <- function(x){
 
   dfs <- dfs_ABF(x$ABF)

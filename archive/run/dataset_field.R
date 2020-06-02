@@ -10,18 +10,17 @@ adjNeg = -100
 adjPos = 1400
 
 
-
 field$traces <- list(
 
     ms = seq(sampleInt.ms, length.out = sum(abs(adjNeg), abs(adjPos),1), by =sampleInt.ms),
 
-    Bl_Avg <- pullSweeps(field$ABF, pull = "PreC-Bl", adjNeg = adjNeg, adjPos = adjPos) %>%
+    blAvg <- pullSweeps(field$ABF, pull = "PreC-Bl", adjNeg = adjNeg, adjPos = adjPos) %>%
         avgSweeps(),
 
-    Decay_Avg <- pullSweeps(field$ABF, pull = "Decay", adjNeg = adjNeg, adjPos = adjPos) %>%
+    decayAvg <- pullSweeps(field$ABF, pull = "Decay", adjNeg = adjNeg, adjPos = adjPos) %>%
         avgSweeps(),
 
-    Cond_Avg <- pullSweeps(field$ABF, pull = "Cond", adjNeg = adjNeg, adjPos = adjPos) %>%
+    condAvg <- pullSweeps(field$ABF, pull = "Cond", adjNeg = adjNeg, adjPos = adjPos) %>%
         avgSweeps()
 )
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/abf_Data.sort.R
 \name{abf_Data.sort}
 \alias{abf_Data.sort}
-\title{Sort js dataset from sA after import using readABF.}
+\title{Sort field dataset when importing data using importABF}
 \usage{
 abf_Data.sort(x)
 }
@@ -10,8 +10,13 @@ abf_Data.sort(x)
 \item{x}{}
 }
 \value{
-
+list of names dfs
 }
 \description{
-Sort js dataset from sA after import using readABF.
+Sort field dataset when importing data using importABF
+}
+\examples{
+\dontrun
+abf_Data.sort(field
+
 }

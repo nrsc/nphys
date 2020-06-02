@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Scott D. Sawchuk" />
+
+<meta name="date" content="2020-06-02" />
+
+<title>The Analysis of Synaptic Plasticity: Long-term Depression</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">The Analysis of Synaptic Plasticity: Long-term Depression</h1>
+<h4 class="author">Scott D. Sawchuk</h4>
+<h4 class="date">2020-06-02</h4>
+
+
+
+<div id="long-term-depression" class="section level2">
+<h2>Long-term Depression</h2>
+<p>We are going to utilize the <code>data(field)</code> dataset. This data set is an example of a LTD<sub>LFS</sub> experiment. After importing the data (see the <code>importABF()</code> vignette) we have a data set that represents a complete experiment before any sort of analysis.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">names</span>(field)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; [1] &quot;wd&quot;     &quot;md&quot;     &quot;files&quot;  &quot;ABF&quot;    &quot;traces&quot;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">knitr<span class="op">::</span><span class="kw">kable</span>(field<span class="op">$</span>md)</a></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Slice
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Age
+</th>
+<th style="text-align:left;">
+Sex
+</th>
+<th style="text-align:left;">
+Weight
+</th>
+<th style="text-align:left;">
+rSoln
+</th>
+<th style="text-align:left;">
+xSoln
+</th>
+<th style="text-align:left;">
+Cut.Time
+</th>
+<th style="text-align:left;">
+Rig
+</th>
+<th style="text-align:left;">
+HP
+</th>
+<th style="text-align:left;">
+FirstIO
+</th>
+<th style="text-align:left;">
+StimFile
+</th>
+<th style="text-align:left;">
+StimMag
+</th>
+<th style="text-align:left;">
+Comment
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+P28f-CS_27
+</td>
+<td style="text-align:left;">
+P28f-Control
+</td>
+<td style="text-align:left;">
+2018_08_13
+</td>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+96.8
+</td>
+<td style="text-align:left;">
+rACSF
+</td>
+<td style="text-align:left;">
+Sucrose
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sunny
+</td>
+<td style="text-align:left;">
+xx
+</td>
+<td style="text-align:left;">
+2018_08_13_2005.atf
+</td>
+<td style="text-align:left;">
+2018_08_13_2008.abf
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+<p>The raw data is nested within ABF, but can be easily accessed with the <code>dfs_ABF()</code> function, by feeding <code>field$ABF</code> into the function. For more on pulling data from a nnest, see the vignette on <code>the nnest</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">dfs =<span class="st"> </span><span class="kw">dfs_ABF</span>(field<span class="op">$</span>ABF)</a></code></pre></div>
+<p>Once we have our data, we want to observe and analyze it. To do this, we can pass the data to predefined functions to asses it. It is not necessary to always isolate the data using the <code>dfs_ABF()</code> function, as it is fully integrated into other functions to automatically draw the data. Therefore, we can use functions such as <code>pullSweeps()</code> to directly pull relevant traces and <code>avgSweeps()</code> to format them for viewing.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">traces =<span class="st"> </span><span class="kw">pullSweeps</span>(field<span class="op">$</span>ABF, <span class="dt">pull =</span> <span class="st">&quot;PreC-Bl&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">head</span>(traces)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;      PreC.Bl_3.Sweep.1 PreC.Bl_3.Sweep.2 PreC.Bl_3.Sweep.3 PreC.Bl_3.Sweep.4</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;      PreC.Bl_3.Sweep.5 PreC.Bl_3.Sweep.6 PreC.Bl_3.Sweep.7 PreC.Bl_3.Sweep.8</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;      PreC.Bl_3.Sweep.9 PreC.Bl_3.Sweep.10 PreC.Bl_3.Sweep.11 PreC.Bl_3.Sweep.12</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;      PreC.Bl_3.Sweep.13 PreC.Bl_3.Sweep.14 PreC.Bl_3.Sweep.15</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;      PreC.Bl_3.Sweep.16 PreC.Bl_3.Sweep.17 PreC.Bl_3.Sweep.18</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;      PreC.Bl_3.Sweep.19 PreC.Bl_3.Sweep.20 PreC.Bl_3.Sweep.21</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;      PreC.Bl_3.Sweep.22 PreC.Bl_3.Sweep.23 PreC.Bl_3.Sweep.24</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;      PreC.Bl_3.Sweep.25 PreC.Bl_3.Sweep.26 PreC.Bl_3.Sweep.27</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;      PreC.Bl_3.Sweep.28 PreC.Bl_3.Sweep.29 PreC.Bl_3.Sweep.30</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;      PreC.Bl_3.Sweep.31 PreC.Bl_3.Sweep.32 PreC.Bl_3.Sweep.33</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;      PreC.Bl_3.Sweep.34 PreC.Bl_3.Sweep.35 PreC.Bl_3.Sweep.36</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;      PreC.Bl_3.Sweep.37 PreC.Bl_3.Sweep.38 PreC.Bl_3.Sweep.39</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;      PreC.Bl_3.Sweep.40 PreC.Bl_3.Sweep.41 PreC.Bl_3.Sweep.42</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;      PreC.Bl_3.Sweep.43 PreC.Bl_3.Sweep.44 PreC.Bl_3.Sweep.45</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;      PreC.Bl_3.Sweep.46 PreC.Bl_3.Sweep.47 PreC.Bl_3.Sweep.48</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;      PreC.Bl_3.Sweep.49 PreC.Bl_3.Sweep.50 PreC.Bl_3.Sweep.51</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;      PreC.Bl_3.Sweep.52 PreC.Bl_3.Sweep.53 PreC.Bl_3.Sweep.54</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;      PreC.Bl_3.Sweep.55 PreC.Bl_3.Sweep.56 PreC.Bl_3.Sweep.57</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;      PreC.Bl_3.Sweep.58 PreC.Bl_3.Sweep.59 PreC.Bl_3.Sweep.60</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;      PreC.Bl_3.Sweep.61 PreC.Bl_3.Sweep.62 PreC.Bl_3.Sweep.63</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;      PreC.Bl_3.Sweep.64 PreC.Bl_3.Sweep.65 PreC.Bl_3.Sweep.66</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;      PreC.Bl_3.Sweep.67 PreC.Bl_3.Sweep.68 PreC.Bl_3.Sweep.69</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt;      PreC.Bl_3.Sweep.70 PreC.Bl_3.Sweep.71 PreC.Bl_3.Sweep.72</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt;      PreC.Bl_3.Sweep.73 PreC.Bl_3.Sweep.74 PreC.Bl_3.Sweep.75</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt;      PreC.Bl_3.Sweep.76 PreC.Bl_3.Sweep.77 PreC.Bl_3.Sweep.78</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt;      PreC.Bl_3.Sweep.79 PreC.Bl_3.Sweep.80 PreC.Bl_3.Sweep.81</span></a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt;      PreC.Bl_3.Sweep.82 PreC.Bl_3.Sweep.83 PreC.Bl_3.Sweep.84</span></a>
+<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt;      PreC.Bl_3.Sweep.85 PreC.Bl_3.Sweep.86 PreC.Bl_3.Sweep.87</span></a>
+<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt;      PreC.Bl_3.Sweep.88 PreC.Bl_3.Sweep.89 PreC.Bl_3.Sweep.90</span></a>
+<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt;      PreC.Bl_3.Sweep.91 PreC.Bl_3.Sweep.92 PreC.Bl_3.Sweep.93</span></a>
+<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="co">#&gt;      PreC.Bl_3.Sweep.94 PreC.Bl_3.Sweep.95 PreC.Bl_3.Sweep.96</span></a>
+<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt;      PreC.Bl_3.Sweep.97 PreC.Bl_3.Sweep.98 PreC.Bl_3.Sweep.99</span></a>
+<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt;      PreC.Bl_3.Sweep.100 PreC.Bl_3.Sweep.101 PreC.Bl_3.Sweep.102</span></a>
+<a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt;      PreC.Bl_3.Sweep.103 PreC.Bl_3.Sweep.104 PreC.Bl_3.Sweep.105</span></a>
+<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="co">#&gt;      PreC.Bl_3.Sweep.106 PreC.Bl_3.Sweep.107 PreC.Bl_3.Sweep.108</span></a>
+<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co">#&gt;      PreC.Bl_3.Sweep.109 PreC.Bl_3.Sweep.110 PreC.Bl_3.Sweep.111</span></a>
+<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="co">#&gt;      PreC.Bl_3.Sweep.112 PreC.Bl_3.Sweep.113 PreC.Bl_3.Sweep.114</span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40"><span class="co">#&gt;      PreC.Bl_3.Sweep.115 PreC.Bl_3.Sweep.116 PreC.Bl_3.Sweep.117</span></a>
+<a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt;      PreC.Bl_3.Sweep.118 PreC.Bl_3.Sweep.119 PreC.Bl_3.Sweep.120</span></a>
+<a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt;      PreC.Bl_3.Sweep.121 PreC.Bl_3.Sweep.122 PreC.Bl_3.Sweep.123</span></a>
+<a class="sourceLine" id="cb3-43" data-line-number="43"><span class="co">#&gt;      PreC.Bl_3.Sweep.124 PreC.Bl_3.Sweep.125 PreC.Bl_3.Sweep.126</span></a>
+<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="co">#&gt;      PreC.Bl_3.Sweep.127 PreC.Bl_3.Sweep.128 PreC.Bl_3.Sweep.129</span></a>
+<a class="sourceLine" id="cb3-45" data-line-number="45"><span class="co">#&gt;      PreC.Bl_3.Sweep.130 PreC.Bl_3.Sweep.131 PreC.Bl_3.Sweep.132</span></a>
+<a class="sourceLine" id="cb3-46" data-line-number="46"><span class="co">#&gt;      PreC.Bl_3.Sweep.133 PreC.Bl_3.Sweep.134 PreC.Bl_3.Sweep.135</span></a>
+<a class="sourceLine" id="cb3-47" data-line-number="47"><span class="co">#&gt;      PreC.Bl_3.Sweep.136 PreC.Bl_3.Sweep.137 PreC.Bl_3.Sweep.138</span></a>
+<a class="sourceLine" id="cb3-48" data-line-number="48"><span class="co">#&gt;      PreC.Bl_3.Sweep.139 PreC.Bl_3.Sweep.140 PreC.Bl_3.Sweep.141</span></a>
+<a class="sourceLine" id="cb3-49" data-line-number="49"><span class="co">#&gt;      PreC.Bl_3.Sweep.142 PreC.Bl_3.Sweep.143 PreC.Bl_3.Sweep.144</span></a>
+<a class="sourceLine" id="cb3-50" data-line-number="50"><span class="co">#&gt;      PreC.Bl_3.Sweep.145 PreC.Bl_3.Sweep.146</span></a>
+<a class="sourceLine" id="cb3-51" data-line-number="51"><span class="co">#&gt;  [ reached 'max' / getOption(&quot;max.print&quot;) -- omitted 6 rows ]</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">trace =<span class="st"> </span><span class="kw">avgSweeps</span>(traces, <span class="dt">nAvg =</span> <span class="dv">20</span>, <span class="dt">Wsh =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">plot</span>(trace, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">asp =</span> <span class="dv">1</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" width="100%" /></p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

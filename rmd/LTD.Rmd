@@ -1,0 +1,77 @@
+---
+title: "The Analysis of Synaptic Plasticity: Long-term Depression"
+author: "Scott D. Sawchuk"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(nphys)
+library(kableExtra)
+```
+
+## Long-term Depression
+
+We are going to utilize the `data(field)` data set. This data set is an example of a LTD~LFS~ experiment run in the ChristieLab. Follow along with how this data set is built in the `importABF()` vignette. The script to build and assign the data set as example data is `run/dataset_field.R`
+
+After importing the data we have a data set that represents a complete LTD experiment with summary traces. 
+
+```{r}
+names(field)
+knitr::kable(field$md)
+```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

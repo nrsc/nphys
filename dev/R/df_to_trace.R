@@ -1,20 +1,30 @@
 #' Plot traces from a dataframe of sweeps.
 #'
 #' @param x A dataframe of sweeps.
-#' @param sig what signal you are isolating for. Searches colnames
+#'
+#' @param sig what signal you are isolating for. Searches colnames. If NULL, will
+#'  not filter sweeps, and should only be used if only one signal was recorded during
+#'  experiment (which is bad practice)
+#'
 #' @param p0 Zero point for determining the start of the response.
+#'
 #' @param p1
+#'
 #' @param avg
+#'
 #' @param multiMax Multiplier for the ymax position. Identifies the max of the data
+#'
 #' @param multIn
+#'
 #' @param scaleBar A numeric. Scale bar will change based upon signal input
+#'
 #' @param msInt the number of samples per ms
 #'
 #' @return
 #' @export
 #'
 #' @examples
-df_to_trace <- function(x, sig = "pA", msInt = 0.1, p0 = 250, p1 = 750, avg = TRUE, multiMax = 1.05, multiMin = 1.05, scaleBar = 50){
+dfTsrace <- function(x, sig = "pA", msInt = 0.1, p0 = 250, p1 = 750, avg = TRUE, multiMax = 1.05, multiMin = 1.05, scaleBar = 50){
 
     x = x[,grep(sig, colnames(x))]
 

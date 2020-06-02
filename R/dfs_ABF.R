@@ -1,16 +1,23 @@
 #' Extract data or other variables from the imported ABF data.
+#'
+#'
 #' @param x data from import
+#'
 #' @param int Character
 #' Indicate what your interested in extracting from the contents of the imported ABF format.
+#'
 #' @param select Logical or Numeric
 #' Indicate if you want to choose from a list of options to be returned.
 #' Options to choose from are contents of ABF file after import.
+#'
 #' @param returnList Logical.
 #' If TRUE, will return elements as a nested list.
 #' Useful when extracting the nested dataframes that make up the majority of the nested data.
 #' If FALSE, will unlist the elements ard return data as a single vector.
 #' Useful if wanting to return something like sampling rate or signal channels.
+#'
 #' @return Extracted elements as determined by the user input at int. Default is "data".
+#'
 #' @examples
 #' \dontrun{
 #' x = field$ABF

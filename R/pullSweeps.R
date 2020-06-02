@@ -16,7 +16,8 @@
 #' x = field$ABF %>% pullSweeps()
 #' }
 #' @export
-pullSweeps <- function(x, pull = "PreC-Bl", select = FALSE, zero = TRUE, feather = TRUE, adjNeg = -100, adjPos = 1400){
+pullSweeps <- function(x, pull = "PreC-Bl", select = FALSE, zero = TRUE,
+                       feather = TRUE, adjNeg = -100, adjPos = 1400){
 
     if(select & !is.numeric(select)){
         pull = select.list(names(x))

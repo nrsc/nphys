@@ -6,7 +6,7 @@
 \usage{
 importABF(
   x,
-  mdFlag = "-MD.csv",
+  mdFlag = "-exaMD.csv",
   dir = ".",
   format = "abf",
   sv = TRUE,

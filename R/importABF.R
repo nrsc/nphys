@@ -22,15 +22,13 @@
 #' field = importABF("field", mdFlage = "-MD.csv", dir = "exa/field")
 #' }
 #' @export
-importABF <- function(x, mdFlag = "-MD.csv", dir = ".", format = "abf", sv = TRUE, ret = TRUE){
+importABF <- function(x, mdFlag = "-exaMD.csv", dir = ".", format = "abf", sv = TRUE, ret = TRUE){
     ## If a path is provided instead of just the unique idententifier,
     # this will remove anything but what is at the end of the path, then will find the
     # wd for the piece of data.
-    # This is for consistency so that either the exp identifier or the path can be read
-    x <- nphys::fileD(x)
-    pat = paste0(x, mdFlag)
+    #pat = paste0(x, mdFlag)
     ## Find the file by the ID-mdTag pattern, starting your search in the directory outlined by the variable dir.
-    lf = list.files(dir, pattern = pat, recursive = TRUE, full.names = TRUE)
+    lf = list.files(dir, pattern = paste0(x,mdFlag), recursive = TRUE, full.names = TRUE)
     ## Test if an rda data file is already present, or that there are not duplicates in your data
     if(length(lf)==0) stop("File not found")
     if(length(lf)>1) stop("Tagged ID is not unique. Which would your like to import?")

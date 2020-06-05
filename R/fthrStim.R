@@ -13,12 +13,19 @@
 #' }
 #'
 #' @export
-fthrStim <- function(x, stim, adj = -100, duration = 1500){
-if(missing(stim)){
-  stim = stimArtifact(x, adj = adj)
-  }
+fthrStim <- function(x, stim, adj = -100, samples = 1500, PP=FALSE){
+if(missing(stim)){stim = stimArtifact(x, adj = adj)}
+
+    x1 = x[stim:(stim+samples)]
+
+    if(is.numeric(PP)){
+       x2 = x[(stim+PP):(stim+PP+samples)]
+        return(c(x1,x2))}
+    else{
+        return(x1)
+        }
 
 
-    x = x[stim:(stim+duration)]
+
 
 }

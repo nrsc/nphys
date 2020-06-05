@@ -6,7 +6,7 @@
 Feather a sweep by first identifying its stim artifact
 then selecting the numer of samples beyond you want.}
 \usage{
-fthrStim(x, stim, adj = -100, duration = 1500)
+fthrStim(x, stim, adj = -100, samples = 1500, PP = FALSE)
 }
 \arguments{
 \item{x}{vector}

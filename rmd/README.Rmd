@@ -21,7 +21,7 @@ library(ggpubr)
 library(ggplot2)
 library(nphys)
 
-#![nphys_version](https://img.shields.io/badge/nphys-v01-yellow&?style=plastic&logo=R)
+
 
 
 ```
@@ -32,15 +32,13 @@ library(nphys)
 
 ![Language](https://img.shields.io/badge/Language-R-blue?style=plastic&logo=R)
 ![Usage](https://img.shields.io/badge/Usage-neurophysiology-green?style=plastic&logo=R)
+![nphysVersion](https://img.shields.io/github/v/tag/NRSC/nphys?label=version&style=plastic)
+[![Sponsor](https://img.shields.io/badge/-Sponsor-red?logo=github&style=plastic)](https://github.com/sponsors/NRSC)
 [![Donate](https://img.shields.io/badge/-Donate-yellow?style=plastic&logo=paypal)](https://paypal.me/sdsawchuk)
 
 
 ![](figs/ap.png)
 
-# Description
-
-The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data.
-The package provides a means to analyze and view experimental data, while also integrating frameworks for managing your data and overall project.
 
 # Index
 
@@ -50,6 +48,12 @@ The package provides a means to analyze and view experimental data, while also i
 * [Features](#Features)
 * [TODO](#todo) 
 * [License](#license)
+
+# Description
+
+The nphys package is geared towares developing robust and portable data management and analysis tools for electrophysiology data.
+The package provides a means to analyze and view experimental data, while also integrating frameworks for managing your data and overall project.
+
 
 # Neurophysiology
 
@@ -64,19 +68,15 @@ For example:
 
 > The biology of a cell membrane that is comprised of long chain fatty acids and a polar head is an exceptionally effective insulator against charged particles passing between the intracellular and extracellular space. A neuron expending energy can take advantage of this and manipulate the ratio of positive to negative ions inside of its cellular environment, generating a volage potential that it can then utilize.  
 
-Voltages dictate currents moving from point A to point B across resistance, but in this case instead of electrons through copper wire, currents are carried by ions in solution. Electrical signals are converted to chemical ones through release of neurotransmitter, and receptors respond to pass along signals that can alter the activity and fate of a neuron. Throughout all this, the cell employs a number of biophysical attributes that can act like resistors, capacitors, and transistors, giving the neuron its own unique characteristics.
+Voltages dictate currents moving from point A to point B across resistance, but in this case instead of electrons through copper wire, currents are carried by ions in solution. Electrical signals are converted to chemical ones through release of neurotransmitter, and receptors respond to pass along signals that can alter the activity and fate of a neuron. Throughout all this, the cell employs a number of biophysical attributes that can act like resistors, capacitors, and transistors, giving the neuron its own unique biophysical characteristics.
 
 ## Ways of investigating biophysical properties of neurons and neuronal systems.
 
 Observing human neurophysiology used to be as simple as a doctor hitting the patellar tendon of the knee to observe basic reflexes in the leg.
 
-Ultimately, the goal is to understand how neurons and neuronal systems work in humans, but obvious difficulties can limit the ability to investigate neurons at the single cell level or within biological neural networks in humans. Therefore, model systems are employed to undersand the basic principles of neuronal communication, neurons in disease states, and the brain in general.
-
-
+Ultimately, the goal is to understand how neurons and neuronal systems work in humans, but obvious difficulties can limit the ability to investigate neurons in humans at the single cell level or within intact biological networks. Therefore, model systems are employed to undersand the basic principles of neuronal communication, neurons in disease states, and the brain in general. This helps us build our understanding of neuroscience, by developing theories that can be tested and applied to the human condition. These practices in the past are what allow us to now utilize methods observing human brain brain activity using methods such as EEG, with the ultimate goal of decoding that information.
 
 First we need to imagine all the different ways that we would want to look at neuronal systems.
-
-
 
 
 # Status
@@ -90,19 +90,19 @@ Detailed examples of how to utilize this package will be outlined as they are up
 
 # TODO
 
-- [.] Fill out TODO list
-- [/] Basics of Neurophysiology
+- [X] Fill out TODO list
+- [ ] Basics of Neurophysiology
 - [X] R CMD Check:Documentation
-- [.] Description
+- [ ] Description
 - [ ] Features
 - [ ] Dashboard
-- [/] importABF
+- [X] importABF
 - [ ] Build jQuery:Params.projBuild.metaData
 - [ ] SQL database integrate. 
-- [.] projBuild() 
-- [/] projDGDev() 
+- [ ] projBuild() 
+- [ ] projDGDev() 
 - [ ] LTD Vignette  
-- [/] nnest Vignette  
+- [ ] nnest Vignette  
 - [x] Example field dataSet
 
  

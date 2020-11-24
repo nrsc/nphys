@@ -14,6 +14,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 BuildVignettes: true
 VignetteBuilder: knitr
+biocViews:
 Imports: 
     knitr,
     rmarkdown,
@@ -27,8 +28,9 @@ Imports:
     utils,
     graphics,
     devtools,
-    ggpubr
+    ggpubr,
+    rhdf5
 Suggests: 
     testthat
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)

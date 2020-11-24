@@ -12,8 +12,8 @@
 #'
 #'
 abf_feather <- function(x, units = "ms", msInt){
-    dfs = DGDev$dfs
-    df1 = dfs[1]
+    #dfs = DGDev$dfs
+    #df1 = dfs[1]
 
     dfSweeps <- data.frame(row.names = seq(1,1501))
 

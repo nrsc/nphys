@@ -70,6 +70,7 @@ for(i in names(ampX)){
 }
 
 }
+}
 ```
 
 # Amplifier B
@@ -114,6 +115,5 @@ for(i in names(ampX)){
 }
 
 ```
-
 
 

@@ -1,15 +1,15 @@
 #' Sort field dataset when importing data using importABF
 #'
-#' @param x
+#' @param x nnest
 #'
 #' @return list of names dfs
-#' @export abf_Data.sort
 #'
 #' @examples
 #' \dontrun
-#' abf_Data.sort(field
+#' abf_Data.sort(field)
 #'
-abf_Data.sort <- function(x){
+#' @export
+abf_dataSort <- function(x){
 
   dfs <- dfs_ABF(x$ABF)
 
@@ -38,4 +38,4 @@ abf_Data.sort <- function(x){
   return(names(dfs))
 
 
-  }
+}

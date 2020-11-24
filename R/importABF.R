@@ -59,7 +59,7 @@ if(length(nnest$files)==0){stop("Error, no files found in SliceMD folder")}
 nnest$ABF = lapply(nnest$files, readABF::readABF)
 
 ## Data.sort function: Specific to project
-names(nnest$ABF) <- abf_Data.sort(nnest)
+names(nnest$ABF) <- abf_dataSort(nnest)
 
 ## Parameter in function that determines if you want to save the data
 # in the datapoint wd, or return the nested list as an object

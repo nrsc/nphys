@@ -29,7 +29,9 @@ Imports:
     graphics,
     devtools,
     ggpubr,
-    rhdf5
+    rhdf5,
+    tools,
+    readODS
 Suggests: 
     testthat
 Depends: 

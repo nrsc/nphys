@@ -29,7 +29,6 @@ Imports:
     graphics,
     devtools,
     ggpubr,
-    rhdf5,
     tools,
     readODS
 Suggests: 

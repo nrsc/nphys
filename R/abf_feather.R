@@ -1,16 +1,3 @@
-#' All sweeps from sA$ABF to feather
-#'
-#' @param x
-#'
-#' @return dfSweeps
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#'    lapply(dfs_ABF(field$ABF), abf_feather)
-#' }
-#'
-#'
 abf_feather <- function(x, units = "ms", msInt){
     #dfs = DGDev$dfs
     #df1 = dfs[1]

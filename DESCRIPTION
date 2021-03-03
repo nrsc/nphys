@@ -23,13 +23,10 @@ Imports:
     data.table,
     stringr,
     readABF,
-    plotly,
     magrittr,
     utils,
     graphics,
-    devtools,
     ggpubr,
-    rhdf5,
     tools,
     readODS
 Suggests: 

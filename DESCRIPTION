@@ -23,11 +23,9 @@ Imports:
     data.table,
     stringr,
     readABF,
-    plotly,
     magrittr,
     utils,
     graphics,
-    devtools,
     ggpubr,
     tools,
     readODS

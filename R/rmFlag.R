@@ -6,9 +6,9 @@
 #' @export
 #'
 #' @examples
-rmFlag <- function(x){
+rmFlag <- function(x, sep = "-"){
 
-    s <- stringr::str_split(x, "-", simplify = TRUE)
+    s <- stringr::str_split(x, sep, simplify = TRUE)
     s = s[,-ncol(s)]
 
 }

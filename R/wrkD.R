@@ -1,4 +1,4 @@
-#' Return directory that file is in
+#' Return file path without last path element.
 #' @param x a path
 #' @return wd
 #' @examples

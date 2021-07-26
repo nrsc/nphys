@@ -4,7 +4,7 @@
 \alias{rmFlag}
 \title{Remove the flag from the end of a datamark}
 \usage{
-rmFlag(x)
+rmFlag(x, sep = "-")
 }
 \arguments{
 \item{x}{}

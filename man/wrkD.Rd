@@ -2,7 +2,7 @@
 % Please edit documentation in R/wrkD.R
 \name{wrkD}
 \alias{wrkD}
-\title{Return directory that file is in}
+\title{Return file path without last path element.}
 \usage{
 wrkD(x)
 }
@@ -13,7 +13,7 @@ wrkD(x)
 wd
 }
 \description{
-Return directory that file is in
+Return file path without last path element.
 }
 \examples{
 \dontrun{

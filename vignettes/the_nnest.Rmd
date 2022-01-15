@@ -1,5 +1,5 @@
 ---
-title: "Introduction to the nnest"
+title: "Introduction to the dnest"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{fieldExperiment}
@@ -24,52 +24,19 @@ library(nphys)
 ```
 
 
-This vignette is going to first look at the structure and assembly of a `nnest`, then examine how we can work with the nnest and utilize built in functions to navigate the environment.
+This vignette is going to first look at the structure and assembly of the `nnest`, then examine how we can work with and utilize built in functions to navigate the environment.
 
-A `nnest` is what is generated during an experiment. Each potential data point you wanting to add to your dataset gets its own `nnest`, and each `nnest` is built throughout an experiment. The `nnest` is comprised of everything relevant to the specific piece of data in a dataset, assembled into a well organized nested list that is easy to access and apply analytical funtions to. 
+The `nnest` comprises the basic components of an experiment, and provides all elements required for identifying, organizing, and analyzing each individual experiment generated as part of a project. Each experiment get its own nnest, and each `nnest` can generate multiple data points. The important part of a dnest is that it contain all data necessary to import and easily restructure. Ideally each `dnest` is generated at the beginning of an experiment and is interacted with throughout an experiment. The `dnest` is comprised of everything relevant to the specific piece of data in a dataset, assembled into a well organized nested list that is easy to access and apply funtions to. 
 
 > Why?
 This processes encourages students and researchers to return to their data. Too often I've seen students click a few buttons, copy to excel and never return to their data for a second look. This breaks my heart. 
 
-## The field dataset
-
-The first `nnest` we will look at is the built in `field` dataset from experiments performed in the dentate gyrus of the rat hippocampus to asses a type of synaptic plasticity called long-term depression (LTD). The working directory (`field$wd`) gives us an idea of how this project was structured.
-
-```{r}
-
-print(field$wd)
-
-```
-
-
-Built in `nphys::proj_fun` functions can be used to update data paths, drawing on the UI spreadsheet params. The function `nphys::proj_dir()` will assemble an data directory based upon input from the params spreadsheet, into `dir/Protocol/ExperimentID/Group/Treatment/Date_ID1` 
-
-
-
-
-
-The field dataset 
-
-
-
-
-```{r}
-knitr::knit_exit()
-```
-
-
-
-Loading the dataset imports a nested list into the REnvironment that contains all of the information and variables needed to quickly analyze our data and keep track of it in a reliable way. 
-
-The `field` dataset is an example of what shape a data will look like after you have collected your raw data, added it to your project folderadding it to your project.
 
 ## Generating a dataset
 
-
-
 The universality of the data as a nested list allows for analysis functions to be easily run over top of the data set.   
 
-The rda file contains contains all the metadata, data, and information for running  project. You can name your rda whatever you'd like, but you must update your `Params.csv` file to ensure that your scrips are effective. The .rda file is what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate a workable dataset for your projects to easily read and apply functions to. 
+dNests are stored as .rda file that initially contains the metadata and points to the raw data. Analyzing the nnest involves running a number of functions that rely on the data stored in the nnest to operate. You can name your rda whatever you'd like, but you must update your `Params.csv` file to ensure that your scrips are effective. The .rda file is what allows you to loop over large datasets and be able to address multiple factors (i.e Baseline data, stimulus data, various channels etc.). It purpose is to generate a workable dataset for your projects to easily read and apply functions to. 
 
 
 This .rda file includes a workding directory `r print(field$wd)` that is relative to the dir project folder. 

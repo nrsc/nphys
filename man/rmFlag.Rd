@@ -9,9 +9,6 @@ rmFlag(x, sep = "-")
 \arguments{
 \item{x}{}
 }
-\value{
-
-}
 \description{
 Remove the flag from the end of a datamark
 }

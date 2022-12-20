@@ -1,3 +1,12 @@
+#' ksmoothVec
+#'
+#' @param x
+#' @param bw
+#'
+#' @return
+#' @export
+#'
+#' @examples
 ksmoothVec <- function(x, bw = 50){
     y = x
     x = zoo::index(x)
@@ -5,3 +14,5 @@ ksmoothVec <- function(x, bw = 50){
     all.equal(krnl$x, x)
     return(krnl)
 }
+
+

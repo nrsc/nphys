@@ -4,13 +4,16 @@
 \alias{testPulse}
 \title{Test pulse analysis}
 \usage{
-testPulse(x, amp = NA, dV = 0.005)
+testPulse(v, i, dV = NA, dI = NA)
 }
 \arguments{
-\item{amp}{select amplifier}
-}
-\value{
+\item{v}{voltage trace}
 
+\item{i}{current trace}
+
+\item{dV}{magnitude of test pulse in Volts.}
+
+\item{dI}{magnitude of test pulse in Amps.}
 }
 \description{
 Test pulse analysis

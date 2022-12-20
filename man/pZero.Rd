@@ -13,9 +13,6 @@ pZero(x, n = 1)
 
 \item{sel}{}
 }
-\value{
-
-}
 \description{
 pZero
 }

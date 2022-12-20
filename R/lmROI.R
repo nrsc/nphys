@@ -10,16 +10,16 @@
 #' @examples
 lmROI <- function(x, y, p1, p2){
 
-    x = t0
-
-    df = data.frame(x,y)[p1:(p2-1),]
-
-    plot(df)
-    abline(lm(y ~ x, data ), col = "green")
-
-    plot(df)
-    abline(lm(y ~ x))
-
-              lm(y ~ x, data = df)
-    return(x)
+#     #x = t0
+#
+#     df = data.frame(x,y)[p1:(p2-1),]
+#
+#     plot(df)
+#     abline(lm(y ~ x, data = df), col = "green")
+# #
+# #     plot(df)
+# #     abline(lm(y ~ x))
+# #
+# #               lm(y ~ x, data = df)
+#     return(x)
 }

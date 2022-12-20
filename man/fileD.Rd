@@ -2,7 +2,7 @@
 % Please edit documentation in R/fileD.R
 \name{fileD}
 \alias{fileD}
-\title{Returns the directory that file sits in}
+\title{Returns the last element of a path}
 \usage{
 fileD(x)
 }
@@ -13,5 +13,5 @@ fileD(x)
 wd
 }
 \description{
-Returns the directory that file sits in
+Returns the last element of a path
 }

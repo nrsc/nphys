@@ -6,9 +6,6 @@
 \usage{
 expDay(x)
 }
-\value{
-
-}
 \description{
 Experimental day
 }

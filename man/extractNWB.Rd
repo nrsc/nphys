@@ -14,21 +14,21 @@ protocols used across the datasets being investigated.
 \usage{
 extractNWB(
   x,
-  version = NULL,
   data = FALSE,
   stimulus = FALSE,
   sweeps = NULL,
-  sweep_names = FALSE,
+  acquisition_names = FALSE,
   stimulus_description = FALSE,
-  sampling_rate = FALSE
+  sampling_rate = FALSE,
+  comments = FALSE
 )
 }
 \arguments{
 \item{x}{path to nwb}
 
-\item{version}{nwb file version}
-
 \item{sampling_rate}{}
+
+\item{version}{nwb file version}
 }
 \description{
 Extract data from nwb file
@@ -43,8 +43,25 @@ protocols used across the datasets being investigated.
 }
 \examples{
 \dontrun{
+### V1
+x = "exa/QN22.26.029.4A.05.01-compressed.nwb"
+version = 1
+
+### V2
 x = "exa/QM22.26.031.4A.03.01-compressed.nwb"
+version = 2
+
 nwb = rhdf5::H5Fopen(x)
+
+data = TRUE
+stimulus = TRUE
+sweeps = c(1,2,5,8)
+acquisition_names = TRUE
+stimulus_description = TRUE
+sampling_rate = TRUE
+comments = TRUE
+
+
 }
 
 }

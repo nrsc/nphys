@@ -14,110 +14,129 @@
 #' @param stimulus_description
 #' @param sampling_rate
 #'
-#' @return
+#' @rtrnurn
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' ### V1
 #' x = "exa/QN22.26.029.4A.05.01-compressed.nwb"
+#' version = 1
 #'
 #' ### V2
 #' x = "exa/QM22.26.031.4A.03.01-compressed.nwb"
+#' version = 2
 #'
 #' nwb = rhdf5::H5Fopen(x)
+#'
+#' data = TRUE
+#' stimulus = TRUE
+#' sweeps = c(1,2,5,8)
+#' acquisition_names = TRUE
+#' stimulus_description = TRUE
+#' sampling_rate = TRUE
+#' comments = TRUE
+#'
+#'
 #' }
 #'
 extractNWB = function(x,
-                      version = NULL,
                       data = FALSE,
                       stimulus = FALSE,
                       sweeps = NULL,
                       acquisition_names = FALSE,
                       stimulus_description = FALSE,
-                      sampling_rate = FALSE) {
-    ##TODO##
-    #Proceed based upon NWB format
-    #Select by sweep
-    #Select by protocol
-    ########
+                      sampling_rate = FALSE,
+                      comments = FALSE) {
+
+    ### Close all h5 connections to begin extraction ###
+    rhdf5::h5closeAll()
 
     #Print path to ensure functional operation
     print(x)
 
-    rhdf5::h5closeAll()
-
-    # Connect to file
-    #nwb = rhdf5::H5Fopen(x)
-
-    # Identify nwb version
-    if (is.null(version)) {
-        if ("nwb_version" %in% rhdf5::h5ls(x, recursive = FALSE)$name) {
-            version = 1
-            acquisition_path = "acquisition/timeseries"
-        } else{
-            version = 2
-            acquisition_path = "acquisition"
-        }
-    }
-
+    # Get cell name
     cell = gsub(
         "-compressed",
         "",
         tools::file_path_sans_ext(nphys::fileD(x))
     )
 
-    ret = list(
+    # Identify nwb version
+    #if (is.null(version)) {}
+        if ("nwb_version" %in% rhdf5::h5ls(x, recursive = FALSE)$name) {
+            version = 1
+            acquisition_path = "acquisition/timeseries"
+            comSep = "\r"
+        } else{
+            version = 2
+            acquisition_path = "acquisition"
+            comSep = "\n"
+        }
+
+    ### Build return list
+    rtrn = list(
         cell = cell,
-        nwb_path = x,
         nwb_version = version
     )
 
-    sweep_names = names(h5read(file = x, name = acquisition_path))
-    ret = list()
+    ## Create H5Id object
+    x = rhdf5::H5Fopen(x)
 
-    ## ac all data
+    sweep_names = h5ls(H5Gopen(x, name = acquisition_path), recursive = FALSE)$name
+
+    ### Add acquisition names to list
+    if(acquisition_names){
+        rtrn$sweep_names = sweep_names
+    }
+
+    ## Add all data in acquisition to list
     if (data) {
         dfs = NULL
         dfs = sapply(sweep_names, function(f) {
             h5read(file = x, name = file.path(acquisition_path, f, "data"))
-        })# %>% as.data.frame()
+        })
 
-        ret$data = dfs
+        rtrn$data = dfs
     }
 
-    ## Extract data based on sweeps
+    ## Extract data by sweep
     if (!is.null(sweeps)) {
         dfs = NULL
+
+        if(is.numeric(sweeps)){
         dfs = sapply(sweep_names[sweeps], function(f) {
             h5read(file = x, name = file.path(acquisition_path, f, "data"))
-            })# %>% as.data.frame()
-        ret$sweeps = dfs
+            })
+        }
+
+        if(is.character(sweeps)){
+        dfs = sapply(sweeps, function(f) {
+            h5read(file = x, name = file.path(acquisition_path, f, "data"))
+            })
+
+        }
+
+        rtrn$sweeps = dfs
     }
 
     ## Extract the stimulus description
     if (stimulus_description) {
         #### Nesting of data and attributes is different between v1 and v2 nwb files
         if (version == 1) {
-            ##stimulus_description is a list element in v=1
+            ##stimulus_description is a list element in version 1
             stimulus_description = sapply(sweep_names, function(f) {
                 df = h5read(file = x, name = file.path(acquisition_path, f, "stimulus_description"))
-                #acq[[f]]$stimulus_description
-            })
+                })
         }
-
         if (version == 2) {
             ##stimulus_description is an attribute in version 2
             stimulus_description = sapply(sweep_names, function(f) {
                 rhdf5::h5readAttributes(x, name = file.path(acquisition_path, f))$stimulus_description
             })
         }
-        # return the stim set
-        ret$stimulus_description = stimulus_description
-    }
-
-    if(acquisition_names){
-        ret$sweep_names = sweep_names
+        # return the protocol names
+        rtrn$stimulus_description = stimulus_description
     }
 
     ## Extract isolated attributes
@@ -127,12 +146,51 @@ extractNWB = function(x,
             })
 
         #names(sampling_rate) = sweep_names
-        ret$sampling_rate = sampling_rate
+        rtrn$sampling_rate = sampling_rate
 
+    }
+
+    if(any(comments != FALSE)){
+
+        ## Select entire comment field from sweeps
+        expComments = sapply(sweep_names, function(f) {
+            df = data.frame(comment = do.call('cbind', strsplit(
+                as.character(rhdf5::h5readAttributes(x, name = file.path(
+                    acquisition_path, f
+                ))$comment),
+                comSep,
+                fixed = TRUE
+            )))
+        })
+
+        ## Select the Set Sweep Count
+        sweepCount = lapply(expComments, function(l){
+            l = data.frame(comment = l)
+            names(l) = "comment"
+            sweepCount = l$comment[grep("Set Sweep Count", l$comment)]
+            if(length(sweepCount) == 0){
+                sweepCount = NA
+            }
+            return(sweepCount)
+        })
+
+        ## Get the Epoch information
+        Epochs = lapply(expComments, function(l){
+            l = data.frame(l)
+            names(l) = "comment"
+            Epochs = l$comment[grep("HS#0:Epoch", l$comment)]
+            if(length(Epochs) == 0){
+                Epochs = NA
+            }
+            return(Epochs)
+        })
+
+        compComments = list(comments = expComments, sweepCount = sweepCount, Epochs = Epochs)
+        rtrn$expComments = compComments
     }
 
     rhdf5::h5closeAll()
 
-    return(ret)
+    return(rtrn)
 
 }

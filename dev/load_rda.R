@@ -15,15 +15,10 @@ load_rda <- function(x, dir = ".", ID = "-nphys", select = "FALSE"){
 
     wd <- list.dirs(dir)[head(grep(x, list.dirs(dir)), 1)]
 
-
     load(file.path(wd, paste0(x, ID, ".rda")), .GlobalEnv)
 
     md <- read.csv(list.files(wd, pattern = paste0(x, "-SliceMD.csv"), recursive = TRUE, full.names = TRUE), stringsAsFactors = FALSE, header = FALSE)
 
-
-
-
-    #return(sA)
     return(md)
 
 }

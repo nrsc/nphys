@@ -16,7 +16,7 @@ name = paste0("proj", x)
 
 ifelse(!dir.exists(file.path(path, name)), dir.create(file.path(path,name)), stop("directory already exists"))
 
-download.file(url ="https://github.com/NRSC/proj/archive/master.zip", destfile = file.path(path, name, "master.zip"))
+download.file(url ="https://github.com/nrsc/proj/archive/master.zip", destfile = file.path(path, name, "master.zip"))
 unzip(zipfile = file.path(path, name, "master.zip"), exdir = file.path(path, name))
 file.remove(file.path(path, name, "master.zip"))
 lf <- list.files(file.path(path,name), recursive = TRUE, full.names = TRUE)

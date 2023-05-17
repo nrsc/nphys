@@ -1,0 +1,50 @@
+---
+title: "nnest"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{nnest}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(nphys)
+```
+
+# The neurophysiology nnest
+
+The purpose of nesting an experiment is to provide a concise roadmap that to 
+supports active development and simplified interaction with the experiment and
+the data that it is comprised of. The nnest is meant to be a cross paradigm simplification
+that reduces each experiment to a collection of standardized elements that are 
+critical for observing and analyzing the experiment and minimizing the impact of
+variables such as acquisition software, file type & version, and metadata storage 
+on the manipulation of the data. 
+
+
+```{r}
+
+```
+
+## Standardized elements
+
+Each nnest is expected to contain a an ID, a file directory, a metadata table, 
+and a simplified roadmap for interacting with the raw data. Each nest can then also 
+include analysis elements such as tables or matrices, and standardized figures for
+observing the data.
+
+
+
+
+
+
+
+
+

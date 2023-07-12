@@ -4,7 +4,7 @@
 \alias{plotVoidNWB}
 \title{Plot void trace pulled}
 \usage{
-plotVoidNWB(x, trace, plot = TRUE, return = TRUE)
+plotVoidNWB(x, sweeps, plot = TRUE, return = TRUE)
 }
 \arguments{
 \item{return}{}

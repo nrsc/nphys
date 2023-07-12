@@ -4,7 +4,7 @@
 \alias{commentsNWB}
 \title{Function intended to separate the comments into a reliable output}
 \usage{
-commentsNWB(x, path, sep = "/n")
+commentsNWB(x, sep = "/n")
 }
 \arguments{
 \item{x}{}

@@ -3,51 +3,53 @@
 #' This function is utilized by the stimSets.R data wrangler script to extract the names of
 #' protocols used across the datasets being investigated.
 #' ####
-#'
-#'
+#' Utilizes the rhdf5 package to load nwb object into environment and follows
+#' sequence of directive to extract data.
 #'
 #' @param x path to nwb
-#' @param version nwb file version
-#' @param dataSet
+#' @param data return timeseries in NWB
 #' @param sweeps
 #' @param stimSet
 #' @param stimulus_description
 #' @param sampling_rate
 #'
-#' @rtrnurn
+#' @experimenturn
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' ### V1
-#' x = "exa/QN22.26.029.4A.05.01-compressed.nwb"
+#' x = "data/NWBv1/NWBv1.nwb"
 #' version = 1
 #'
 #' ### V2
-#' x = "exa/QM22.26.031.4A.03.01-compressed.nwb"
+#' x = "data/NWBv2/NWBv2.nwb"
 #' version = 2
 #'
 #' nwb = rhdf5::H5Fopen(x)
 #'
-#' data = TRUE
+#' acquisition = FALSE
 #' stimulus = TRUE
 #' sweeps = c(1,2,5,8)
 #' acquisition_names = TRUE
 #' stimulus_description = TRUE
 #' sampling_rate = TRUE
+#' sweeps = NULL
 #' comments = TRUE
+#' epochs = TRUE
 #'
 #'
 #' }
 #'
 extractNWB = function(x,
-                      data = FALSE,
-                      stimulus = FALSE,
+                      acquisition_names = TRUE,
+                      stimulus_description = TRUE,
+                      sampling_rate = TRUE,
+                      comments = TRUE,
+                      acquisition = FALSE,
                       sweeps = NULL,
-                      acquisition_names = FALSE,
-                      stimulus_description = FALSE,
-                      sampling_rate = FALSE,
-                      comments = FALSE) {
+                      stimulus = FALSE
+                      ) {
 
     ### Close all h5 connections to begin extraction ###
     rhdf5::h5closeAll()
@@ -55,8 +57,8 @@ extractNWB = function(x,
     #Print path to ensure functional operation
     print(x)
 
-    # Get cell name
-    cell = gsub(
+    # Get file ID
+    fileID = gsub(
         "-compressed",
         "",
         tools::file_path_sans_ext(nphys::fileD(x))
@@ -75,49 +77,19 @@ extractNWB = function(x,
         }
 
     ### Build return list
-    rtrn = list(
-        cell = cell,
+    experiment = list(
+        fileID = fileID,
         nwb_version = version
     )
 
     ## Create H5Id object
     x = rhdf5::H5Fopen(x)
 
-    sweep_names = h5ls(H5Gopen(x, name = acquisition_path), recursive = FALSE)$name
+    sweep_names = rhdf5::h5ls(rhdf5::H5Gopen(x, name = acquisition_path), recursive = FALSE)$name
 
     ### Add acquisition names to list
     if(acquisition_names){
-        rtrn$sweep_names = sweep_names
-    }
-
-    ## Add all data in acquisition to list
-    if (data) {
-        dfs = NULL
-        dfs = sapply(sweep_names, function(f) {
-            h5read(file = x, name = file.path(acquisition_path, f, "data"))
-        })
-
-        rtrn$data = dfs
-    }
-
-    ## Extract data by sweep
-    if (!is.null(sweeps)) {
-        dfs = NULL
-
-        if(is.numeric(sweeps)){
-        dfs = sapply(sweep_names[sweeps], function(f) {
-            h5read(file = x, name = file.path(acquisition_path, f, "data"))
-            })
-        }
-
-        if(is.character(sweeps)){
-        dfs = sapply(sweeps, function(f) {
-            h5read(file = x, name = file.path(acquisition_path, f, "data"))
-            })
-
-        }
-
-        rtrn$sweeps = dfs
+        experiment$sweep_names = sweep_names
     }
 
     ## Extract the stimulus description
@@ -126,7 +98,7 @@ extractNWB = function(x,
         if (version == 1) {
             ##stimulus_description is a list element in version 1
             stimulus_description = sapply(sweep_names, function(f) {
-                df = h5read(file = x, name = file.path(acquisition_path, f, "stimulus_description"))
+                df = rhdf5::h5read(file = x, name = file.path(acquisition_path, f, "stimulus_description"))
                 })
         }
         if (version == 2) {
@@ -136,24 +108,57 @@ extractNWB = function(x,
             })
         }
         # return the protocol names
-        rtrn$stimulus_description = stimulus_description
+        experiment$stimulus_description = stimulus_description
     }
 
-    ## Extract isolated attributes
+    ## Get sampling rate for each acquisition sweep
     if (sampling_rate) {
              sampling_rate = sapply(sweep_names, function(f) {
                 rhdf5::h5readAttributes(x, name = file.path(acquisition_path, f, "starting_time"))$rate
             })
 
         #names(sampling_rate) = sweep_names
-        rtrn$sampling_rate = sampling_rate
+        experiment$sampling_rate = sampling_rate
 
     }
 
-    if(any(comments != FALSE)){
+
+    #### Extracting Acquisition Data ####
+    ## Add all acquisition in acquisition to list
+    if (acquisition) {
+        dfs = NULL
+        dfs = sapply(sweep_names, function(f) {
+            rhdf5::h5read(file = x, name = file.path(acquisition_path, f, "data"))
+        })
+
+        experiment$data = dfs
+    }
+
+    ### Extract data by sweep name or number.
+    if (!is.null(sweeps)) {
+        dfs = NULL
+
+        if(is.numeric(sweeps)){
+        dfs = sapply(sweep_names[sweeps], function(f) {
+            rhdf5::h5read(file = x, name = file.path(acquisition_path, f, "data"))
+            })
+        }
+
+        if(is.character(sweeps)){
+        dfs = sapply(sweeps, function(f) {
+            rhdf5::h5read(file = x, name = file.path(acquisition_path, f, "data"))
+            })
+
+        }
+
+        experiment$sweeps = dfs
+    }
+
+
+    if(comments){
 
         ## Select entire comment field from sweeps
-        expComments = sapply(sweep_names, function(f) {
+        comments = sapply(sweep_names, function(f) {
             df = data.frame(comment = do.call('cbind', strsplit(
                 as.character(rhdf5::h5readAttributes(x, name = file.path(
                     acquisition_path, f
@@ -163,8 +168,9 @@ extractNWB = function(x,
             )))
         })
 
+
         ## Select the Set Sweep Count
-        sweepCount = lapply(expComments, function(l){
+        sweepCount = lapply(comments, function(l){
             l = data.frame(comment = l)
             names(l) = "comment"
             sweepCount = l$comment[grep("Set Sweep Count", l$comment)]
@@ -175,22 +181,36 @@ extractNWB = function(x,
         })
 
         ## Get the Epoch information
-        Epochs = lapply(expComments, function(l){
+        Epochs = lapply(comments, function(l){
+
             l = data.frame(l)
             names(l) = "comment"
-            Epochs = l$comment[grep("HS#0:Epoch", l$comment)]
+
+            HSactive = grep(":Headstage Active: On", l[[1]], value = TRUE)
+            HS_Epochs = paste0(gsub(":Headstage Active: On", "", HSactive),":Epochs")
+            HS_Epochs = paste(HS_Epochs, collapse = "|")
+
+            Epochs = l$comment[grep(HS_Epochs, l$comment)]
             if(length(Epochs) == 0){
                 Epochs = NA
             }
-            return(Epochs)
+
+            suppressWarnings({
+              epochDF = nphys::epochReturn(Epochs)
+            })
+
+
+            return(list(HSactive = HSactive, HS_Epochs = HS_Epochs, Epochs = Epochs, epochDF = epochDF))
         })
 
-        compComments = list(comments = expComments, sweepCount = sweepCount, Epochs = Epochs)
-        rtrn$expComments = compComments
+        experiment$comments = comments
+        experiment$sweepCount = sweepCount
+        experiment$epochs = Epochs
+
     }
 
     rhdf5::h5closeAll()
 
-    return(rtrn)
+    return(experiment)
 
 }

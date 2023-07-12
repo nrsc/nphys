@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(nphys)
 ```
 
-# The neurophysiology nnest
+# The neurophysiology nest (nnest)
 
 The purpose of nesting an experiment is to provide a concise roadmap that to 
 supports active development and simplified interaction with the experiment and

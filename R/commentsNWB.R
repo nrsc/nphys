@@ -3,15 +3,18 @@
 #' @param x
 #'
 #' @return
-#' @export
 #'
 #' @examples
-commentsNWB = function(x, path, sep = "/n"){
+#'
+#'
+#'
+#'
+#' @export
+commentsNWB = function(x, sep = "/n") {
 
   comment = data.frame(comment = do.call('cbind', strsplit(
-    as.character(
-      rhdf5::h5readAttributes(x, name = path)$comment
-    ), split = sep, fixed = TRUE
+    as.character(x), split = sep, fixed = TRUE
+
   )))
 
   return(comment)

@@ -10,17 +10,20 @@ protocols used across the datasets being investigated.
 }
 
 \subsection{}{
+
+Utilizes the rhdf5 package to load nwb object into environment and follows
+sequence of directive to extract data.
 }}
 \usage{
 extractNWB(
   x,
-  data = FALSE,
-  stimulus = FALSE,
+  acquisition_names = TRUE,
+  stimulus_description = TRUE,
+  sampling_rate = TRUE,
+  comments = TRUE,
+  acquisition = FALSE,
   sweeps = NULL,
-  acquisition_names = FALSE,
-  stimulus_description = FALSE,
-  sampling_rate = FALSE,
-  comments = FALSE
+  stimulus = FALSE
 )
 }
 \arguments{
@@ -28,7 +31,7 @@ extractNWB(
 
 \item{sampling_rate}{}
 
-\item{version}{nwb file version}
+\item{data}{return timeseries in NWB}
 }
 \description{
 Extract data from nwb file
@@ -39,27 +42,31 @@ protocols used across the datasets being investigated.
 }
 
 \subsection{}{
+
+Utilizes the rhdf5 package to load nwb object into environment and follows
+sequence of directive to extract data.
 }
 }
 \examples{
 \dontrun{
 ### V1
-x = "exa/QN22.26.029.4A.05.01-compressed.nwb"
+x = "data/NWBv1/NWBv1.nwb"
 version = 1
 
 ### V2
-x = "exa/QM22.26.031.4A.03.01-compressed.nwb"
+x = "data/NWBv2/NWBv2.nwb"
 version = 2
 
 nwb = rhdf5::H5Fopen(x)
 
-data = TRUE
+acquisition = FALSE
 stimulus = TRUE
 sweeps = c(1,2,5,8)
 acquisition_names = TRUE
 stimulus_description = TRUE
 sampling_rate = TRUE
 comments = TRUE
+epochs = TRUE
 
 
 }

@@ -65,6 +65,7 @@ sweeps = c(1,2,5,8)
 acquisition_names = TRUE
 stimulus_description = TRUE
 sampling_rate = TRUE
+sweeps = NULL
 comments = TRUE
 epochs = TRUE
 

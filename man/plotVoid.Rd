@@ -2,13 +2,17 @@
 % Please edit documentation in R/plotVoid.R
 \name{plotVoid}
 \alias{plotVoid}
-\title{Plot void trace pulled}
+\title{Plot void trace}
 \usage{
 plotVoid(x, plot = TRUE, return = TRUE)
 }
 \arguments{
-\item{return}{}
+\item{x}{numerical: a vector}
+
+\item{plot}{logical: show plot if TRUE}
+
+\item{return}{logical: returns object if TRUE}
 }
 \description{
-Plot void trace pulled
+Plot void trace
 }

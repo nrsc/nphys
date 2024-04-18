@@ -8,8 +8,8 @@
 #' @export lmROI
 #'
 #' @examples
-lmROI <- function(x, y, p1, p2){
-
+# lmROI <- function(x, y, p1, p2){
+#
 #     #x = t0
 #
 #     df = data.frame(x,y)[p1:(p2-1),]
@@ -22,4 +22,4 @@ lmROI <- function(x, y, p1, p2){
 # #
 # #               lm(y ~ x, data = df)
 #     return(x)
-}
+# }

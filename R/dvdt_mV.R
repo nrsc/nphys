@@ -14,15 +14,32 @@
 #' # AP = sweep[fp[4,3],fp[4,4]]
 #'
 #'
-#'
-dvdt_mV = function(x, rate, plot = TRUE){
+#' #'
+dvdt_mV = function(x,
+                   rate,
+                   plot = TRUE,
+                   return = FALSE) {
+
+    if (missing(rate)) {
+        rate = 50000
+    }
+
+    t = convertIndex(x, fq = rate)
+    tstVec = doremi::calculate.glla(time = t, signal = x)
 
 
-  #
-  t = convertIndex(AP, fq = rate)
-  tstVec = doremi::calculate.glla(time = t, signal = AP)
+    if (plot) {
+        plot(
+            tstVec$dsignal,
+            type = "l",
+            ylab = "dV/dt",
+            xlab = "mV"
+        )
+    }
 
+    if (return) {
+        return(tstVec)
+    }
 
-  plot(tstVec$dsignal, type = "l")
 
 }

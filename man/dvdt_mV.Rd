@@ -4,7 +4,7 @@
 \alias{dvdt_mV}
 \title{Display figure of AP dV/dt}
 \usage{
-dvdt_mV(x, rate, plot = TRUE)
+dvdt_mV(x, rate, plot = TRUE, return = FALSE)
 }
 \arguments{
 \item{x}{AP vector}
@@ -22,5 +22,5 @@ Display figure of AP dV/dt
 # AP = sweep[fp[4,3],fp[4,4]]
 
 
-
+#'
 }

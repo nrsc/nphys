@@ -8,19 +8,19 @@
 #'
 #'
 #' @export
-isolateSegment = function(x, p0, pN){
-
-  x = x[!is.na(x)]
-
-  if(missing(pN))
-    pN = length(x)
-
-  x = x[p0:pN]
-
-  if (!schoolmath::is.even(length(x))){
-      x = x[1:(length(x) - 1)]
-  }
-
-  return(x)
-
-}
+# isolateSegment = function(x, p0, pN){
+#
+#   x = x[!is.na(x)]
+#
+#   if(missing(pN))
+#     pN = length(x)
+#
+#   x = x[p0:pN]
+#
+#   if (!schoolmath::is.even(length(x))){
+#       x = x[1:(length(x) - 1)]
+#   }
+#
+#   return(x)
+#
+# }

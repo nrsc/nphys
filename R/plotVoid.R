@@ -8,14 +8,12 @@
 #'
 #'
 #'
-#'
 #' @export
 plotVoid = function(x, plot = TRUE, return = TRUE){
 
 
     df = data.frame(x, zoo::index(x))
     names(df) = c("y","x")
-
 
     gg = ggplot(df, aes(x, y)) +
       geom_line() +

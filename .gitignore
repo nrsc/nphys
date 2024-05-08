@@ -4,8 +4,6 @@
 *.dat
 *.mat
 *.abf
-dir
-neurons
 archive/
-
 inst/doc
+exd

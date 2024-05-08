@@ -1,32 +1,34 @@
 #' Plot void trace pulled
 #'
-#' @param x
-#' @param trace
-#' @param plot
-#' @param return
+#' @param x file path
+#' @param sweeps numeric or character string
+#' @param plot_sweep do you want the sweep plotted?
+#' @param return_sweep do you want to return the df used to create the sweep
 #'
 #' @return
-#' @export
-#'
 #' @examples
-plotVoidNWB = function(x, sweeps, plot = TRUE, return = TRUE){
+#' x = "~/nphys/exd/nwb/NWBv2.nwb"
+#' sweeps = 6
+#'
+#' @export
+plotVoidNWB = function(x, sweeps, plot_sweep = TRUE, return_sweep = FALSE){
 
-    sweep = nphys::extractNWB(x, sweeps = sweeps)
-    sweep = sweep$sweeps
+    sweep = nphys::extractNWB(x, sweeps = sweeps, slim = TRUE)
+    #sweep = sweep$sweeps
     df = data.frame(sweep, zoo::index(sweep))
     names(df) = c("y","x")
 
 
-    gg = ggplot2::ggplot(df, aes(x, y)) +
+    ggSweep = ggplot2::ggplot(df, aes(x, y)) +
         ggplot2::geom_line() +
         ggplot2::theme_void()
 
-    if (plot) {
-      base::plot(gg)
+    if (plot_sweep) {
+      base::plot(ggSweep)
     }
 
-    if (return) {
-      return(gg)
+    if (return_sweep) {
+      return(df)
     }
 
 }

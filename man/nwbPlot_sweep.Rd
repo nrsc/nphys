@@ -7,11 +7,13 @@
 nwbPlot_sweep(
   x,
   acquisition_name,
-  stimulus_name,
-  show_stimulus = TRUE,
+  stimulus_name = FALSE,
+  ds_int = NULL,
   return_plot = FALSE,
   scaleBar = TRUE,
-  show_plot = TRUE
+  show_plot = TRUE,
+  sweepColour = "black",
+  return_df = FALSE
 )
 }
 \arguments{
@@ -21,7 +23,7 @@ nwbPlot_sweep(
 Title
 }
 \examples{
-h = hct
+x = "/exd/nwb/NWBv2.nwb"
 
 
 

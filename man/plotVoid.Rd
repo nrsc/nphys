@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotVoid.R
 \name{plotVoid}
 \alias{plotVoid}
-\title{Plot void trace}
+\title{Plot void trace from txt trace}
 \usage{
 plotVoid(x, plot = TRUE, return = TRUE)
 }
@@ -14,5 +14,5 @@ plotVoid(x, plot = TRUE, return = TRUE)
 \item{return}{logical: returns object if TRUE}
 }
 \description{
-Plot void trace
+Plot void trace from txt trace
 }

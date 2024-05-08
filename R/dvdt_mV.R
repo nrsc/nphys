@@ -9,19 +9,19 @@
 #' @examples
 #'
 #'  #AP = x
-#' #sweep = hct$ffts$data_00029_AD0$sweep
-#' # fp = hct$ffts$data_00029_AD0$peaks
-#' # AP = sweep[fp[4,3],fp[4,4]]
+#'  #sweep = nphys::data$AP
+#'  #rate = 50000
 #'
 #'
-#' #'
+#'
+#'
 dvdt_mV = function(x,
                    rate,
                    plot = TRUE,
                    return = FALSE) {
 
     if (missing(rate)) {
-        rate = 50000
+        stop("Error: rate must be set")
     }
 
     t = convertIndex(x, fq = rate)

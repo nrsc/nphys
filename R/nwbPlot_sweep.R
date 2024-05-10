@@ -94,17 +94,6 @@ nwbPlot_sweep = function(x,
 
     }
 
-    # if(is.numeric(ds_int)){
-    #   if(show_plot){
-    #    plot(gg2)
-    #   }
-    #
-    #   if(return_plot){
-    #     return(gg2)
-    #   }
-    #   }
-
-
     ggSweep = gridExtra::arrangeGrob(ggSweep, ggStim, layout_matrix = rbind(1, 1, 1, 1, 1, 1, 1, 1, 1, 2))
 
 

@@ -4,11 +4,22 @@
 \alias{plotVoidNWB}
 \title{Plot void trace pulled}
 \usage{
-plotVoidNWB(x, sweeps, plot = TRUE, return = TRUE)
+plotVoidNWB(x, sweeps, plot_sweep = TRUE, return_sweep = FALSE)
 }
 \arguments{
-\item{return}{}
+\item{x}{file path}
+
+\item{sweeps}{numeric or character string}
+
+\item{plot_sweep}{do you want the sweep plotted?}
+
+\item{return_sweep}{do you want to return the df used to create the sweep}
 }
 \description{
 Plot void trace pulled
+}
+\examples{
+x = "~/nphys/exd/nwb/NWBv2.nwb"
+sweeps = 6
+
 }

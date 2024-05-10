@@ -2,7 +2,7 @@
 % Please edit documentation in R/nwbPlot_sweep.R
 \name{nwbPlot_sweep}
 \alias{nwbPlot_sweep}
-\title{Title}
+\title{Plot a sweep from the nwb file path}
 \usage{
 nwbPlot_sweep(
   x,
@@ -17,13 +17,19 @@ nwbPlot_sweep(
 )
 }
 \arguments{
-\item{x}{}
+\item{x}{nwb file path}
+
+\item{acquisition_name}{character string or numeric}
+
+\item{stimulus_name}{character}
+
+\item{return_df}{}
 }
 \description{
-Title
+Plot a sweep from the nwb file path
 }
 \examples{
-x = "/exd/nwb/NWBv2.nwb"
+x = "/home/nrsc/nphys/exd/nwb/NWBv2.nwb"
 
 
 

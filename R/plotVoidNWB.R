@@ -14,7 +14,7 @@
 plotVoidNWB = function(x, sweeps, plot_sweep = TRUE, return_sweep = FALSE){
 
     sweep = nphys::extractNWB(x, sweeps = sweeps, slim = TRUE)
-    #sweep = sweep$sweeps
+
     df = data.frame(sweep, zoo::index(sweep))
     names(df) = c("y","x")
 

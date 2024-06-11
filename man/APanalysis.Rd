@@ -2,7 +2,8 @@
 % Please edit documentation in R/APanalysis.R
 \name{APanalysis}
 \alias{APanalysis}
-\title{Title}
+\title{Analysis function for APs
+Includes a collection of descriptive statistics for each action potential.}
 \usage{
 APanalysis(
   x,
@@ -20,11 +21,12 @@ APanalysis(
 \item{eOFF}{}
 }
 \description{
-Title
+Analysis function for APs
+Includes a collection of descriptive statistics for each action potential.
 }
 \examples{
-x = nphys
-x = ksweep
+x = sweep
+x = data[,"data_00075_AD0"]
 minpeakheight = -10
 rate = 50000
 rate = rate

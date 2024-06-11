@@ -9,7 +9,7 @@
 #'
 #'
 #' @export
-plotVoid = function(x, plot = TRUE, return = TRUE){
+plotVoid = function(x, show_plot = TRUE, return_plot = TRUE){
 
 
     df = data.frame(x, zoo::index(x))
@@ -19,11 +19,11 @@ plotVoid = function(x, plot = TRUE, return = TRUE){
         ggplot2::geom_line() +
         ggplot2::theme_void()
 
-    if (plot) {
+    if (show_plot) {
       base::plot(gg)
     }
 
-    if (return) {
+    if (return_plot) {
       return(gg)
     }
 

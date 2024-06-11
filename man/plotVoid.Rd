@@ -4,7 +4,7 @@
 \alias{plotVoid}
 \title{Plot void trace from txt trace}
 \usage{
-plotVoid(x, plot = TRUE, return = TRUE)
+plotVoid(x, show_plot = TRUE, return_plot = TRUE)
 }
 \arguments{
 \item{x}{numerical: a vector}

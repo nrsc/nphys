@@ -2,7 +2,7 @@
 % Please edit documentation in R/convertIndex.R
 \name{convertIndex}
 \alias{convertIndex}
-\title{Convert index into timescale by frequency}
+\title{Convert index into Seconds by frequency}
 \usage{
 convertIndex(x, fq)
 }
@@ -11,6 +11,17 @@ convertIndex(x, fq)
 
 \item{fq}{sampling frequency in seconds}
 }
+\value{
+vector
+}
 \description{
-Convert index into timescale by frequency
+Convert index into Seconds by frequency
+}
+\examples{
+
+\dontrun{
+
+}
+
+
 }

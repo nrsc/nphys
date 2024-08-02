@@ -2,13 +2,16 @@
 #' Includes a collection of descriptive statistics for each action potential.
 #'
 #' @param x sweep vector
-#' @param minpeakheight
-#' @param rate
-#' @param eON
-#' @param eOFF
+#' @param minpeakheight numeric
+#' @param rate numeric sampling frequency
+#' @param eONi numeric index start of epoch check
+#' @param eOFF numeric index end of epoch for check
 #'
-#' @return
+#' @return dataframe
+#'
 #' @examples
+#'
+#' \dontrun{
 #' x = sweep
 #' x = data[,"data_00075_AD0"]
 #' minpeakheight = -10
@@ -16,6 +19,7 @@
 #' rate = rate
 #' bw = 4
 #' minpeakdistance = .01*rate
+#' }
 #'
 #' @export
 APanalysis = function(x, rate, eONi, eOFFi, bw = 2, minpeakheight = -10, minpeakdistance = .005*rate){

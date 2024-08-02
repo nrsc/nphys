@@ -1,0 +1,66 @@
+---
+title: "threshold_downsampling"
+date: "2024-06-10"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(projHCT)
+library(nphys)
+
+threshold_downsampling <- function(signal, threshold) {
+  downsampled_signal <- c(signal[1])
+  for (i in 2:length(signal)) {
+    if (abs(signal[i] - signal[i-1]) > threshold) {
+      downsampled_signal <- c(downsampled_signal, signal[i])
+    }
+  }
+  return(downsampled_signal)
+}
+
+x = projHCT::loadHCT("H24.06.352.11.51.01.02")
+x = hct$dfs$icv60$data_00078_AD0
+sweep = projHCT::extractNWB(x$nwb_file, sweeps = x$trace, slim = TRUE)
+
+
+
+
+```
+
+```{r}
+threshold <- 0.1
+downsampled_signal <- threshold_downsampling(sweep, threshold)
+plot(downsampled_signal, type = "l")
+```
+
+# Downsampling stimulus
+
+```{r}
+
+stim = projHCT::extractNWB(x$nwb_file, stimulus_sweeps = x$trace, slim = TRUE)
+
+threshold_downstim <- function(signal, threshold) {
+  downsampled_signal <- signal[1]  # Always include the first sample
+  downsampled_indices <- 1
+  for (i in 2:length(signal)) {
+    if (abs(signal[i] - signal[i-1]) > threshold) {
+      downsampled_signal <- c(downsampled_signal, signal[i])
+      downsampled_indices <- c(downsampled_indices, i)
+    }
+  }
+  return(list(signal = downsampled_signal, indices = downsampled_indices))
+}
+
+plot(stim, type ="l")
+
+downsampled_stim <- threshold_downstim(stim, threshold)
+plot(y = downsampled_stim$signal, x = downsampled_stim$indices, type = "l")
+
+
+```
+
+
+
+

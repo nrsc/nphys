@@ -57,10 +57,14 @@ extractNWB = function(x,
                 "",
                 tools::file_path_sans_ext(nphys::fileD(x)))
 
-  # Identify nwb version
-  #if (is.null(version)) {}
 
 
+
+
+
+  #### Identify nwb version ####
+  #ver = nphys::get_nwb_version(f)
+  #if(ver$major == 1){
 
   if ("nwb_version" %in% rhdf5::h5ls(x, recursive = FALSE)$name) {
     version = 1
@@ -167,7 +171,7 @@ extractNWB = function(x,
     }
 
       suppressWarnings({
-        epochDF = nphys::epochReturn(Epochs)
+        epochDF = nphys::epochDF_from_nwb_comments(Epochs)
       })
 
 

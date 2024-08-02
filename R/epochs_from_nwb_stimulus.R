@@ -1,16 +1,20 @@
-#' Get Epoch from stimulus
+#' Get epochs from stimulus trace by identifying significant changes in point differences
 #'
-#' @param x Epoch description pulled from extractNWB expParas$comments$Epochs
+#' @param x Can be either the nnested list with
+#' @param s
+#' @param ntail
+#' @param n_expected
 #'
 #' @return
 #' @examples
 #'
 #'
 #' @export
-epochStimulus = function(x, s, ntail = 2) {
+epochs_from_nwb_stimulus = function(x, s, ntail = 2, n_expected) {
 
-
-    stimTrace = x
+    if (file.exists(x)) {
+        stimTrace = nphys::extractNWB(x, stimulus_sweeps = s, slim = TRUE)
+        }
 
     traceDiff = tail(which(diff(stimTrace) != 0), ntail)
 
@@ -46,8 +50,6 @@ epochStimulus = function(x, s, ntail = 2) {
                         amp = amp)
 
     }
-
-
 
     return(df)
 

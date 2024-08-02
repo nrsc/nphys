@@ -1,14 +1,15 @@
-#' Return the Epochs in a dataframe format for easier building
-#' Built in projHCT ported over 240508
+#' Return the Epochs in a dataframe format for easier
 #'
-#' @param x Epoch description pulled from extractNWB exp$comments$Epochs
 #'
-#' @return
+#'
+#' @param x Epoch description pulled from extractNWB output comments$Epochs
+#'
+#' @return dataframe of epochs
 #' @examples
 #'
 #'
 #' @export
-epochReturn = function(x){
+epochDF_from_nwb_comments = function(x){
 
 
   if(is.na(x)){

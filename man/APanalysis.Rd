@@ -18,13 +18,24 @@ APanalysis(
 \arguments{
 \item{x}{sweep vector}
 
-\item{eOFF}{}
+\item{rate}{numeric sampling frequency}
+
+\item{eONi}{numeric index start of epoch check}
+
+\item{minpeakheight}{numeric}
+
+\item{eOFF}{numeric index end of epoch for check}
+}
+\value{
+dataframe
 }
 \description{
 Analysis function for APs
 Includes a collection of descriptive statistics for each action potential.
 }
 \examples{
+
+\dontrun{
 x = sweep
 x = data[,"data_00075_AD0"]
 minpeakheight = -10
@@ -32,5 +43,6 @@ rate = 50000
 rate = rate
 bw = 4
 minpeakdistance = .01*rate
+}
 
 }

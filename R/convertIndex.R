@@ -1,14 +1,25 @@
-#' Convert index into timescale by frequency
+#' Convert index into Seconds by frequency
 #'
 #' @param x vector of length n
 #' @param fq sampling frequency in seconds
 #'
-#' @return
-#' @export
+#' @return vector
 #'
 #' @examples
-convertIndex = function(x, fq){
-  n = length(x)
-  v = n/fq
-  r = seq(0, v, length.out = n)
+#'
+#' \dontrun{
+#'
+#' }
+#'
+#'
+#' @export
+convertIndex = function(x, fq) {
+
+    # Length of vector
+    n = length(x)
+
+    # duration
+    v = n / fq
+
+    r = seq(0, v, length.out = n)
 }

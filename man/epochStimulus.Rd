@@ -2,7 +2,7 @@
 % Please edit documentation in R/epochStimulus.R
 \name{epochStimulus}
 \alias{epochStimulus}
-\title{Return the Epochs in a dataframe format for easier}
+\title{Get Epoch from stimulus}
 \usage{
 epochStimulus(x, s, ntail = 2)
 }
@@ -10,5 +10,5 @@ epochStimulus(x, s, ntail = 2)
 \item{x}{Epoch description pulled from extractNWB expParas$comments$Epochs}
 }
 \description{
-Return the Epochs in a dataframe format for easier
+Get Epoch from stimulus
 }

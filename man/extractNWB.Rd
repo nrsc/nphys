@@ -18,6 +18,7 @@ sequence of directive to extract data.
 extractNWB(
   x,
   acquisition = FALSE,
+  stimulus = FALSE,
   sweeps = NULL,
   stimulus_sweeps = NULL,
   epochs = TRUE,

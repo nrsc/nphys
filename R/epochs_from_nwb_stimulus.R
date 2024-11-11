@@ -1,8 +1,8 @@
 #' Get epochs from stimulus trace by identifying significant changes in point differences
 #'
-#' @param x Can be either the nnested list with
-#' @param s
-#' @param ntail
+#' @param x path to file
+#' @param s acquisition_name
+#' @param ntail epoch transitions to gather
 #' @param n_expected
 #'
 #' @return
@@ -14,7 +14,11 @@ epochs_from_nwb_stimulus = function(x, s, ntail = 2, n_expected) {
 
     if (file.exists(x)) {
         stimTrace = nphys::extractNWB(x, stimulus_sweeps = s, slim = TRUE)
-        }
+    }else{
+            errorCondition(message = "File not found", call = stop)
+    }
+
+
 
     traceDiff = tail(which(diff(stimTrace) != 0), ntail)
 

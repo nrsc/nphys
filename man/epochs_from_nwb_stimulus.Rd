@@ -7,7 +7,11 @@
 epochs_from_nwb_stimulus(x, s, ntail = 2, n_expected)
 }
 \arguments{
-\item{x}{Can be either the nnested list with}
+\item{x}{path to file}
+
+\item{s}{acquisition_name}
+
+\item{ntail}{epoch transitions to gather}
 
 \item{n_expected}{}
 }

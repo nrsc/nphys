@@ -40,9 +40,13 @@ x = sweep
 x = data[,"data_00075_AD0"]
 minpeakheight = -10
 rate = 50000
-rate = rate
-bw = 4
-minpeakdistance = .01*rate
+rate = unique(smryDF$sampling_rate)
+bw = 2
+minpeakheight = -10
+minpeakdistance = .005*rate
+rate = smryDF$rate[1]
+eONi = smryDF$eONi[1]
+eOFFi = smryDF$eOFFi[1]
 }
 
 }

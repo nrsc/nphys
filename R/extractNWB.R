@@ -42,6 +42,7 @@
 #'
 extractNWB = function(x,
                       acquisition = FALSE,
+                      stimulus = FALSE,
                       sweeps = NULL,
                       stimulus_sweeps = NULL,
                       epochs = TRUE,
@@ -200,6 +201,20 @@ extractNWB = function(x,
     }
 
     exp$data = dfs
+  }
+
+  if (stimulus) {
+    dfs = NULL
+    dfs = sapply(exp$sweep_names, function(f) {
+      rhdf5::h5read(file = x,
+                    name = file.path(stimulus_path, f, "data"))
+    })
+
+    if(slim){
+      return(dfs)
+    }
+
+    exp$stimulus = dfs
   }
 
   ### Extract data by sweep name or number. ####
